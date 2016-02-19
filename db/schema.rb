@@ -75,7 +75,8 @@ ActiveRecord::Schema.define(version: 20160219153921) do
   end
 
   create_table "venues", force: :cascade do |t|
-    t.string   "location",   null: false
+    t.decimal  "lat",        null: false
+    t.decimal  "lng",        null: false
     t.string   "name",       null: false
     t.integer  "type_id"
     t.integer  "manager_id", null: false
