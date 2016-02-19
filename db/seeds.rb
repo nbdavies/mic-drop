@@ -14,12 +14,12 @@
 
 # 20.times {venue.tags.create()
 
-Event.create(name: "Jazz Stuff", description: 'So much goddamn jazz!', venue_id: 1, )
+Event.create(name: "Jazz Stuff", description: 'So much goddamn jazz!', venue_id: 1, datetime: Faker::Time.between(DateTime.now - 1, DateTime.now) )
 
-Event.create(name: "GLWSTX", description: "The heaviest drops!", venue_id: 2, )
+Event.create(name: "GLWSTX", description: "The heaviest drops!", venue_id: 2, datetime:Faker::Time.between(DateTime.now - 1, DateTime.now))
 
-Venue.create(lat:41.889816, long:-87.635504, name: "Rock n' Roll Town", type: 1 + rand(9), manager_id:1+ rand(49))
+Venue.create(lat:"41.889816", lng:"-87.635504", name: "Rock n' Roll Town", type_id: 1 + rand(9), manager_id:1+ rand(49))
 
-Venue.create(lat:41.891398, long:-87.637435, name: "E-D-AMN", type: 1+ rand(10), manager_id: 1+ rand(50))
+Venue.create(lat:"41.891398", lng:"-87.637435", name: "E-D-AMN", type_id: 2+ rand(10), manager_id: 1+ rand(50))
 
 # 20.times {Rsvp.create(event.id)}
