@@ -27,6 +27,7 @@ class UsersController < ApplicationController
       redirect_to '/'
     else
       redirect_to '/401'
+    end
   end
 
   def new_session
