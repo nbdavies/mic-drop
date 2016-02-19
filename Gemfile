@@ -34,7 +34,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # React
 gem 'react-rails', '~> 1.6.0'
+# Simplecov
 gem 'simplecov'
+# Coffee-react to add JSX to Coffeescript
+gem 'coffee-react'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
