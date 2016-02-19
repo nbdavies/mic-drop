@@ -18,6 +18,7 @@ var LoginBox = React.createClass({
     return (
       <div className="LoginBox">
         <LoginForm />
+        <RegistrationForm />
       </div>
     )
   }
@@ -54,15 +55,16 @@ var LoginForm = React.createClass({
           onChange={this.handleUsernameChange} />
         <input
           type="password"
+          placeholder="password"
           value={this.state.password}
           onChange={this.handlePasswordChange} />
-        <input type="submit" value="Login" />
+        <input type="submit" value="Login" className="btn" />
       </form>
     );
   }
 });
 
-ReactDOM.render(
-  <LoginBox />,
-  document.getElementById('container')
-);
+// ReactDOM.render(
+//   <LoginBox />,
+//   document.getElementById('container')
+// );

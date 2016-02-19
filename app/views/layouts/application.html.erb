@@ -2,7 +2,14 @@
 <html>
 <head>
   <title>MicDrop</title>
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+
   <%= stylesheet_link_tag    'application', media: 'all' %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -10,5 +17,6 @@
 <%= yield %>
 </div>
 <%= javascript_include_tag 'application' %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 </body>
 </html>
