@@ -17,46 +17,68 @@ ActiveRecord::Schema.define(version: 20160219153921) do
   enable_extension "plpgsql"
 
   create_table "event_venue_tags", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "taggable_id",   null: false
+    t.string   "taggable_type", null: false
+    t.integer  "tag_id",        null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "events", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",        null: false
+    t.datetime "datetime",    null: false
+    t.string   "description"
+    t.integer  "venue_id",    null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "friendships", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "friend_id",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "rsvps", force: :cascade do |t|
+    t.integer  "event_id",   null: false
+    t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "subscriptions", force: :cascade do |t|
+    t.integer  "venue_id",   null: false
+    t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "tags", force: :cascade do |t|
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "types", force: :cascade do |t|
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "username",        null: false
+    t.string   "password_digest", null: false
+    t.string   "email"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "venues", force: :cascade do |t|
+    t.string   "location",   null: false
+    t.string   "name",       null: false
+    t.integer  "type_id"
+    t.integer  "manager_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
