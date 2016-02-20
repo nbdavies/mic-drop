@@ -1,4 +1,7 @@
-var Map = React.createClass({
+var MapDiv = React.createClass({
+  componentDidMount: function(){
+
+  },
   render: function () {
     if (this.props.login_clicked) {
       return (<LoginForm />)
@@ -7,6 +10,7 @@ var Map = React.createClass({
       return (<RegistrationForm />)
     }
     else {
+
       return (<div id="map"></div>);
     };
   }
