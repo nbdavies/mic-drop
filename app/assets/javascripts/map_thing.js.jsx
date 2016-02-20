@@ -5,7 +5,6 @@ function initMap() {
   });
   request.done(function(responseData){
     pins = responseData;
-    console.log(pins)
 
     var map = new google.maps.Map(document.getElementById("map"), {
     center: {lat: -34.397, lng: 150.644},
@@ -37,7 +36,9 @@ function initMap() {
         title: pin.name
       });
 
-      var contentString = '<div id="infowindow"><h5>'+pin.name+'</h5><p>'+pin.description+'</p></div>'
+      var contentString = '<div id="infowindow"><h5>'+pin.name+'</h5><p>'+pin.description+'</p>'+pin.address+'</div>'
+
+        console.log(contentString);
 
       var infoWindow = new google.maps.InfoWindow({
         content: contentString
@@ -51,10 +52,6 @@ function initMap() {
 
   });
 }
-
-function formattedAddress(position) {
-
-};
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);

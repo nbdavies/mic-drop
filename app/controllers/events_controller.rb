@@ -6,6 +6,7 @@ class EventsController < ApplicationController
     pins.each do |pin|
       venue = Venue.find(pin[:venue_id])
       pin["location"] = {lat: venue.lat, lng: venue.lng}
+      pin["address"] = venue.address
     end
     render :json => pins
   end
