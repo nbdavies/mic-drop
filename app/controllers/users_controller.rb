@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to '/'
+      render :json => @user
     else
       redirect_to '/401'
     end
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def login
     if current_user
-      redirect_to '/'
+      render :json => @user
     else
       redirect_to '/401'
     end
