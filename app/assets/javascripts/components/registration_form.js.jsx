@@ -1,16 +1,3 @@
-var RegisterBox = React.createClass({
-
-  render: function() {
-    return (
-      <div className="registerBox">
-        <RegistrationForm />
-        <LoginForm />
-      </div>
-    )
-  }
-});
-
-
 var RegistrationForm = React.createClass({
   getInitialState: function() {
     return {username: '', password: '', email: ''};
@@ -30,23 +17,23 @@ var RegistrationForm = React.createClass({
     var email = this.state.email.trim();
     var password = this.state.password.trim();
     if (!username || !email || !password) {
-      return;
+      return // handle errors;
     }
-    //this.props({username: username, email: email, password: password});
-    console.log(this.props);
-    $.ajax({
+    var request = $.ajax({
       url: "/users",
       dataType: 'json',
       type: 'POST',
       data: {user: this.state},
-      success: function() {
-        this.setState({username: '', email: '', password: ''})
-      }
     });
+    request.done(function(responseData){
+      this.setState({username: '', email: '', password: ''})
+      $("#modal1").closeModal();
+      $(".lean-overlay").hide()
+    }.bind(this));
   },
   render: function() {
     return (
-      <form className="registrationForm">
+      <div col s12><form className="registrationForm">
         <input
           type="text"
           placeholder="username"
@@ -63,7 +50,8 @@ var RegistrationForm = React.createClass({
           value={this.state.password}
           onChange={this.handlePasswordChange} />
         <input type="submit" value="Register" className="btn" onClick={this.handleSubmit} />
-      </form>
+      </form></div>
+
     );
   }
 });
