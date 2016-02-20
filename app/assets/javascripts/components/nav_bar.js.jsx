@@ -5,7 +5,7 @@ var LoginButton = React.createClass({
   handleClick: function(e) {
     e.preventDefault();
     this.setState({clicked: true});
-    this.props.onLoginClick({});
+    this.props.onLoginButtonClick({});
   },
   render: function() {
     var button = (this.state.clicked ? <div></div> : <button className="btn right red accent-2" onClick={this.handleClick}>login</button>);
@@ -21,17 +21,16 @@ var NavBar = React.createClass({
   },
   handleLoginButtonClick: function() {
     this.setState({login_clicked: true});
+    this.props.onLoginButtonClick({});
   },
   render: function(){
     return(
     <nav className="navigation">
       <a href="#" className="brand-logo">mic_drop</a>
-      <LoginButton onLoginClick={this.handleLoginButtonClick} />
+      <LoginButton onLoginButtonClick={this.handleLoginButtonClick} />
     </nav>
     );
   }
 });
 
-var Container = React.createClass({
 
-});
