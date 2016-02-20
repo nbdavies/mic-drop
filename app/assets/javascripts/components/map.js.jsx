@@ -7,7 +7,7 @@ var Map = React.createClass({
       return (<RegistrationForm />)
     }
     else {
-      return (<p> This is a placeholder for the map. </p>)
+      return (<div id="map"></div>);
     };
   }
 });
