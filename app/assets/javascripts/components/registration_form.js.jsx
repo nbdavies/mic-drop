@@ -76,7 +76,5 @@ var RegistrationForm = React.createClass({
 
 
 
-ReactDOM.render(
-  <NavBar />,
-  document.getElementById('container')
-);
+
+

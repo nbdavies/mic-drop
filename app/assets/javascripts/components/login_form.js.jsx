@@ -64,7 +64,3 @@ var LoginForm = React.createClass({
   }
 });
 
-// ReactDOM.render(
-//   <LoginBox />,
-//   document.getElementById('container')
-// );
