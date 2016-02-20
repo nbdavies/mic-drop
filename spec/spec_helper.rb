@@ -17,6 +17,8 @@
 #
 require 'simplecov'
 SimpleCov.start 'rails'
+require 'capybara/rails'
+require 'capybara/rspec'
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -91,4 +93,5 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  config.infer_spec_type_from_file_location!
 end
