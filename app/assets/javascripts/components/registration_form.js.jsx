@@ -1,19 +1,5 @@
 var RegisterBox = React.createClass({
-  handleRegistrationSubmit: function(form) {
-    $.ajax({
-      url: "/users",
-      dataType: 'json',
-      type: 'POST',
-      data: form,
-      success: function(data) {
-        this.setState({data: data})
-        ;
-      }.bind(this),
-      error:function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-  },
+
   render: function() {
     return (
       <div className="registerBox">
@@ -27,7 +13,7 @@ var RegisterBox = React.createClass({
 
 var RegistrationForm = React.createClass({
   getInitialState: function() {
-    return {author: '', text: ''};
+    return {username: '', password: '', email: ''};
   },
   handleUsernameChange: function(e) {
     this.setState({username: e.target.value});
@@ -46,8 +32,17 @@ var RegistrationForm = React.createClass({
     if (!username || !email || !password) {
       return;
     }
-    this.props.onRegistrationSubmit({username: username, email: email, password: password});
-    this.setState({username: '', email: '', password: ''});
+    //this.props({username: username, email: email, password: password});
+    console.log(this.props);
+    $.ajax({
+      url: "/users",
+      dataType: 'json',
+      type: 'POST',
+      data: {user: this.state},
+      success: function() {
+        this.setState({username: '', email: '', password: ''})
+      }
+    });
   },
   render: function() {
     return (
@@ -67,7 +62,7 @@ var RegistrationForm = React.createClass({
           placeholder="password"
           value={this.state.password}
           onChange={this.handlePasswordChange} />
-        <input type="submit" value="Register" className="btn" />
+        <input type="submit" value="Register" className="btn" onClick={this.handleSubmit} />
       </form>
     );
   }
