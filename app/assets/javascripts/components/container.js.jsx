@@ -14,7 +14,7 @@ var Container = React.createClass({
     return(
       <div className="matroshka">
         <NavBar onLoginButtonClick={this.handleLoginClick} onRegisterButtonClick={this.handleRegisterClick} />
-        <Map login_clicked={this.state.login_clicked} register_clicked={this.state.register_clicked} />
+        <MapDiv login_clicked={this.state.login_clicked} register_clicked={this.state.register_clicked} />
       </div>
     );
   }

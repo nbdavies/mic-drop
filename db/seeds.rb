@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-50.times {User.create(username: Faker::Internet.user_name, password: Faker::Internet.password, email:Faker::Internet.email)}
+50.times {User.create(username: Faker::Internet.user_name, password: Faker::Internet.password, email: Faker::Internet.email)}
 
 10.times {Type.create(name: Faker::Book.genre)}
 
