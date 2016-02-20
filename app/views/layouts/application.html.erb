@@ -6,6 +6,10 @@
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
 
+ <style type="text/css">
+      html, body { height: 100%; margin: 0; padding: 0; }
+      #map { height: 100%; }
+    </style>
   <!-- Compiled and minified JavaScript -->
 
   <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -13,10 +17,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
 <div id="container">
 <%= yield %>
+
 </div>
+ <div id="map"></div>
 <%= javascript_include_tag 'application' %>
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+   <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
+    </script>
 </body>
 </html>
