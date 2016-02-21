@@ -1,6 +1,6 @@
 window.renderApp = function(){
   ReactDOM.render(
-    <Container loggedIn={false} />,
+    <Container />,
     document.getElementById('container')
   );
 };

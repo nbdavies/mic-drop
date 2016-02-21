@@ -36,7 +36,6 @@ var RegistrationForm = React.createClass({
         this.handleLogin(responseData.username)
         $("#modal1").closeModal();
         $(".lean-overlay").hide()
-
       }
     }.bind(this));
   },
