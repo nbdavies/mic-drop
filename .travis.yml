@@ -4,6 +4,8 @@ rvm:
   - rbx
 services:
   - postgresql
+before_install:
+  - bundle config frozen false
 before_script:
   - bundle exec rake db:create RAILS_ENV=test
   - bundle exec rake db:migrate RAILS_ENV=test
