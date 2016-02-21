@@ -7,3 +7,7 @@ services:
 before_script:
   - bundle exec rake db:create RAILS_ENV=test
   - bundle exec rake db:migrate RAILS_ENV=test
+addons:
+  sauce_connect:
+    username: "pthomas551"
+    access_key: "gMog33hCsNHkE9lfZpVeY/yRD89f1INL9FrFyMv+2g94KJLV/BSrFVemuVzk2JklTcIwW775/pMJLVmBonUgInxGX7b5d98Hp5MO7keQVJ2qU6zCnqAvt+qmIplF9EeF6AZraMaamiD/ZNok15yHlk2sGnj4PhffKkf2E3vBw9GHNJeipH5HTjQ0n7/zVay3KNzDTXzFjihOJeC6GnPx8Yvd/hIEZRbojxFUBV7RV4Q39/IhAlM3729EOybOQnAB+UN+C1hDbTk7/29R3iPAnCcMNrJYxcOYtaxfSUXw6inTBK+bA1pCmCbFmB1wDSnuVfC98oRR0rH3uPeZDkV8RwRNZb1GtFJR9E7BhsqiTSXjTBZXTDZdIhd8tjaJ0x8CwVgacTh6sim92GDkBVZ53hTFoLkd3A66uHHpr0cdthEVH6i/OUz8InBB0BwOqa5AvEfR5JUqjX+TlgDf6OfcdCTIXjVsPMnHeT10XvZmAa4bZ/OOxrRuULD32fUE+BcIVpTPsmjbqdYbamyDndHE6pQxIu2Fby1mwx/m+5mQlFO6RBhbEz/TnZZbFmJQ+AOSW/i/HLj6IrSsmqwYkmWVDVKaiXaZE8JhFnIVJ5WjPprtIQ8fh9jloWBt1/mR0Tuk7T3dJC8pRROf/DBmC2r3N3IgVfjglFH+dwA+Y7GcUuY="
