@@ -44,11 +44,13 @@ gem 'react-rails', '~> 1.6.0'
 gem 'simplecov'
 # Coffee-react to add JSX to Coffeescript
 gem 'coffee-react'
-# Capybara for testing
-gem 'capybara'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # Capybara and selenium-webdriver for testing
+  gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   #gem 'byebug'
