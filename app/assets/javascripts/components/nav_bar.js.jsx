@@ -1,24 +1,23 @@
 var NavBar = React.createClass({
   getInitialState: function() {
-    return {logged_in: false};
+    // return {logged_in: false};
   },
 
-  // handleLoginButtonClick: function() {
-  //   this.setState({login_clicked: true});
-  //   this.props.onLoginButtonClick({});
-  // },
-
   render: function(){
-    return(
-    <nav className="navigation">
-      <a href="" className="brand-logo">mic_drop</a>
+    var navLoggedOut = <nav className="navigation">
+      <div className="brand-logo">mic_drop </div>
       <LoginButton />
-       <RegisterButton />
+      <RegisterButton />
     </nav>
 
+    var navLoggedIn = <nav className="navigation">
+      <div className="brand-logo">mic_drop </div>
+    </nav>
+
+    var finalNav = (this.state.logged_in ? navLoggedIn : navLoggedOut);
+    return(
+      finalNav
     );
   }
 });
 
-// onLoginButtonClick={this.handleLoginButtonClick}
-// onRegisterButtonClick={this.handleRegisterButtonClick}
