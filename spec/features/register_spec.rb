@@ -13,7 +13,7 @@ describe 'registration', :type => :feature, :js => true do
     fill_in 'email', with: 'test'
     fill_in 'password', with: 'password'
     click_button 'Register'
-    expect(page).to have_button 'Logout'
+    expect(page).to have_button 'log out'
   end
 
 end
