@@ -22,7 +22,6 @@ var LoginForm = React.createClass({
       return;
     }
     //this.props({username: username, email: email, password: password});
-    console.log(this.props);
     var request = $.ajax({
       url: "/sessions",
       dataType: 'json',
