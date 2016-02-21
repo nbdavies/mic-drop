@@ -22,10 +22,12 @@ describe 'adding an event', :type => :feature, :js => true do
     expect(page).to have_field('name')
   end
 
-  pending 'allows the user to submit event data' do
+  xit 'allows the user to submit event data' do
+
   end
 
-  pending 'shows an event on map once event is submitted' do
+  xit 'shows an event on map once event is submitted' do
+    
   end
 
 end
