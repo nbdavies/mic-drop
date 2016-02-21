@@ -1,6 +1,6 @@
 var NavBar = React.createClass({
   getInitialState: function() {
-    // return {logged_in: false};
+    return {logged_in: false};
   },
 
   render: function(){
