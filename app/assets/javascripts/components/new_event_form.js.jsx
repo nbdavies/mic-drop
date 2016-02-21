@@ -4,7 +4,15 @@ var EventForm = React.createClass({
   },
   handleSubmit: function(e) {
     e.preventDefault();
-    //ajax
+    var request = $.ajax({
+      url: "events",
+      method: "post",
+      data: {event: this.state}
+    });
+    request.done(function(responseData){
+      $("#modal1").closeModal();
+      $(".lean-overlay").hide();
+    }.bind(this));
   },
 
   handleNameChange: function(e) {
@@ -37,7 +45,8 @@ var EventForm = React.createClass({
     });
     return (
     <div col s12><form className="eventForm">
-        <select>
+        <select defaultValue="">
+          <option value="" disabled>Choose your venue</option>
           {venues.map(function(venue){
             return <option value={venue.id} key={venue.id}>{venue.name}</option>;
           })}
