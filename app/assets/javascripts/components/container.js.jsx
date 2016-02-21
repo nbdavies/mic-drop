@@ -1,25 +1,24 @@
 var Container = React.createClass({
-  // getInitialState: function() {
-  // //   return {login_clicked: false}, {register_clicked: false};
-  // // },
-  // // handleLoginClick: function (){
-  // //   this.setState({login_clicked: true});
-  // //   this.render();
-  // // },
-  // //   handleRegisterClick: function (){
-  // //   this.setState({register_clicked: true});
-  // //   this.render();
-  // },
+  getInitialState: function() {
+    return { loggedIn: false };
+  },
+
+  handleUserLogin: function(loggedIn) {
+    this.setState({
+      loggedIn: loggedIn,
+    });
+  },
+
   render: function (){
     return(
       <div className="matroshka">
-        <NavBar />
-        <MapDiv />
+        <NavBar loggedIn = {this.state.loggedIn}
+                onUserLogin = {this.handleUserLogin}
+        />
+        <MapDiv loggedIn = {this.state.loggedIn} />
       </div>
     );
   }
 });
 
-
-//  onLoginButtonClick={this.handleLoginClick} onRegisterButtonClick={this.handleRegisterClick}
-// loginClicked={this.state.loginClicked} registerClicked={this.state.registerClicked}
+// yes, future us, matroshka does matter

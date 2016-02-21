@@ -1,7 +1,12 @@
 var RegistrationForm = React.createClass({
   getInitialState: function() {
-    return {username: '', password: '', email: ''};
+    return { username: '', password: '', email: ''};
   },
+
+  handleLogin: function(user) {
+    this.props.onUserLogin(user)
+  },
+
   handleUsernameChange: function(e) {
     this.setState({username: e.target.value});
   },
@@ -26,9 +31,12 @@ var RegistrationForm = React.createClass({
       data: {user: this.state},
     });
     request.done(function(responseData){
-      this.setState({username: '', email: '', password: ''})
-      $("#modal1").closeModal();
-      $(".lean-overlay").hide()
+      console.log(responseData)
+      if (responseData.username === username){
+        this.handleLogin(responseData.username)
+        $("#modal1").closeModal();
+        $(".lean-overlay").hide()
+      }
     }.bind(this));
   },
   render: function() {
