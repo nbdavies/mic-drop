@@ -16,25 +16,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-    redirect_to '/'
-  end
-
-  def login
-    if current_user
-      render :json => @user
-    else
-      redirect_to '/401'
-    end
-  end
-
   def new_session
     @user = User.find_by(username: user_params[:username])
     if @user && @user.authenticate(user_params[:password])
       session[:user_id] = @user.id
-      redirect_to '/'
+       render :json => @user
     else
       @errors = ['Login credentials not valid.']
       render template: 'users/login'
