@@ -31,7 +31,7 @@ var RegistrationForm = React.createClass({
       data: {user: this.state},
     });
     request.done(function(responseData){
-      console.log(responseData)
+
       if (responseData.username === username){
         this.handleLogin(responseData)
         $("#modal1").closeModal();

@@ -1,14 +1,16 @@
 class SessionsController < ApplicationController
   protect_from_forgery
 
-  def new
-    @user = User.find_by(username: user_params[:username])
-    if @user && @user.authenticate(user_params[:password])
+  def create
+    @user = User.find_by(username: session_params[:username])
+    p "*********************************"
+    p params
+    if @user && @user.authenticate(session_params[:password])
       session[:user_id] = @user.id
       render :json => @user
     else
       @errors = ['Login credentials not valid.']
-      render template: 'users/login'
+      render :json => @errors
     end
   end
 
@@ -19,5 +21,10 @@ class SessionsController < ApplicationController
   def destroy
     session.delete(:user_id)
     render :json => false
+  end
+
+  private
+  def session_params
+    params.require(:user).permit(:username, :password)
   end
 end
