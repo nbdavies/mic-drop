@@ -52,6 +52,7 @@ group :development, :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'rspec-rails'
+  gem 'rspec-mocks'
   gem 'shoulda-matchers'
   gem "factory_girl_rails", "~> 4.0"
   #gem 'byebug'
