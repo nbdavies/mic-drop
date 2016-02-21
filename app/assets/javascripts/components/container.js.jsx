@@ -1,12 +1,8 @@
 var Container = React.createClass({
-    getInitialState: function() {
-    return {
-      loggedIn:false
-    };
-  },
 
-  handleUserInput: function(loggedIn) {
-    this.setState({
+
+  handleUserLogin: function(loggedIn) {
+    this.setProps({
       loggedIn: loggedIn,
     });
   },
@@ -15,7 +11,7 @@ var Container = React.createClass({
     return(
       <div className="matroshka">
         <NavBar loggedIn = {this.props.loggedIn}
-                onUserInput = {this.handleUserInput}
+                onUserLogin = {this.handleUserLogin}
         />
         <MapDiv loggedIn = {this.props.loggedIn} />
       </div>

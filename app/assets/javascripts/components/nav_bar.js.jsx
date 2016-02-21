@@ -1,17 +1,22 @@
 var NavBar = React.createClass({
-  handleChange: function(){
-    this.props.onUserInput(
-      );
+
+  handleUserLogin: function(user) {
+      this.props.onUserLogin(user)
   },
+
   render: function(){
-  return(
-    <nav className="navigation">
-      <div className="brand-logo">mic_drop </div>
-      <LoginButton loggedIn = {this.props.loggedIn} />
-      <RegisterButton loggedIn = {this.props.loggedIn} />
-    </nav>
-    );
-  }
+    return(
+      <nav className="navigation">
+        <div className="brand-logo">mic_drop </div>
+        <LoginButton loggedIn    = {this.props.loggedIn}
+                     onUserLogin = {this.handleUserLogin}
+        />
+        <RegisterButton loggedIn = {this.props.loggedIn}
+                     onUserLogin = {this.handleUserLogin}
+        />
+      </nav>
+      );
+    }
 });
 
 
