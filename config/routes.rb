@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :users, except: [:edit, :destroy, :show]
   resources :events
-
-  get '/users/login' => 'users#new_session'
+  delete 'logout' => 'sessions#destroy'
+  resources :sessions, except: [:destroy]
+  #get '/users/login' => 'users#new_session'
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 

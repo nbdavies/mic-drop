@@ -1,11 +1,19 @@
 var Container = React.createClass({
   getInitialState: function() {
-    return { loggedIn: false };
+    var user = false;
+    var request = $.ajax({
+      url: "/sessions",
+      async: false
+    });
+    request.done(function(responseData){
+      user = responseData;
+    });
+    return { loggedIn: user };
   },
 
-  handleUserLogin: function(loggedIn) {
+  handleUserLogin: function(user) {
     this.setState({
-      loggedIn: loggedIn,
+      loggedIn: user,
     });
   },
 

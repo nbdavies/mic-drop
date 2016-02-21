@@ -16,29 +16,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def new_session
-    @user = User.find_by(username: user_params[:username])
-    if @user && @user.authenticate(user_params[:password])
-      session[:user_id] = @user.id
-       render :json => @user
-    else
-      @errors = ['Login credentials not valid.']
-      render template: 'users/login'
-    end
-  end
-
-  def logout
-    session.delete(:user_id)
-    redirect_to '/'
-  end
-
   private
 
   def user_params
     params.require(:user).permit(:username, :password, :email)
   end
 
-  def current_user
-    User.find_by(id: session[:user_id])
-  end
+
 end
