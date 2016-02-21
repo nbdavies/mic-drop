@@ -7,7 +7,7 @@ var RegisterButton = React.createClass({
     e.preventDefault();
     this.setState({clicked: true});
     $("#modal1").openModal();
-    },
+  },
 
 
   handleUserLogin: function(user) {

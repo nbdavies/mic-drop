@@ -23,6 +23,7 @@ var NavBar = React.createClass({
         <ul className="right">
           <li><span className>{this.props.loggedIn.username}</span></li>
           <li><LogoutButton onUserLogin = {this.handleUserLogin} /></li>
+          <li><CreateEventButton /></li>
         </ul>
       </nav>
 

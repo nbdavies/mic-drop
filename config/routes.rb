@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :users, except: [:edit, :destroy, :show]
   resources :events
+  resources :venues
   delete 'logout' => 'sessions#destroy'
   resources :sessions, except: [:destroy]
   #get '/users/login' => 'users#new_session'

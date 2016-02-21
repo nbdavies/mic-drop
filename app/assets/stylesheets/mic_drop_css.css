@@ -18,6 +18,15 @@ html, body { height: 100%; margin: 0; padding: 0; }
   color: black;
 }
 
+.eventForm {
+  z-index: 1003;
+  display: block;
+  opacity: 1;
+  transform: scaleX(1);
+  top: 10%;
+  color: black;
+}
+
 nav li {
   margin-left: 5px;
 }
