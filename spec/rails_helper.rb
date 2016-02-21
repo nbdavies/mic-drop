@@ -10,6 +10,21 @@ require 'capybara/rails'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'shoulda-matchers'
+if ENV['SAUCY']
+  require 'sauce'
+  require 'sauce/capybara'
+
+  # change to "Capybara.default_driver = :sauce" to use sauce
+  # for ALL feature specs, not just ones marked with "js: true"
+  Capybara.javascript_driver = :sauce
+
+  Sauce.config do |config|
+    config[:browsers] = [
+      ['Linux', 'Chrome', nil],
+      # and other OS/browser combos you want to support...
+    ]
+  end
+end
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end

@@ -55,6 +55,12 @@ group :development, :test do
   gem 'rspec-mocks'
   gem 'shoulda-matchers'
   gem "factory_girl_rails", "~> 4.0"
+  if ENV['SAUCY']
+  # gems for sauce
+    gem 'sauce', '~> 3.1.1'
+    gem 'sauce-connect'
+    gem 'parallel_tests'
+  end
   #gem 'byebug'
 end
 
