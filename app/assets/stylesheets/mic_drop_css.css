@@ -17,3 +17,7 @@ html, body { height: 100%; margin: 0; padding: 0; }
   top: 10%;
   color: black;
 }
+
+nav li {
+  margin-left: 5px;
+}

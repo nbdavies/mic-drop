@@ -20,7 +20,10 @@ var NavBar = React.createClass({
     var loggedIn =
       <nav className="navigation">
         <div className="brand-logo">mic_drop </div>
-        {this.props.loggedIn}
+        <ul className="right">
+          <li><span className>{this.props.loggedIn.username}</span></li>
+          <li><LogoutButton onUserLogin = {this.handleUserLogin} /></li>
+        </ul>
       </nav>
 
     var buttonZone = (this.props.loggedIn ?  loggedIn : loggedOut)
