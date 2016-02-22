@@ -1,6 +1,6 @@
 var EventForm = React.createClass({
   getInitialState: function() {
-    return {name: '', date: '', time: '', venue_id: ''};
+    return {name: '', date: '', start_time: '', end_time: '', venue_id: ''};
   },
   handleSubmit: function(e) {
     e.preventDefault();
@@ -14,6 +14,9 @@ var EventForm = React.createClass({
       $(".lean-overlay").hide();
     }.bind(this));
   },
+  componentDidMount: function() {
+    $(this.refs.eventForm).find("select").show()
+  },
 
   handleNameChange: function(e) {
     this.setState({name: e.target.value});
@@ -23,13 +26,22 @@ var EventForm = React.createClass({
     this.setState({date: e.target.value});
   },
 
-  handleTimeChange: function(e) {
-    this.setState({time: e.target.value});
+  handleStartTimeChange: function(e) {
+    this.setState({start_time: e.target.value});
+  },
+
+  handleEndTimeChange: function(e) {
+    this.setState({end_time: e.target.value});
   },
 
   handleDescriptionChange: function(e) {
     this.setState({description: e.target.value});
   },
+
+  handleVenueChange: function(e) {
+    this.setState({venue_id: e.target.value});
+  },
+
 
   render: function() {
     var venues;
@@ -44,8 +56,8 @@ var EventForm = React.createClass({
       console.log(responseData);
     });
     return (
-    <div col s12><form className="eventForm">
-        <select defaultValue="">
+    <div col s12><form ref="eventForm" className="eventForm">
+        <select defaultValue="" onChange={this.handleVenueChange} >
           <option value="" disabled>Choose your venue</option>
           {venues.map(function(venue){
             return <option value={venue.id} key={venue.id}>{venue.name}</option>;
@@ -64,9 +76,14 @@ var EventForm = React.createClass({
           onChange={this.handleDateChange} />
         <input
           type="time"
-          placeholder="time"
-          value={this.state.time}
-          onChange={this.handleTimeChange} />
+          placeholder="start time"
+          value={this.state.start_time}
+          onChange={this.handleStartTimeChange} />
+        <input
+          type="time"
+          placeholder="end time"
+          value={this.state.end_time}
+          onChange={this.handleEndTimeChange} />
         <textarea
           type="text"
           placeholder="description"
