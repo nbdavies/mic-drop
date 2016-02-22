@@ -9,17 +9,26 @@ var LoginButton = React.createClass({
     $("#modal2").openModal();
   },
 
+  handleCancelButtonClick: function(e) {
+    e.preventDefault();
+    $("#modal1").closeModal();
+    $(".lean-overlay").hide();
+    this.setState({clicked: false});
+  },
+
   handleUserLogin: function(user) {
       this.props.onUserLogin(user)
   },
 
   render: function() {
     var logButton = <button className="btn right red accent-2"  onClick={this.handleClick}>login</button>
-    var logFormDiv = <div id='modal2' className='modal loginForm'><div className="modal-content"><LoginForm  onUserLogin = {this.handleUserLogin} /></div></div>
+    var logFormDiv = <div id='modal2' className='modal loginForm'><div className="modal-content">
+    <LoginForm  onUserLogin = {this.handleUserLogin}
+                handleCancelButtonClick = {this.handleCancelButtonClick}
+                /></div></div>
     var button = (this.state.clicked ? logFormDiv : logButton);
     return(
       button
     );
   }
 });
-
