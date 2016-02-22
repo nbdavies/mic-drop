@@ -23,7 +23,7 @@ var Container = React.createClass({
         <NavBar loggedIn = {this.state.loggedIn}
                 onUserLogin = {this.handleUserLogin}
         />
-        <MapDiv loggedIn = {this.state.loggedIn} />
+        <GMap />
       </div>
     );
   }

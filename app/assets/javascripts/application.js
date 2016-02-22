@@ -17,3 +17,7 @@
 //= require components
 
 //= require_tree .
+
+$(function() {
+  $("select").material_select();
+})

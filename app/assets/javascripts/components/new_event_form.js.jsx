@@ -14,6 +14,9 @@ var EventForm = React.createClass({
       $(".lean-overlay").hide();
     }.bind(this));
   },
+  componentDidMount: function() {
+    $(this.refs.eventForm).find("select").show()
+  },
 
   handleNameChange: function(e) {
     this.setState({name: e.target.value});
@@ -31,6 +34,11 @@ var EventForm = React.createClass({
     this.setState({description: e.target.value});
   },
 
+  handleVenueChange: function(e) {
+    this.setState({venue_id: e.target.value});
+  },
+
+
   render: function() {
     var venues;
     var request = $.ajax({
@@ -44,8 +52,8 @@ var EventForm = React.createClass({
       console.log(responseData);
     });
     return (
-    <div col s12><form className="eventForm">
-        <select defaultValue="">
+    <div col s12><form ref="eventForm" className="eventForm">
+        <select defaultValue="" onChange={this.handleVenueChange} >
           <option value="" disabled>Choose your venue</option>
           {venues.map(function(venue){
             return <option value={venue.id} key={venue.id}>{venue.name}</option>;
