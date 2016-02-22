@@ -7,12 +7,6 @@ var RegistrationForm = React.createClass({
     this.props.onUserLogin(user)
   },
 
-  handleCancelButtonClick: function(e) {
-    e.preventDefault();
-    $("#modal1").closeModal();
-    $(".lean-overlay").hide();
-  },
-
   handleUsernameChange: function(e) {
     this.setState({username: e.target.value});
   },
@@ -64,7 +58,7 @@ var RegistrationForm = React.createClass({
           value={this.state.password}
           onChange={this.handlePasswordChange} />
         <input type="submit" value="Register" className="btn" onClick={this.handleSubmit} />
-        <Button onClick={this.handleCancelButtonClick}>Cancel</Button>
+        <Button onClick={this.props.handleCancelButtonClick}>Cancel</Button>
       </form></div>
 
     );
