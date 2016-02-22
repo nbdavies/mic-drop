@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, except: [:edit, :destroy, :show]
   resources :events
   resources :venues
-  resources :rsvp
+  resources :rsvps
   delete 'logout' => 'sessions#destroy'
   resources :sessions, except: [:destroy]
   #get '/users/login' => 'users#new_session'
