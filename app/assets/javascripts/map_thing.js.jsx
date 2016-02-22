@@ -29,26 +29,7 @@
 //       handleLocationError(false, infoWindow, map.getCenter());
 //     }
 
-//     pins.forEach(function(pin){
-//       var position = {lat: parseFloat(pin.location.lat), lng: parseFloat(pin.location.lng)};
-//       var marker = new google.maps.Marker({
-//         position: position,
-//         title: pin.name
-//       });
 
-//       var contentString = '<div id="infowindow"><h5>'+pin.name+'</h5><p>'+pin.description+'</p>'+pin.address+'</div>'
-
-//         console.log(contentString);
-
-//       var infoWindow = new google.maps.InfoWindow({
-//         content: contentString
-//       });
-
-//       marker.setMap(map);
-//       marker.addListener('click', function() {
-//         infoWindow.open(map,marker);
-//       });
-//     });
 
 //   });
 // }
