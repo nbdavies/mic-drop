@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   def create
-    Event.create(event_params)
+    @event = Event.create(event_params)
+    render :json => @event
   end
 
   def index

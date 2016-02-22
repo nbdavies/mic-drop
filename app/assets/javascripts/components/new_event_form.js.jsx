@@ -32,6 +32,7 @@ var EventForm = React.createClass({
 
   handleEndTimeChange: function(e) {
     this.setState({end_time: e.target.value});
+  },
 
   handleDescriptionChange: function(e) {
     this.setState({description: e.target.value});
