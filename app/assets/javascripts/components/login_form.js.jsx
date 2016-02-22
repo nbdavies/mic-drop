@@ -1,3 +1,5 @@
+import {Button} from 'react-materialize';
+
 var LoginForm = React.createClass({
   getInitialState: function() {
     return {username: '', password: ''};
@@ -51,6 +53,7 @@ var LoginForm = React.createClass({
           value={this.state.password}
           onChange={this.handlePasswordChange} />
         <input type="submit" value="Login" className="btn" onClick={this.handleSubmit} />
+        <Button waves='light' modal='close'>Close</Button>
       </form></div>
 
     );
