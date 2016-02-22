@@ -32,7 +32,7 @@ var LoginForm = React.createClass({
       if (responseData.username === username){
         this.handleLogin(responseData)
         $("#modal2").closeModal();
-        $(".lean-overlay").hide()
+        $(".lean-overlay").hide();
       }
     }.bind(this));
   },
@@ -51,6 +51,7 @@ var LoginForm = React.createClass({
           value={this.state.password}
           onChange={this.handlePasswordChange} />
         <input type="submit" value="Login" className="btn" onClick={this.handleSubmit} />
+        <Button onClick={this.props.handleCancelButtonClick}>Cancel</Button>
       </form></div>
 
     );

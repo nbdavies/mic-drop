@@ -18,6 +18,4 @@
 
 //= require_tree .
 
-$(function() {
-  $("select").material_select();
-})
+Button = require('react-materialize').Button;
