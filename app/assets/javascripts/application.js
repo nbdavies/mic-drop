@@ -19,3 +19,4 @@
 //= require_tree .
 
 Button = require('react-materialize').Button;
+Card = require('react-materialize').Card;
