@@ -10,7 +10,7 @@ var EventForm = React.createClass({
       data: {event: this.state}
     });
     request.done(function(responseData){
-      $("#modal1").closeModal();
+      $("#modal3").closeModal();
       $(".lean-overlay").hide();
     }.bind(this));
   },
