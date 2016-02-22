@@ -19,12 +19,20 @@ var Container = React.createClass({
   },
 
   render: function (){
+    var map;
+
+    function initMap(){
+      map = new google.maps.Map(this.getDOMNode(), mapOptions);
+    }
+
     return(
       <div className="matroshka">
         <NavBar loggedIn = {this.state.loggedIn}
                 onUserLogin = {this.handleUserLogin}
         />
-        <MapDiv loggedIn = {this.state.loggedIn} />
+        <MapDiv loggedIn = {this.state.loggedIn}
+                map ={map}
+        />
       </div>
     );
   }
