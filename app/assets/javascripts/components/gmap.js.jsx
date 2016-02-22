@@ -1,18 +1,72 @@
-GMap = React.createClass({
+var GMap = React.createClass({
   map: null,
   marker: null,
   infoWindow: null,
 
-  render: function(){
-    return (<div id="map-container">
-      <div id="map" ref="map_canvas">
-      </div>
-    </div>);
+  getInitialState: function() {
+    var events;
+
+    var request = $.ajax({
+      url: "/events",
+      async: false
+    });
+    request.done(function(responseData){
+      events = responseData;
+    });
+    var markers=[];
+    var pins = events.map(function(event){
+      var marker = new google.maps.Marker({
+        position: {lat: parseFloat(event.location.lat), lng: parseFloat(event.location.lng)},
+        map: this.map,
+        title: event.name
+      });
+      markers.push(marker);
+      return (<Pin event={event} key={event.id}/>);
+    }.bind(this));
+    return {
+      events: events,
+      markers: markers,
+      pins: pins
+    }
   },
-  componentDidMount: function() {
-    // create the map, marker and infoWindow after the component has
-    // been rendered because we need to manipulate the DOM for Google =(
+
+  componentDidMount: function(){
     this.map = this.createMap();
+    this.state.markers.forEach(function(marker){
+      marker.setMap(this.map);
+    }.bind(this));
+
+    var infoWindow = new google.maps.InfoWindow({map: this.map});
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+
+        infoWindow.setPosition(pos);
+        infoWindow.setContent('YOU');
+        this.map.setCenter(pos);
+      }.bind(this), function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+      });
+    } else {
+      handleLocationError(false, infoWindow, map.getCenter());
+    };
+        // var contentString = '<div id="infowindow"><h5>'+event.name+'</h5><p>'+event.description+'</p>'+event.address+'</div>'
+
+        //   console.log(contentString);
+
+        // var infoWindow = new google.maps.InfoWindow({
+        //   content: contentString
+        // });
+
+
+        // marker.addListener('click', function() {
+        //   infoWindow.open(this.map,marker);
+      //   });
+      // });
+    // });
     // google.maps.event.addListenerOnce(this.map, 'idle', this.centerMap.bind(this));
     // this.marker = this.createMarker();
     // this.infoWindow = this.createInfoWindow();
@@ -24,34 +78,11 @@ GMap = React.createClass({
   },
   createMap: function() {
     var mapOptions = {
-      minZoom: 9,
-      zoom: 10,
+      zoom: 16,
       center: new google.maps.LatLng(-34.397, 150.644)
     };
-
     return new google.maps.Map(this.refs.map_canvas, mapOptions);
   },
-  centerMap: function() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-
-        // infoWindow.setPosition(pos);
-        // infoWindow.setContent('YOU');
-        debugger;
-        this.map.setCenter(pos);
-      }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
-      });
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
-  }
-
 
   // createMarker: ->
   //   marker = new google.maps.Marker
@@ -73,5 +104,14 @@ GMap = React.createClass({
   //   # something else happens when the map is dragged somewhere
   //   # this is where that's handled
 
-})
+  render: function(){
+
+    return(<div id="map-container" >
+      <div id="map" ref="map_canvas">
+        { this.state.pins.map(function(pin){ return pin })}
+      </div>
+    </div>
+    );
+  }
+});
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var InfoCard = React.createClass({
   render: function(){
     return (<div id="event-card-container">
