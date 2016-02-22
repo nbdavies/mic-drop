@@ -17,4 +17,5 @@
 //= require components
 
 //= require_tree .
-var Button = require('react-materialize').Button;
+
+Button = require('react-materialize').Button;
