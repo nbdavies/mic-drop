@@ -7,6 +7,12 @@ var LoginForm = React.createClass({
     this.props.onUserLogin(user)
   },
 
+  handleClick: function(e) {
+    e.preventDefault();
+    $("#modal2").closeModal();
+    $(".lean-overlay").hide();
+  },
+
   handleUsernameChange: function(e) {
     this.setState({username: e.target.value});
   },
@@ -32,7 +38,7 @@ var LoginForm = React.createClass({
       if (responseData.username === username){
         this.handleLogin(responseData)
         $("#modal2").closeModal();
-        $(".lean-overlay").hide()
+        $(".lean-overlay").hide();
       }
     }.bind(this));
   },
