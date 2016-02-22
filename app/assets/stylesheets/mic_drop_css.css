@@ -30,3 +30,10 @@ html, body { height: 100%; margin: 0; padding: 0; }
 nav li {
   margin-left: 5px;
 }
+option {
+  height: 1em;
+}
+select {
+  height: 1em;
+}
+

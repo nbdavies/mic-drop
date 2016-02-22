@@ -1,11 +1,15 @@
 var EventForm = React.createClass({
   getInitialState: function() {
-    return {name: '', date: '', time: '', venue_id: ''};
+    return {name: '', date: '', start_time: '', end_time: '', venue_id: ''};
   },
+  componentDidMount: function() {
+    $('select').material_select();
+  },
+
   handleSubmit: function(e) {
     e.preventDefault();
     var request = $.ajax({
-      url: "events",
+      url: "/events",
       method: "post",
       data: {event: this.state}
     });
@@ -23,12 +27,20 @@ var EventForm = React.createClass({
     this.setState({date: e.target.value});
   },
 
-  handleTimeChange: function(e) {
-    this.setState({time: e.target.value});
+  handleStartTimeChange: function(e) {
+    this.setState({start_time: e.target.value});
+  },
+
+  handleEndTimeChange: function(e) {
+    this.setState({end_time: e.target.value});
   },
 
   handleDescriptionChange: function(e) {
     this.setState({description: e.target.value});
+  },
+
+  handleVenueChange: function(e) {
+    this.setState({venue_id: this.refs.mySelect.value});
   },
 
   render: function() {
@@ -44,13 +56,18 @@ var EventForm = React.createClass({
       console.log(responseData);
     });
     return (
-    <div col s12><form className="eventForm">
-        <select defaultValue="">
-          <option value="" disabled>Choose your venue</option>
+    <div><form className="eventForm">
+        <div className="input-field">
+
+        <select ref="mySelect"
+          value={this.state.venue_id}
+          onChange={this.handleVenueChange} >
+        <option value="" disabled>Choose venue</option>
           {venues.map(function(venue){
-            return <option value={venue.id} key={venue.id}>{venue.name}</option>;
+            return <option value={venue.id} key={venue.id} >{venue.name}</option>;
           })}
-        </select>
+        </select></div>
+
         <input
           type="text"
           placeholder="name"
@@ -64,9 +81,14 @@ var EventForm = React.createClass({
           onChange={this.handleDateChange} />
         <input
           type="time"
-          placeholder="time"
-          value={this.state.time}
-          onChange={this.handleTimeChange} />
+          placeholder="start time"
+          value={this.state.start_time}
+          onChange={this.handleStartTimeChange} />
+        <input
+          type="time"
+          placeholder="end time"
+          value={this.state.end_time}
+          onChange={this.handleEndTimeChange} />
         <textarea
           type="text"
           placeholder="description"

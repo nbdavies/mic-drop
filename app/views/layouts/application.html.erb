@@ -22,10 +22,15 @@
 <div id="container">
 <%= yield %>
 </div>
+
 <%= javascript_include_tag 'map_thing' %>
 <%= javascript_include_tag 'application' %>
-<script>renderApp();</script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+<script>
+  renderApp();
+
+</script>
+
    <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOLSonxDN7SukH3VRbe_5gO_W6r-Cy8Ts&callback=initMap">
     </script>

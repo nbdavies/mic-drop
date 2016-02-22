@@ -36,13 +36,12 @@ function initMap() {
         title: pin.name
       });
 
-      var contentString = '<div id="infowindow"><h5>'+pin.name+'</h5><p>'+pin.description+'</p>'+pin.address+'</div>'
+      // var contentString = '<div id="infowindow"><h5>'+pin.name+'</h5><p>'+pin.description+'</p>'+pin.address+'</div>'
 
-        console.log(contentString);
 
-      var infoWindow = new google.maps.InfoWindow({
-        content: contentString
-      });
+      // var infoWindow = new google.maps.InfoWindow({
+      //   content: contentString
+      // });
 
       marker.setMap(map);
       marker.addListener('click', function() {

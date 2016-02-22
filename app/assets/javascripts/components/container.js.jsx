@@ -1,5 +1,6 @@
 var Container = React.createClass({
   getInitialState: function() {
+
     var user = false;
     var request = $.ajax({
       url: "/sessions",
