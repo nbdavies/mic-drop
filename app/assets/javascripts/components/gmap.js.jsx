@@ -74,4 +74,3 @@ GMap = React.createClass({
   //   # this is where that's handled
 
 })
-
