@@ -32,7 +32,7 @@ var NavBar = React.createClass({
         <ul className="left">
           <li><MyPlacesButton loggedIn = {this.props.loggedIn} /></li>
         </ul>
-      </nav>
+      </nav>;
 
 
     var buttonZone = (this.props.loggedIn ?  loggedIn : loggedOut);

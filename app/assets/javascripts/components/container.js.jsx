@@ -13,6 +13,7 @@ var Container = React.createClass({
 
   handleUserLogin: function(user) {
     this.setState({
+      // if user.
       loggedIn: user,
     });
   },
