@@ -1,25 +1,28 @@
 class EventsController < ApplicationController
   def create
-    @event = Event.create(event_params)
+    @event = Event.create(name: event_params[:name],
+                      venue_id: event_params[:venue_id],
+                          date: event_params[:date],
+                    start_time: event_params[:start_time],
+                      end_time: event_params[:end_time],
+                   description: event_params[:description])
+    tags = event_params[:tags].split(", ")
+    tags.each do |tag|
+      @event.tags.find_or_create_by(name: tag)
+    end
     render :json => @event
   end
 
   def index
-    pins = Event.all
-    pins = pins.to_a.map{ |pin| pin.attributes.to_options}
+    events = Event.all
+    pins = events.to_a.map{ |event| event.pin(current_user)}
     pins.select!{|pin| pin[:date] == Date.today}
-    pins.each do |pin|
-      venue = Venue.find(pin[:venue_id])
-      pin["location"] = {lat: venue.lat, lng: venue.lng}
-      pin["address"] = venue.address
-      pin["venue_name"] = venue.name
-    end
     render :json => pins
   end
 
   private
   def event_params
-    params.require(:event).permit(:venue_id, :name, :date, :start_time, :end_time, :description)
+    params.require(:event).permit(:venue_id, :name, :date, :start_time, :end_time, :description, :tags)
   end
 
 end

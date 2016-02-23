@@ -38,6 +38,10 @@ var EventForm = React.createClass({
     this.setState({description: e.target.value});
   },
 
+  handleTagsChange: function(e) {
+    this.setState({tags: e.target.value});
+  },
+
   handleVenueChange: function(e) {
     this.setState({venue_id: e.target.value});
   },
@@ -89,6 +93,11 @@ var EventForm = React.createClass({
           placeholder="description"
           value={this.state.description}
           onChange={this.handleDescriptionChange} />
+        <input
+          type="text"
+          placeholder="tag1,tag2"
+          value={this.state.tags}
+          onChange={this.handleTagsChange} />
         <input type="submit" value="Drop the mic!" className="btn" onClick={this.handleSubmit} />
       </form></div>
     );

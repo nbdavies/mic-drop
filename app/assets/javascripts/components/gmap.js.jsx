@@ -20,8 +20,36 @@ var GMap = React.createClass({
         map: this.map,
         title: event.name
       });
+      var tags = event.tags.map(function(tag){
+        return '<div class="chip">'+tag.name+'</div>'
+      });
+
+
+      if (event.rsvp){
+        var rsvp_form = '<form action="/rsvps" method="delete">'+
+        '<input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="Flake Out" class="btn red"></form>'
+      } else {
+        var rsvp_form = '<form action="/rsvps" method="post">'+
+        '<input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="RSVP" class="btn green"></form>'}
+      var infowindow = new google.maps.InfoWindow({
+        content:
+          '<div class="card-image">' +
+              '<img src="chad.png">' +
+              '<span class="card-title"><h5>'+event.name+'</h5></span>' +
+              '</div>' +
+              '<div class="card-content">' +
+              '<p>'+event.description+'</p><b>'+event.venue_name+'</b><p>'+event.address+'</p><p>'+event.date+'</p><p>start time: '+event.start_time+
+              '</p><p>end time: '+event.end_time+'</p>' +
+              '</div>'+
+              '<div class="card-action">'
+              +rsvp_form+tags +
+              '</div>'
+      });
+      marker.addListener('click', function() {
+        infowindow.open(this.map, marker);
+      });
       markers.push(marker);
-      return (<Pin event={event} key={event.id}/>);
+      return (event);
     }.bind(this));
     return {
       events: events,
@@ -34,6 +62,7 @@ var GMap = React.createClass({
     this.map = this.createMap();
     this.state.markers.forEach(function(marker){
       marker.setMap(this.map);
+
     }.bind(this));
 
     var infoWindow = new google.maps.InfoWindow({map: this.map});
@@ -108,7 +137,7 @@ var GMap = React.createClass({
 
     return(<div id="map-container" >
       <div id="map" ref="map_canvas">
-        { this.state.pins.map(function(pin){ return pin })}
+        { this.state.pins.map(function(event){ return <Pin event={event} loggedIn={this.props.loggedIn} key={event.id} /> }.bind(this))}
       </div>
     </div>
     );
