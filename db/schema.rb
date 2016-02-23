@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 20160220164706) do
     t.string   "username",        null: false
     t.string   "password_digest", null: false
     t.string   "email"
+    t.string   "facebook_id"
+    t.string   "picture_url"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

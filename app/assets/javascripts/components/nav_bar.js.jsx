@@ -15,6 +15,7 @@ var NavBar = React.createClass({
       <RegisterButton loggedIn = {this.props.loggedIn}
                    onUserLogin = {this.handleUserLogin}
       />
+
     </nav>
 
     var loggedIn =

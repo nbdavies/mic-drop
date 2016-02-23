@@ -38,7 +38,10 @@ var LoginForm = React.createClass({
   },
   render: function() {
     return (
-      <div col s12><form className="loginForm">
+      <div col s12>
+      <form className="loginForm">
+      <div className="fb-login-button right" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="true"></div>
+
         <input
           type="text"
           placeholder="username"
