@@ -26,6 +26,14 @@ var Container = React.createClass({
   },
 
   render: function (){
+    if (this.state.loggedIn) {
+      guide = <div>_</div>
+    } else {
+      guide = <div id='modal5' className='modal siteGuide valign-wrapper'  >
+                <SiteGuide class='valign center-align' />
+              </div>
+    }
+
     return(
       <div className="matroshka">
         <NavBar loggedIn = {this.state.loggedIn}
@@ -36,6 +44,7 @@ var Container = React.createClass({
         <GMap loggedIn = {this.state.loggedIn}
               ref = "googlemap"
         />
+        {guide}
       </div>
     );
   }

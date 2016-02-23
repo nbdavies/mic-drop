@@ -1,11 +1,11 @@
-// var MyPlacesList = React.createClass({
-//   render: function() {
-//   //   var request = $.ajax({
-//   //     url: "/subscriptions",
-//   //     data: {user_id: this.props.user_}
-//   //   });
+var MyPlacesList = React.createClass({
+  render: function() {
+    var request = $.ajax({
+      url: "/subscriptions",
+      data: {user_id: this.props.loggedIn.id}
+    });
 
-//     return (
-//     );
-//   }
-// });
+    return ( <div></div>
+    );
+  }
+});
