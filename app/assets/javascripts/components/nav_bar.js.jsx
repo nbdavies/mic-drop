@@ -1,7 +1,11 @@
 var NavBar = React.createClass({
 
   handleUserLogin: function(user) {
-      this.props.onUserLogin(user)
+      this.props.onUserLogin(user);
+  },
+
+  handleEventSubmit: function(eventData) {
+    this.props.onEventSubmit(eventData);
   },
 
   render: function(){
@@ -15,7 +19,7 @@ var NavBar = React.createClass({
       <RegisterButton loggedIn = {this.props.loggedIn}
                    onUserLogin = {this.handleUserLogin}
       />
-    </nav>
+  </nav>;
 
     var loggedIn =
       <nav className="navigation pink accent-2">
@@ -23,16 +27,14 @@ var NavBar = React.createClass({
         <ul className="right">
           <li><span className>{this.props.loggedIn.username}</span></li>
           <li><LogoutButton onUserLogin = {this.handleUserLogin} /></li>
-          <li><CreateEventButton /></li>
+          <li><CreateEventButton onEventSubmit = {this.handleEventSubmit}/></li>
         </ul>
-      </nav>
+      </nav>;
 
-    var buttonZone = (this.props.loggedIn ?  loggedIn : loggedOut)
+    var buttonZone = (this.props.loggedIn ?  loggedIn : loggedOut);
 
     return(
       buttonZone
       );
     }
 });
-
-

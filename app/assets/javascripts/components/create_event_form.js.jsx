@@ -12,10 +12,12 @@ var EventForm = React.createClass({
     request.done(function(responseData){
       $("#modal3").closeModal();
       $(".lean-overlay").remove();
+      console.log(this);
+      this.props.onEventSubmit(this.state);
     }.bind(this));
   },
   componentDidMount: function() {
-    $(this.refs.eventForm).find("select").show()
+    $(this.refs.eventForm).find("select").show();
   },
 
   handleNameChange: function(e) {
@@ -57,7 +59,6 @@ var EventForm = React.createClass({
     });
     request.done(function(responseData){
       venues = responseData;
-      console.log(responseData);
     });
     return (
     <div col s12><form ref="eventForm" className="eventForm">
