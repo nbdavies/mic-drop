@@ -20,12 +20,15 @@ var GMap = React.createClass({
         map: this.map,
         title: event.name
       });
+      var tags = event.tags.map(function(tag){
+        return '<div class="chip">'+tag.name+'</div>'
+      });
       var rsvp_form = '<form action="/rsvps" method="post">'+
         '<input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="RSVP" class="btn"></form>'
       var infowindow = new google.maps.InfoWindow({
         content: '<div><h5>'+event.name+'</h5><p>'+
         event.description+'</p><b>'+event.venue_name+'</b><p>'+event.address+'</p><p>'+event.date+'</p><p>start time:'+event.start_time+
-        '</p><p>end time: '+event.end_time+'</p></div>'+rsvp_form
+        '</p><p>end time: '+event.end_time+'</p></div>'+rsvp_form+tags
       });
       marker.addListener('click', function() {
         infowindow.open(this.map, marker);

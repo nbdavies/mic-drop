@@ -5,15 +5,9 @@ class EventsController < ApplicationController
   end
 
   def index
-    pins = Event.all
-    pins = pins.to_a.map{ |pin| pin.attributes.to_options}
+    events = Event.all
+    pins = events.to_a.map{ |event| event.pin}
     pins.select!{|pin| pin[:date] == Date.today}
-    pins.each do |pin|
-      venue = Venue.find(pin[:venue_id])
-      pin["location"] = {lat: venue.lat, lng: venue.lng}
-      pin["address"] = venue.address
-      pin["venue_name"] = venue.name
-    end
     render :json => pins
   end
 
