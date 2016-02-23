@@ -39,6 +39,28 @@ var RegistrationForm = React.createClass({
       }
     }.bind(this));
   },
+  handleFacebook: function(e) {
+    e.preventDefault();
+    FB.login(function(response) {
+      if (response.authResponse) {
+        //user just authorized your app
+        $(".as-fuck").hide();
+        FB.api("me/friends",
+          function(response){
+            if (response && !response.error) {
+              this.setState({friends: response.data});
+            };
+          }.bind(this)
+        );
+        FB.api('/me', function(response) {
+          this.setState({facebook_id: response.id})
+        }.bind(this));
+        FB.api('/me/picture', function(response){
+          this.setState({picture_url: response.data.url});
+        }.bind(this));
+      }
+    }.bind(this), {scope: 'public_profile,user_friends', return_scopes: true}
+  )},
   render: function() {
     return (
       <div col s12><form className="registrationForm">
@@ -59,6 +81,8 @@ var RegistrationForm = React.createClass({
           value={this.state.password}
           onChange={this.handlePasswordChange} />
         <input type="submit" value="Register" className="btn" onClick={this.handleSubmit} />
+        <Button onClick={this.props.handleCancelButtonClick}>Cancel</Button>
+        <div className="row"><button className="btn blue as-fuck" onClick={this.handleFacebook}>Facebook</button></div>
         <Button onClick={this.props.handleCancelButtonClick}>Close Window</Button>
       </form></div>
 
