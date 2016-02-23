@@ -5,5 +5,6 @@ class User < ActiveRecord::Base
   has_many :friends, through: :friendships
   has_many :rsvps
   has_many :subscriptions
+  has_many :subscribed_venues, through: :subscriptions, source: :venue
   has_many :venues, foreign_key: "manager_id"
 end

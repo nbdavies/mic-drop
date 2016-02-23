@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :events
   resources :venues
   resources :rsvps
+
+  get '/users/subscriptions'
   delete 'logout' => 'sessions#destroy'
   resources :sessions, except: [:destroy]
   #get '/users/login' => 'users#new_session'

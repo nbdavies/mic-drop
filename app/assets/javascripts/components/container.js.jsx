@@ -25,6 +25,11 @@ var Container = React.createClass({
     this.refs.googlemap.addEvent();
   },
 
+  handleFilterAction: function(eventData) {
+    this.refs.googlemap
+    //ref function that pushes filtered events into the current state
+  },
+
   render: function (){
     if (this.state.loggedIn) {
       guide = <div>_</div>
@@ -40,6 +45,7 @@ var Container = React.createClass({
                 onUserLogin = {this.handleUserLogin}
                 onEventSubmit =
                 {this.handleEventSubmit}
+                onFilterAction = {this.handleFilterAction}
         />
         <GMap loggedIn = {this.state.loggedIn}
               ref = "googlemap"
