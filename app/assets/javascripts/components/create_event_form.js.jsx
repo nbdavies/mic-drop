@@ -12,7 +12,6 @@ var EventForm = React.createClass({
     request.done(function(responseData){
       $("#modal3").closeModal();
       $(".lean-overlay").remove();
-      console.log(this);
       this.props.onEventSubmit(this.state);
     }.bind(this));
   },
