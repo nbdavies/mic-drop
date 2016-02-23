@@ -12,7 +12,7 @@ var LoginButton = React.createClass({
   handleCancelButtonClick: function(e) {
     e.preventDefault();
     $("#modal2").closeModal();
-    $(".lean-overlay").hide();
+    $(".lean-overlay").remove();
     this.setState({clicked: false});
   },
 

@@ -32,7 +32,7 @@ var LoginForm = React.createClass({
       if (responseData.username === username){
         this.handleLogin(responseData)
         $("#modal2").closeModal();
-        $(".lean-overlay").hide();
+        $(".lean-overlay").remove();
       }
     }.bind(this));
   },
