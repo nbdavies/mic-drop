@@ -4,6 +4,15 @@ var GMap = React.createClass({
   infoWindow: null,
 
   getInitialState: function() {
+    return this.getEventData();
+  },
+
+  addEvent: function() {
+    console.log(this.getEventData());
+    this.setState(this.getEventData());
+  },
+
+  getEventData: function() {
     var events;
 
     var request = $.ajax({
@@ -21,7 +30,7 @@ var GMap = React.createClass({
         title: event.name
       });
       var tags = event.tags.map(function(tag){
-        return '<div class="chip">'+tag.name+'</div>'
+        return '<div class="chip">'+tag.name+'</div>';
       });
 
 
@@ -144,4 +153,3 @@ var GMap = React.createClass({
     );
   }
 });
-
