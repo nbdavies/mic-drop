@@ -1,12 +1,15 @@
 var MyPlacesButton = React.createClass({
   getInitialState: function() {
-    return {clicked: false};
+    return {clicked: false, buttName: 'My Places'};
   },
 
   handleClick: function(e) {
     e.preventDefault();
-    this.setState({clicked: true});
-    $("#modal4").openModal();
+    if (this.state.clicked === false) {
+      this.setState({clicked: true, buttName: 'All Events'});
+    } else{
+      this.setState({clicked: false, buttName: 'My Places'})
+    }
   },
 
   handleCancelButtonClick: function(e) {
@@ -17,14 +20,9 @@ var MyPlacesButton = React.createClass({
   },
 
   render: function() {
-    var placesButton =  <Button className='btn right red accent-2' onClick={this.handleClick}>My Places</Button>
-    var placesListDiv = <div id='modal4' className='modal placesList'><div className="modal-content">
-      <MyPlacesList loggedIn = {this.props.loggedIn}
-        handleCancelButtonClick = {this.handleCancelButtonClick}
-        /></div></div>
-    var button = (this.state.clicked ? placesListDiv : placesButton);
+    var placesButton =  <Button className='btn right red accent-2' onClick={this.handleClick}>{this.state.buttName}</Button>
     return(
-      button
+      placesButton
     );
   }
 });
