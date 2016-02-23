@@ -14,6 +14,7 @@ class Event < ActiveRecord::Base
     if current_user
       pin["rsvp"] = true if Rsvp.find_by(user: current_user, event: self)
     end
+    pin["attendees"] = self.rsvps.count
     pin
   end
 

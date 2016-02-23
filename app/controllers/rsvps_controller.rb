@@ -6,11 +6,13 @@ class RsvpsController < ApplicationController
 
   def create
     rsvp = Rsvp.create(user_id: current_user.id, event_id: rsvp_params[:event_id])
-    redirect_to '/'
+    render :json => Event.find(rsvp_params[:event_id]).pin(current_user)
   end
 
   def destroy
-    Rsvp.delete(rsvp.id)
+    rsvp = Rsvp.find_by(event_id: rsvp_params[:event_id])
+    rsvp.destroy
+    render :json => Event.find(rsvp_params[:event_id]).pin(current_user)
   end
 
   private
