@@ -15,7 +15,7 @@ class EventsController < ApplicationController
 
   def index
     events = Event.all
-    pins = events.to_a.map{ |event| event.pin}
+    pins = events.to_a.map{ |event| event.pin(current_user)}
     pins.select!{|pin| pin[:date] == Date.today}
     render :json => pins
   end

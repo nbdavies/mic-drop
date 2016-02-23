@@ -7,7 +7,7 @@ var NavBar = React.createClass({
   render: function(){
 
     var loggedOut =
-    <nav className="navigation">
+    <nav className="navigation pink accent-2">
       <div className="brand-logo">mic_drop </div>
       <LoginButton loggedIn    = {this.props.loggedIn}
                    onUserLogin = {this.handleUserLogin}
@@ -18,7 +18,7 @@ var NavBar = React.createClass({
     </nav>
 
     var loggedIn =
-      <nav className="navigation">
+      <nav className="navigation pink accent-2">
         <div className="brand-logo">mic_drop </div>
         <ul className="right">
           <li><span className>{this.props.loggedIn.username}</span></li>

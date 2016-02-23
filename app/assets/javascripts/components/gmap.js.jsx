@@ -23,12 +23,27 @@ var GMap = React.createClass({
       var tags = event.tags.map(function(tag){
         return '<div class="chip">'+tag.name+'</div>'
       });
-      var rsvp_form = '<form action="/rsvps" method="post">'+
-        '<input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="RSVP" class="btn"></form>'
+
+
+      if (event.rsvp){
+        var rsvp_form = '<form action="/rsvps" method="delete">'+
+        '<input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="Flake Out" class="btn red"></form>'
+      } else {
+        var rsvp_form = '<form action="/rsvps" method="post">'+
+        '<input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="RSVP" class="btn green"></form>'}
       var infowindow = new google.maps.InfoWindow({
-        content: '<div><h5>'+event.name+'</h5><p>'+
-        event.description+'</p><b>'+event.venue_name+'</b><p>'+event.address+'</p><p>'+event.date+'</p><p>start time:'+event.start_time+
-        '</p><p>end time: '+event.end_time+'</p></div>'+rsvp_form+tags
+        content:
+          '<div class="card-image">' +
+              '<img src="chad.png">' +
+              '<span class="card-title"><h5>'+event.name+'</h5></span>' +
+              '</div>' +
+              '<div class="card-content">' +
+              '<p>'+event.description+'</p><b>'+event.venue_name+'</b><p>'+event.address+'</p><p>'+event.date+'</p><p>start time: '+event.start_time+
+              '</p><p>end time: '+event.end_time+'</p>' +
+              '</div>'+
+              '<div class="card-action">'
+              +rsvp_form+tags +
+              '</div>'
       });
       marker.addListener('click', function() {
         infowindow.open(this.map, marker);
