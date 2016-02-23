@@ -1,6 +1,6 @@
 var RegistrationForm = React.createClass({
   getInitialState: function() {
-    return { username: '', password: '', email: ''};
+    return { username: '', password: '', email: '', errors:''};
   },
 
   handleLogin: function(user) {
@@ -22,7 +22,7 @@ var RegistrationForm = React.createClass({
     var email = this.state.email.trim();
     var password = this.state.password.trim();
     if (!username || !email || !password) {
-      return // handle errors;
+      this.setState({errors: 'Invalid entry, please try again.'})
     }
     var request = $.ajax({
       url: "/users",
@@ -42,6 +42,7 @@ var RegistrationForm = React.createClass({
   render: function() {
     return (
       <div col s12><form className="registrationForm">
+        <label>{this.state.errors}</label>
         <input
           type="text"
           placeholder="username"
@@ -58,7 +59,7 @@ var RegistrationForm = React.createClass({
           value={this.state.password}
           onChange={this.handlePasswordChange} />
         <input type="submit" value="Register" className="btn" onClick={this.handleSubmit} />
-        <Button onClick={this.props.handleCancelButtonClick}>Cancel</Button>
+        <Button onClick={this.props.handleCancelButtonClick}>Close Window</Button>
       </form></div>
 
     );
