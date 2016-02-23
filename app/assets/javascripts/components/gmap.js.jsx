@@ -33,7 +33,6 @@ var GMap = React.createClass({
         return '<div class="chip">'+tag.name+'</div>';
       });
 
-      if (this.props.loggedIn) {
         if (event.rsvp) {
           var rsvp_form = '<form action="/rsvps/'+event.id+'" method="post" id="unrsvp">'+
           '<input type="hidden" name="_method" value="delete"><input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="Flake Out" class="btn red"></form>'
@@ -41,9 +40,6 @@ var GMap = React.createClass({
           var rsvp_form = '<form action="/rsvps" method="post" id="rsvp">'+
           '<input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="RSVP" class="btn green"></form>'
         }
-      } else {
-        var rsvp_form = <div></div>
-      }
 
       var infowindow = new google.maps.InfoWindow({
         content:
