@@ -1,6 +1,15 @@
 class EventsController < ApplicationController
   def create
-    @event = Event.create(event_params)
+    @event = Event.create(name: event_params[:name],
+                      venue_id: event_params[:venue_id],
+                          date: event_params[:date],
+                    start_time: event_params[:start_time],
+                      end_time: event_params[:end_time],
+                   description: event_params[:description])
+    tags = event_params[:tags].split(", ")
+    tags.each do |tag|
+      @event.tags.find_or_create_by(name: tag)
+    end
     render :json => @event
   end
 
@@ -13,7 +22,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:venue_id, :name, :date, :start_time, :end_time, :description)
+    params.require(:event).permit(:venue_id, :name, :date, :start_time, :end_time, :description, :tags)
   end
 
 end
