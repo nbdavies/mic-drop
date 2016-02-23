@@ -11,7 +11,7 @@ var LoginButton = React.createClass({
 
   handleCancelButtonClick: function(e) {
     e.preventDefault();
-    $("#modal1").closeModal();
+    $("#modal2").closeModal();
     $(".lean-overlay").hide();
     this.setState({clicked: false});
   },
