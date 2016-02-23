@@ -4,7 +4,7 @@ var RegistrationForm = React.createClass({
   },
 
   handleLogin: function(user) {
-    this.props.onUserLogin(user)
+    this.props.onUserLogin(user);
   },
 
   handleUsernameChange: function(e) {
@@ -22,7 +22,7 @@ var RegistrationForm = React.createClass({
     var email = this.state.email.trim();
     var password = this.state.password.trim();
     if (!username || !email || !password) {
-      this.setState({errors: 'Invalid entry, please try again.'})
+      this.setState({errors: 'Invalid entry, please try again.'});
     }
     var request = $.ajax({
       url: "/users",
