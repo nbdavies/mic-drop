@@ -19,6 +19,15 @@ html, body { height: 100%; margin: 0; padding: 0; }
 }
 
 .eventForm {
+  z-index: 1005;
+  display: block;
+  opacity: 1;
+  transform: scaleX(1);
+  top: 10%;
+  color: black;
+}
+
+.placesList {
   z-index: 1003;
   display: block;
   opacity: 1;

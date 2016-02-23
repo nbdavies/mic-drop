@@ -1,6 +1,6 @@
 var LoginForm = React.createClass({
   getInitialState: function() {
-    return {username: '', password: ''};
+    return {username: '', password: '', errors: ''};
   },
 
   handleLogin: function(user) {
@@ -19,7 +19,7 @@ var LoginForm = React.createClass({
     var username = this.state.username.trim();
     var password = this.state.password.trim();
     if (!username || !password) {
-      return;
+      this.setState({errors: 'Invalid entry, please try again.'})
     }
     //this.props({username: username, email: email, password: password});
     var request = $.ajax({
@@ -32,7 +32,7 @@ var LoginForm = React.createClass({
       if (responseData.username === username){
         this.handleLogin(responseData)
         $("#modal2").closeModal();
-        $(".lean-overlay").hide();
+        $(".lean-overlay").remove();
       }
     }.bind(this));
   },
@@ -40,8 +40,7 @@ var LoginForm = React.createClass({
     return (
       <div col s12>
       <form className="loginForm">
-      <div className="fb-login-button right" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="true"></div>
-
+        <label>{this.state.errors}</label>
         <input
           type="text"
           placeholder="username"
@@ -54,7 +53,7 @@ var LoginForm = React.createClass({
           value={this.state.password}
           onChange={this.handlePasswordChange} />
         <input type="submit" value="Login" className="btn" onClick={this.handleSubmit} />
-        <Button onClick={this.props.handleCancelButtonClick}>Cancel</Button>
+        <Button onClick={this.props.handleCancelButtonClick}>Close Window</Button>
       </form></div>
 
     );

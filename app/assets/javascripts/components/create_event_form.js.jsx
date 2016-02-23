@@ -11,11 +11,12 @@ var EventForm = React.createClass({
     });
     request.done(function(responseData){
       $("#modal3").closeModal();
-      $(".lean-overlay").hide();
+      $(".lean-overlay").remove();
+      this.props.onEventSubmit(this.state);
     }.bind(this));
   },
   componentDidMount: function() {
-    $(this.refs.eventForm).find("select").show()
+    $(this.refs.eventForm).find("select").show();
   },
 
   handleNameChange: function(e) {
@@ -57,7 +58,6 @@ var EventForm = React.createClass({
     });
     request.done(function(responseData){
       venues = responseData;
-      console.log(responseData);
     });
     return (
     <div col s12><form ref="eventForm" className="eventForm">
@@ -99,9 +99,8 @@ var EventForm = React.createClass({
           value={this.state.tags}
           onChange={this.handleTagsChange} />
         <input type="submit" value="Drop the mic!" className="btn" onClick={this.handleSubmit} />
+        <Button onClick={this.props.handleCancelButtonClick}>Cancel</Button>
       </form></div>
     );
   }
 });
-
-

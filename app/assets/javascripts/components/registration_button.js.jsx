@@ -12,7 +12,7 @@ var RegisterButton = React.createClass({
   handleCancelButtonClick: function(e) {
     e.preventDefault();
     $("#modal1").closeModal();
-    $(".lean-overlay").hide();
+    $(".lean-overlay").remove();
     this.setState({clicked: false});
   },
 
