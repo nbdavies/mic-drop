@@ -11,7 +11,7 @@ var EventForm = React.createClass({
     });
     request.done(function(responseData){
       $("#modal3").closeModal();
-      $(".lean-overlay").hide();
+      $(".lean-overlay").remove();
     }.bind(this));
   },
   componentDidMount: function() {
@@ -99,9 +99,8 @@ var EventForm = React.createClass({
           value={this.state.tags}
           onChange={this.handleTagsChange} />
         <input type="submit" value="Drop the mic!" className="btn" onClick={this.handleSubmit} />
+        <Button onClick={this.props.handleCancelButtonClick}>Cancel</Button>
       </form></div>
     );
   }
 });
-
-
