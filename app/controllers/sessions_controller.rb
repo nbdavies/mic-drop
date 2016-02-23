@@ -3,11 +3,10 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(username: session_params[:username])
-    p "*********************************"
-    p params
+    @venues = @user.venues
     if @user && @user.authenticate(session_params[:password])
       session[:user_id] = @user.id
-      render :json => @user
+      render :json => @user, include: :venues
     else
       @errors = ['Login credentials not valid.']
       render :json => @errors

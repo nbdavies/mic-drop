@@ -6,9 +6,20 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.create(username: user_params[:username],
+                        password: user_params[:password],
+                           email: user_params[:email],
+                     facebook_id: user_params[:facebook_id],
+                     picture_url: user_params[:picture_url])
 
     if @user.save
+      user_params[:friends].each do |key, value|
+        friend = User.find_by(facebook_id: value[:id])
+        if friend
+          Friendship.create(user: @user, friend: friend)
+          Friendship.create(user: friend, friend: @user)
+        end
+      end
       session[:user_id] = @user.id
       render :json => @user
     else
@@ -19,7 +30,9 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :email)
+    params.require(:user).permit(:username, :password, :email, :facebook_id, :friends, :picture_url).tap do |whitelisted|
+      whitelisted[:friends] = params[:user][:friends]
+    end
   end
 
 

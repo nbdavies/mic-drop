@@ -38,7 +38,8 @@ var LoginForm = React.createClass({
   },
   render: function() {
     return (
-      <div col s12><form className="loginForm">
+      <div col s12>
+      <form className="loginForm">
         <label>{this.state.errors}</label>
         <input
           type="text"

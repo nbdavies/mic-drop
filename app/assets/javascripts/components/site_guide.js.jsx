@@ -15,6 +15,6 @@ var SiteGuide = React.createClass({
         <h5>Mic Drop finds cool activities in your area. Log in to RSVP for events and see which events your friends are attending.</h5>
         <Button onClick={this.handleCancelButtonClick}>Close Window</Button>
       </div>
-    )
+    );
   }
-})
+});

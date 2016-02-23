@@ -28,7 +28,7 @@ var CreateEventButton = React.createClass({
       onEventSubmit = {this.handleEventSubmit}
       />
 
-      </div></div>
+  </div></div>;
     var button = (this.state.clicked ? createEventFormDiv : createEventButton);
     return(button);
   }

@@ -15,6 +15,11 @@ class Event < ActiveRecord::Base
       pin["rsvp"] = true if Rsvp.find_by(user: current_user, event: self)
     end
     pin["attendees"] = self.rsvps.count
+    friends_going = []
+    self.rsvps.each do |rsvp|
+      friends_going << {name: rsvp.user.username, picture_url: rsvp.user.picture_url} if current_user.friends.include?(rsvp.user)
+    end
+    pin["friends_going"] = friends_going
     pin
   end
 
