@@ -39,6 +39,19 @@ var EventForm = React.createClass({
     this.setState({description: e.target.value});
   },
 
+  handlePhotoChange: function(e) {
+    var self = this;
+    var reader = new FileReader();
+    var file = e.target.files[0];
+
+    reader.onload = function(upload) {
+      self.setState({
+        photo: upload.target.result,
+      });
+    };
+    reader.readAsDataURL(file);
+  },
+
   handleTagsChange: function(e) {
     this.setState({tags: e.target.value});
   },
@@ -93,6 +106,11 @@ var EventForm = React.createClass({
           placeholder="description"
           value={this.state.description}
           onChange={this.handleDescriptionChange} />
+        <input type="file"
+               name="photo"
+               accept="image/*"
+               value={this.state.photo}
+               onChange={this.handlePhotoChange}/>
         <input
           type="text"
           placeholder="tag1,tag2"

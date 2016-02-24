@@ -3,7 +3,9 @@ class Event < ActiveRecord::Base
   has_many :event_venue_tags, as: :taggable
   has_many :tags, through: :event_venue_tags
   belongs_to :venue
-
+  has_attached_file :photo,
+                    styles: { :medium => "200x200>", :thumb => "100x100>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :photo, :content_type => /^image\/(png|gif|jpeg|jpg)/
   def pin(current_user)
     venue = self.venue
     pin = self.attributes.to_options

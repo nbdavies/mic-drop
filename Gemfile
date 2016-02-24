@@ -48,8 +48,8 @@ gem 'simplecov'
 gem 'coffee-react'
 gem 'browserify-rails'
 # Paperclip and S3 for photos
-gem 'aws-sdk', '~> 2'
-gem 'paperclip'
+gem "paperclip", "~> 4.2"
+gem 'aws-sdk-v1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
