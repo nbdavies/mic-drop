@@ -1,7 +1,4 @@
 var GMap = React.createClass({
-  map: null,
-  marker: null,
-  infoWindow: null,
 
   getInitialState: function() {
     return this.getEventData();
@@ -14,7 +11,6 @@ var GMap = React.createClass({
 
   getEventData: function() {
     var events;
-
     var request = $.ajax({
       url: "/events",
       async: false
@@ -22,58 +18,20 @@ var GMap = React.createClass({
     request.done(function(responseData){
       events = responseData;
     });
-    var markers=[];
-    var pins = events.map(function(event){
-      var marker = new google.maps.Marker({
+    events = events.map(function(event){
+      event.marker = new google.maps.Marker({
         position: {lat: parseFloat(event.location.lat), lng: parseFloat(event.location.lng)},
-        map: this.map,
         title: event.name
       });
-      var tags = event.tags.map(function(tag){
-        return '<div class="chip">'+tag.name+'</div>';
-      });
-
-        if (event.rsvp) {
-          var rsvp_form = '<form action="/rsvps/'+event.id+'" method="post" id="unrsvp">'+
-          '<input type="hidden" name="_method" value="delete"><input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="Flake Out" class="btn red"></form>'
-        } else if (this.props.loggedIn) {
-          var rsvp_form = '<form action="/rsvps" method="post" id="rsvp">'+
-          '<input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="RSVP" class="btn green"></form>'
-        } else { var rsvp_form = "" }
-
-      var infowindow = new google.maps.InfoWindow({
-        content:
-          '<div class="info-window"><div class="card-image">' +
-              '<img src="chad.png">' +
-              '<span class="card-title"><h5>'+event.name+'</h5></span>' +
-              '</div>' +
-              '<div class="card-content">' +
-              '<b>Attendees: </b><span id="attendees">'+event.attendees+'</span>'+
-              '<p>'+event.description+'</p><b>'+event.venue_name+'</b><p>'+event.address+'</p><p>'+event.date+'</p><p>start time: '+event.start_time+
-              '</p><p>end time: '+event.end_time+'</p>' +
-              '</div>'+
-              '<div class="card-action">'+
-              tags+rsvp_form+
-              '</div></div>'
-      });
-      marker.addListener('click', function() {
-        infowindow.open(this.map, marker);
-      });
-      markers.push(marker);
-      return (event);
+      return event;
     }.bind(this));
-    return {
-      events: events,
-      markers: markers,
-      pins: pins
-    }
+    return { events: events };
   },
 
   componentDidMount: function(){
     this.map = this.createMap();
-    this.state.markers.forEach(function(marker){
-      marker.setMap(this.map);
-
+    this.state.events.forEach(function(event){
+      event.marker.setMap(this.map);
     }.bind(this));
 
     var infoWindow = new google.maps.InfoWindow({map: this.map});
@@ -83,7 +41,6 @@ var GMap = React.createClass({
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-
         infoWindow.setPosition(pos);
         infoWindow.setContent('YOU');
         this.map.setCenter(pos);
@@ -103,10 +60,56 @@ var GMap = React.createClass({
     return new google.maps.Map(this.refs.map_canvas, mapOptions);
   },
 
+  eventRsvpForm: function(event){
+    if (event.rsvp) {
+      var rsvp_form = '<form action="/rsvps/'+event.id+'" method="post" id="unrsvp">'+
+      '<input type="hidden" name="_method" value="delete">'+
+      '<input type="hidden" name="rsvp[event_id]" value='+event.id+'>'+
+      '<input type="submit" value="Flake Out" class="btn red"></form>'
+    } else if (this.props.loggedIn) {
+      var rsvp_form = '<form action="/rsvps" method="post" id="rsvp">'+
+      '<input type="hidden" name="rsvp[event_id]" value='+event.id+'>'+
+      '<input type="submit" value="RSVP" class="btn green"></form>'
+    } else { var rsvp_form = "" };
+    return rsvp_form;
+  },
+
+  eventTags: function(event){
+    var tags = event.tags.map(function(tag){
+      return '<div class="chip">'+tag.name+'</div>';
+    });
+  },
+
+  infoWindow: function(event){
+    return '<div class="info-window"><div class="card-image">' +
+             '<img src="chad.png">' +
+             '<span class="card-title"><h5>'+event.name+'</h5></span>' +
+           '</div>' +
+           '<div class="card-content">' +
+             '<b>Attendees: </b><span id="attendees">'+event.attendees+'</span>'+
+             '<p>'+event.description+'</p><b>'+event.venue_name+'</b><p>'+
+             event.address+'</p><p>'+event.date+'</p><p>start time: '+event.start_time+
+             '</p><p>end time: '+event.end_time+'</p>' +
+           '</div>'+
+           '<div class="card-action">'+
+             this.eventTags(event)+this.eventRsvpForm(event)+
+           '</div></div>';
+  },
+
   render: function(){
+    this.state.events.forEach(function(event){
+      var infowindow = new google.maps.InfoWindow({
+        content: this.infoWindow(event)
+      });
+      google.maps.event.clearInstanceListeners(event.marker);
+      event.marker.addListener('click', function() {
+        infowindow.open(this.map, event.marker);
+      });
+    }.bind(this));
+
     return(<div id="map-container" >
       <div id="map" ref="map_canvas">
-        { this.state.pins.map(function(event){ return <Pin event={event} loggedIn={this.props.loggedIn} key={event.id} /> }.bind(this))}
+        { this.state.events.map(function(event){ return <Pin event={event} loggedIn={this.props.loggedIn} key={event.id} /> }.bind(this))}
       </div>
     </div>
     );
