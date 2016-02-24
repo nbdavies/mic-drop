@@ -24,8 +24,9 @@ class EventsController < ApplicationController
     subs = Subscription.where(user_id: current_user.id)
     events = []
     subs.each do |sub|
-      if Event.find_by(venue_id)
-        events << sub
+      if Event.find_by(venue_id: sub.venue_id)
+        event = Event.find_by(venue_id: sub.venue_id)
+        events << event
       end
     end
     pins = events.to_a.map{ |event| event.pin(current_user)}

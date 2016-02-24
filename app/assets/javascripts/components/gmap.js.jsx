@@ -8,7 +8,9 @@ var GMap = React.createClass({
     this.setState(this.getEventData());
   },
 
-
+  componentDidUpdate: function() {
+    return this.getEventData();
+  },
 
   getEventData: function() {
     if (this.props.favs) {
