@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
   end
 
   def index
-    render :json => (current_user ? current_user : false)
+    render :json => (current_user ? current_user : false), include: :venues
   end
 
   def destroy

@@ -8,6 +8,12 @@ var NavBar = React.createClass({
     this.props.onEventSubmit(eventData);
   },
 
+  maybeRenderAddEvent: function() {
+    if (this.props.loggedIn.venues && this.props.loggedIn.venues.length > 0) {
+      return <li><CreateEventButton onEventSubmit = {this.handleEventSubmit}/></li>;
+    }
+  },
+
   render: function(){
 
     var loggedOut =
@@ -19,18 +25,14 @@ var NavBar = React.createClass({
       <RegisterButton loggedIn = {this.props.loggedIn}
                    onUserLogin = {this.handleUserLogin}
       />
-
   </nav>;
-    var addEventButton = <li><CreateEventButton onEventSubmit = {this.handleEventSubmit}/></li>;
-    var venues = this.props.loggedIn.venues;
-
     var loggedIn =
       <nav className="navigation pink accent-2">
         <div className="brand-logo center">mic_drop </div>
         <ul className="right">
           <li><span className>{this.props.loggedIn.username}</span></li>
           <li><LogoutButton onUserLogin = {this.handleUserLogin} /></li>
-          { loggedIn && venues.length > 0 ? addEventButton : null}
+          { this.maybeRenderAddEvent() }
         </ul>
         <ul className="left">
           <li><MyPlacesButton loggedIn = {this.props.loggedIn} /></li>
@@ -43,6 +45,8 @@ var NavBar = React.createClass({
 
     return(
       buttonZone
+
+
       );
     }
 });

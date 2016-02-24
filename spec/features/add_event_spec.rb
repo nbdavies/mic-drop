@@ -5,9 +5,10 @@ describe 'adding an event', :type => :feature, :js => true do
 
   def login
     visit '/'
+    click_button 'Close Window'
     click_button 'login'
-    fill_in 'username', with: 'test'
-    fill_in 'password', with: 'password'
+    fill_in 'username', with: user.username
+    fill_in 'password', with: user.password
     click_button 'Login'
   end
 
