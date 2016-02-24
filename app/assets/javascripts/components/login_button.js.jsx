@@ -21,7 +21,7 @@ var LoginButton = React.createClass({
   },
 
   render: function() {
-    var logButton = <button className="btn right red accent-2"  onClick={this.handleClick}>login</button>
+    var logButton = <button className="btn-flat indigo accent-3 right"  onClick={this.handleClick}>login</button>
     var logFormDiv = <div id='modal2' className='modal loginForm'><div className="modal-content">
     <LoginForm  onUserLogin = {this.handleUserLogin}
                 handleCancelButtonClick = {this.handleCancelButtonClick}
