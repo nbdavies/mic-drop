@@ -74,6 +74,27 @@ var GMap = React.createClass({
   },
 
   createMap: function() {
+    var styles = [
+      {
+        "featureType": "transit.line",
+        "stylers": [
+          { "visibility": "off" }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "stylers": [
+          { "visibility": "off" }
+        ]
+      },
+      {
+        "featureType": "administrative",
+        "stylers": [
+          { "visibility": "off" }
+        ]
+      }
+
+    ];
     var mapOptions = {
       zoom: 15,
       center: new google.maps.LatLng(-34.397, 150.644)
