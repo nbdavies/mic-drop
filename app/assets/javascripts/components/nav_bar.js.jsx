@@ -8,19 +8,24 @@ var NavBar = React.createClass({
     this.props.onEventSubmit(eventData);
   },
 
+  maybeRenderAddEvent: function() {
+    if (this.props.loggedIn.venues && this.props.loggedIn.venues.length > 0) {
+      return <li><CreateEventButton onEventSubmit = {this.handleEventSubmit}/></li>;
+    }
+  },
+
   render: function(){
 
     var loggedOut =
-    <nav className="navigation pink accent-2">
-      <div className="brand-logo center">mic_drop </div>
-      <LoginButton loggedIn    = {this.props.loggedIn}
-                   onUserLogin = {this.handleUserLogin}
-      />
-      <RegisterButton loggedIn = {this.props.loggedIn}
-                   onUserLogin = {this.handleUserLogin}
-      />
+      <ul className="right">
+        <LoginButton loggedIn = {this.props.loggedIn}
+                  onUserLogin = {this.handleUserLogin}
+        />
+        <RegisterButton loggedIn = {this.props.loggedIn}
+                     onUserLogin = {this.handleUserLogin}
+        />
+      </ul>
 
-  </nav>;
     var addEventButton = <li><CreateEventButton onEventSubmit = {this.handleEventSubmit}/></li>;
     var venues = this.props.loggedIn.venues;
 
@@ -31,21 +36,21 @@ var NavBar = React.createClass({
           <img className="responsive-img circle" src={this.props.loggedIn.picture_url} />
         </li>
         <li><LogoutButton onUserLogin = {this.handleUserLogin} /></li>
-        { loggedIn && venues.length > 0 ? addEventButton : null}
+        { this.maybeRenderAddEvent() }
       </ul>
     } else {
       var loggedIn =
       <ul className="right">
         <li><span className>{this.props.loggedIn.username}</span></li>
         <li><LogoutButton onUserLogin = {this.handleUserLogin} /></li>
-        { loggedIn && venues.length > 0 ? addEventButton : null}
+        { this.maybeRenderAddEvent() }
       </ul>
     };
 
     var buttonZone = (this.props.loggedIn ?  loggedIn : loggedOut);
 
     return(
-      <nav className="navigation pink accent-2">
+      <nav className="navigation orange darken-3">
         <ul className="left">
           <li><MyPlacesButton loggedIn = {this.props.loggedIn} /></li>
         </ul>
