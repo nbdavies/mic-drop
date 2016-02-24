@@ -28,16 +28,9 @@ var Container = React.createClass({
     this.refs.googlemap.addEvent();
   },
 
-  handleFilterAction: function(eventData) {
-    if (this.state.favs === false) {
-      this.setState({
-        favs: true
-      });
-    } else {
-      this.setState({
-        favs: false
-      });
-    }
+  handleFilterAction: function() {
+    console.log("favs before: ", this.state.favs)
+    this.setState({favs: !this.state.favs}, function() { console.log("favs after: ", this.state.favs) })
   },
 
   render: function (){

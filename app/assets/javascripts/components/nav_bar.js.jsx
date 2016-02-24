@@ -8,8 +8,8 @@ var NavBar = React.createClass({
     this.props.onEventSubmit(eventData);
   },
 
-  handleFilterAction: function(eventData) {
-    this.props.onFilterAction(eventData);
+  handleFilterAction: function() {
+    this.props.onFilterAction();
   },
 
   maybeRenderAddEvent: function() {

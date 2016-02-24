@@ -9,14 +9,15 @@ var GMap = React.createClass({
   },
 
   componentDidUpdate(prevProps) {
-    console.log("prevprops fave is")
-    console.log(prevProps.favs)
-    console.log("current props fav is")
-    console.log(this.props.favs)
+    console.log("prevprops fave is: ", prevProps.favs)
+    console.log("current props fav is: ", this.props.favs)
     if (prevProps.favs !== this.props.favs) {
-    this.setState(this.getEventData());
+      events = this.getEventData()
+      console.log("]]]]]]]]]]]]")
+      console.log(events)
+      this.setState(events, this.componentDidMount.bind(this));
+      console.log(this.state.events)
     }
-    this.componentDidMount()
   },
 
   getEventData: function() {
@@ -221,6 +222,7 @@ var GMap = React.createClass({
   },
 
   render: function(){
+    console.log("in render")
     this.state.events.forEach(function(event){
       var infowindow = new google.maps.InfoWindow({
         content: this.infoWindow(event)
