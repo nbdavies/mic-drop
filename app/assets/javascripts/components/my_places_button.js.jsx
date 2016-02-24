@@ -21,7 +21,7 @@ var MyPlacesButton = React.createClass({
 
   render: function() {
     return(
-      <Button className='btn right red accent-2' onClick={this.handleClick}>{this.state.buttName}</Button>
+      <Button className='btn-flat right' onClick={this.handleClick}>{this.state.buttName}</Button>
     );
   }
 });
