@@ -88,11 +88,11 @@ var GMap = React.createClass({
         '<input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'">'+
         '<input type="hidden" name="subscriptions[user_id]" value="'+event.user_id+'">'+
         '<input type="submit" value="Remove from My Places" class="btn yellow"></form>';
-    } else {
+    } else if (this.props.loggedIn) {
       var favButt = '<form action="/subscriptions" method="post" id="fav">'+
         '<input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'">'+
         '<input type="submit" value="Add to My Places" class="btn grey"></form>';
-    };
+    } else { var favButt = "" };
     return favButt;
   },
 
@@ -115,12 +115,13 @@ var GMap = React.createClass({
     if (event.tags) {tags = event.tags.map(function(tag){
       return '<div class="chip">'+tag.name+'</div>';
     });}
-    return tags;
+    return tags.join('');
   },
 
   friendsAttending: function(event){
     var friends = "";
-    if (event.friends_going) {friends = event.friends_going.map(function(friend){
+    if (event.friends_going.length > 0) {
+      friends = '<h6>Your friends going:</h6><br>'+event.friends_going.map(function(friend){
       return '<img src="'+friend.picture_url+'" title="'+friend.name+'" class="circle">';
     });}
     return friends;
@@ -132,11 +133,10 @@ var GMap = React.createClass({
              '<span class="card-title"><h5>'+event.name+'</h5></span>' +
            '</div>' +
            '<div class="card-content">' +
-             '<b>Attendees: </b><span id="attendees">'+event.attendees+'</span><br>'+
-             '<b>Your friends going:</b><br>'+this.friendsAttending(event)+
-             '<p><b>Event Details: <br></b>'+event.description+'</p><b>'+event.venue_name+'</b><p>'+
-             event.address+'</p><p>'+event.date+'</p><p>start time: '+event.start_time+
-             '</p><p>end time: '+event.end_time+'</p>' +
+             'Today from '+event.start_time+' to '+event.end_time+'<br><span id="attendees">'+event.attendees+'</span> people going<br>'+
+             this.friendsAttending(event)+
+             '<p><h6>Description</h6>'+event.description+'</p><h6>'+event.venue_name+'</h6><p>'+
+             event.address+'</p>' +
            '</div>'+
            '<div class="card-action">'+
              this.eventTags(event)+this.eventRsvpForm(event)+this.venueFavForm(event)+
