@@ -15,6 +15,7 @@ var Container = React.createClass({
     this.setState({
       loggedIn: user,
     });
+    this.forceUpdate();
   },
 
   handleEventSubmit: function(eventData) {

@@ -46,16 +46,15 @@ var NavBar = React.createClass({
         { this.maybeRenderAddEvent() }
       </ul>
     };
-
-    var buttonZone = (this.props.loggedIn ?  loggedIn : loggedOut);
+    var myPlaces = <ul className="left">
+          <li><MyPlacesButton loggedIn = {this.props.loggedIn} /></li>
+        </ul>;
 
     return(
       <nav className="navigation orange darken-3">
-        <ul className="left">
-          <li><MyPlacesButton loggedIn = {this.props.loggedIn} /></li>
-        </ul>
         <div className="brand-logo center">mic_drop </div>
-        {buttonZone}
+        {this.props.loggedIn ?  loggedIn : loggedOut}
+        {this.props.loggedIn ?  myPlaces : "" }
       </nav>
       );
     }

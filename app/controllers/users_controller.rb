@@ -13,11 +13,13 @@ class UsersController < ApplicationController
                      picture_url: user_params[:picture_url])
 
     if @user.save
-      user_params[:friends].each do |key, value|
-        friend = User.find_by(facebook_id: value[:id])
-        if friend
-          Friendship.create(user: @user, friend: friend)
-          Friendship.create(user: friend, friend: @user)
+      if user_params[:friends]
+        user_params[:friends].each do |key, value|
+          friend = User.find_by(facebook_id: value[:id])
+          if friend
+            Friendship.create(user: @user, friend: friend)
+            Friendship.create(user: friend, friend: @user)
+          end
         end
       end
       session[:user_id] = @user.id

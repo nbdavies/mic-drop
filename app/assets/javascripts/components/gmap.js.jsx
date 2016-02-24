@@ -36,10 +36,10 @@ var GMap = React.createClass({
         if (event.rsvp) {
           var rsvp_form = '<form action="/rsvps/'+event.id+'" method="post" id="unrsvp">'+
           '<input type="hidden" name="_method" value="delete"><input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="Flake Out" class="btn red"></form>'
-        } else {
+        } else if (this.props.loggedIn) {
           var rsvp_form = '<form action="/rsvps" method="post" id="rsvp">'+
           '<input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="RSVP" class="btn green"></form>'
-        }
+        } else { var rsvp_form = "" }
 
       var infowindow = new google.maps.InfoWindow({
         content:
@@ -145,7 +145,6 @@ var GMap = React.createClass({
   //   # this is where that's handled
 
   render: function(){
-
     return(<div id="map-container" >
       <div id="map" ref="map_canvas">
         { this.state.pins.map(function(event){ return <Pin event={event} loggedIn={this.props.loggedIn} key={event.id} /> }.bind(this))}
