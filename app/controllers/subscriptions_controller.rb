@@ -2,25 +2,16 @@ class SubscriptionsController < ApplicationController
   protect_from_forgery except: :create
 
   def create
-        p "++++++++++++++++++++++++++++++++"
-    p session
-    p current_user
-
     venue = Venue.find_by(name:subscription_params[:venue_name])
     Subscription.create(user_id: current_user.id, venue_id: venue.id)
-        p venue.id
-    render :json => venue
+    render :json => [venue.name, current_user.id]
   end
 
   def destroy
     venue = Venue.find_by(name:subscription_params[:venue_name])
-    p "++++++++++++++++++++++++++++++++"
-    p session
-    p current_user
-    p venue.id
-    sub = Subscription.find_by(user_id: current_user.id, venue_id: venue.id)
+    sub = Subscription.find_by(user_id: subscription_params[:user_id], venue_id: venue.id)
     sub.destroy
-    render :json => venue
+    render :json => [venue.name]
   end
 
   private
@@ -29,7 +20,7 @@ class SubscriptionsController < ApplicationController
     # end
 
     def subscription_params
-      params.require(:subscriptions).permit(:venue_name)
+      params.require(:subscriptions).permit(:venue_name, :user_id)
     end
 
 end

@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   resources :events
   resources :venues
   resources :rsvps
-  resources :subscriptions
-  get '/users/subscriptions'
+  resources :subscriptions, except: :destroy
+
+  # show '/events/favs' => 'events#show'
+
+  delete '/subscriptions' => 'subscriptions#destroy'
 
   resources :friendships
 

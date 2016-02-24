@@ -8,7 +8,9 @@ var Container = React.createClass({
     request.done(function(responseData){
       user = responseData;
     });
-    return { loggedIn: user };
+    return { loggedIn: user,
+             favs: false
+     };
   },
 
   handleUserLogin: function(user) {
@@ -27,8 +29,15 @@ var Container = React.createClass({
   },
 
   handleFilterAction: function(eventData) {
-    this.refs.googlemap
-    //ref function that pushes filtered events into the current state
+    if (this.state.favs === false) {
+      this.setState({
+        favs: true
+      });
+    } else {
+      this.setState({
+        favs: false
+      });
+    }
   },
 
   render: function (){
@@ -49,6 +58,7 @@ var Container = React.createClass({
                 onFilterAction = {this.handleFilterAction}
         />
         <GMap loggedIn = {this.state.loggedIn}
+              favs = {this.state.favs}
               ref = "googlemap"
         />
         {guide}

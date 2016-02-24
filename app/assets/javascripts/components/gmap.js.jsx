@@ -8,10 +8,20 @@ var GMap = React.createClass({
     this.setState(this.getEventData());
   },
 
+
+
   getEventData: function() {
+    if (this.props.favs) {
+      console.log('FAVES')
+        var route = "/events/1"
+      } else {
+        console.log("NOT FAVES")
+        var route = "/events"
+      }
+      console.log(route)
     var events;
     var request = $.ajax({
-      url: "/events",
+      url: route,
       async: false
     });
     request.done(function(responseData){
@@ -64,6 +74,7 @@ var GMap = React.createClass({
       var favButt = '<form action="/subscriptions/'+event.venue_name+'" method="post" id="unfav">'+
         '<input type="hidden" name="_method" value="delete">'+
         '<input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'">'+
+        '<input type="hidden" name="subscriptions[user_id]" value="'+event.user_id+'">'+
         '<input type="submit" value="Remove from My Places" class="btn yellow"></form>';
     } else {
       var favButt = '<form action="/subscriptions" method="post" id="fav">'+

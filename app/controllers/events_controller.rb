@@ -20,6 +20,19 @@ class EventsController < ApplicationController
     render :json => pins
   end
 
+  def show
+    subs = Subscription.where(user_id: current_user.id)
+    events = []
+    subs.each do |sub|
+      if Event.find_by(venue_id)
+        events << sub
+      end
+    end
+    pins = events.to_a.map{ |event| event.pin(current_user)}
+    pins.select!{|pin| pin[:date] == Date.today}
+    render :json => pins
+  end
+
   private
   def event_params
     params.require(:event).permit(:venue_id, :name, :date, :start_time, :end_time, :description, :tags)
