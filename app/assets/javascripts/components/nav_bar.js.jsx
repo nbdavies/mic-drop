@@ -17,36 +17,45 @@ var NavBar = React.createClass({
   render: function(){
 
     var loggedOut =
-    <nav className="navigation pink accent-2">
-      <div className="brand-logo center">mic_drop </div>
-      <LoginButton loggedIn    = {this.props.loggedIn}
-                   onUserLogin = {this.handleUserLogin}
-      />
-      <RegisterButton loggedIn = {this.props.loggedIn}
-                   onUserLogin = {this.handleUserLogin}
-      />
-  </nav>;
-    var loggedIn =
-      <nav className="navigation pink accent-2">
-        <div className="brand-logo center">mic_drop </div>
-        <ul className="right">
-          <li><span className>{this.props.loggedIn.username}</span></li>
-          <li><LogoutButton onUserLogin = {this.handleUserLogin} /></li>
-          { this.maybeRenderAddEvent() }
-        </ul>
-        <ul className="left">
+      <ul className="right">
+        <LoginButton loggedIn = {this.props.loggedIn}
+                  onUserLogin = {this.handleUserLogin}
+        />
+        <RegisterButton loggedIn = {this.props.loggedIn}
+                     onUserLogin = {this.handleUserLogin}
+        />
+      </ul>
+
+    var addEventButton = <li><CreateEventButton onEventSubmit = {this.handleEventSubmit}/></li>;
+    var venues = this.props.loggedIn.venues;
+
+    if (this.props.loggedIn.picture_url){
+      var loggedIn =
+      <ul className="right">
+        <li>
+          <img className="responsive-img circle" src={this.props.loggedIn.picture_url} />
+        </li>
+        <li><LogoutButton onUserLogin = {this.handleUserLogin} /></li>
+        { this.maybeRenderAddEvent() }
+      </ul>
+    } else {
+      var loggedIn =
+      <ul className="right">
+        <li><span className>{this.props.loggedIn.username}</span></li>
+        <li><LogoutButton onUserLogin = {this.handleUserLogin} /></li>
+        { this.maybeRenderAddEvent() }
+      </ul>
+    };
+    var myPlaces = <ul className="left">
           <li><MyPlacesButton loggedIn = {this.props.loggedIn} /></li>
-        </ul>
-      </nav>;
-
-
-
-    var buttonZone = (this.props.loggedIn ?  loggedIn : loggedOut);
+        </ul>;
 
     return(
-      buttonZone
-
-
+      <nav className="navigation orange darken-3">
+        <div className="brand-logo center">mic_drop </div>
+        {this.props.loggedIn ?  loggedIn : loggedOut}
+        {this.props.loggedIn ?  myPlaces : "" }
+      </nav>
       );
     }
 });
