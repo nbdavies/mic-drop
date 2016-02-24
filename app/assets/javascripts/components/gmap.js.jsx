@@ -199,14 +199,14 @@ var GMap = React.createClass({
     var friends = "";
     if (event.friends_going.length > 0) {
       friends = '<h6>Your friends going:</h6><br>'+event.friends_going.map(function(friend){
-      return '<img src="'+friend.picture_url+'" title="'+friend.name+'" class="circle">';
+      return '<img src="'+friend.picture_url+'" title="'+friend.name+'" class="circle friend">';
     });}
     return friends;
   },
 
   infoWindow: function(event){
     return '<div class="info-window"><div class="card-image">' +
-             '<img src="chad.png">' +
+             '<img src="'+event.photo+'">' +
              '<span class="card-title"><h5>'+event.name+'</h5></span>' +
            '</div>' +
            '<div class="card-content">' +
