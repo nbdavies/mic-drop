@@ -20,7 +20,7 @@ if ENV['SAUCY']
 
   Sauce.config do |config|
     config[:browsers] = [
-      ['Linux', 'Chrome', nil],
+      ['Linux', 'Firefox', nil],
       # and other OS/browser combos you want to support...
     ]
   end
