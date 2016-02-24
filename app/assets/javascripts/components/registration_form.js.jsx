@@ -44,7 +44,7 @@ var RegistrationForm = React.createClass({
     FB.login(function(response) {
       if (response.authResponse) {
         //user just authorized your app
-        $(".as-fuck").hide();
+        $(".as-fuck").text("facebook sync'd").addClass("disabled");
         FB.api("me/friends",
           function(response){
             if (response && !response.error) {
@@ -81,9 +81,8 @@ var RegistrationForm = React.createClass({
           value={this.state.password}
           onChange={this.handlePasswordChange} />
         <input type="submit" value="Register" className="btn" onClick={this.handleSubmit} />
-        <Button onClick={this.props.handleCancelButtonClick}>Cancel</Button>
-        <div className="row"><button className="btn blue as-fuck" onClick={this.handleFacebook}>Facebook</button></div>
-        <Button onClick={this.props.handleCancelButtonClick}>Close Window</Button>
+        <Button onClick={this.props.handleCancelButtonClick}>Close</Button>
+        <div className="row"><button className="btn blue as-fuck" onClick={this.handleFacebook}>sync with Facebook</button></div>
       </form></div>
 
     );

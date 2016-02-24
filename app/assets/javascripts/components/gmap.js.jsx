@@ -32,6 +32,7 @@ var GMap = React.createClass({
         return '<div class="chip">'+tag.name+'</div>';
       });
 
+<<<<<<< HEAD
       if (event.rsvp) {
         var rsvp_form = '<form action="/rsvps/'+event.id+'" method="post" id="unrsvp">'+
         '<input type="hidden" name="_method" value="delete"><input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="Flake Out" class="btn red"></form>'
@@ -46,6 +47,15 @@ var GMap = React.createClass({
         var favButt = '<form action="/subscriptions" method="post" id="fav">'+
         '<input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'"><input type="submit" value="Add to My Places" class="btn grey"></form>'
       }
+=======
+        if (event.rsvp) {
+          var rsvp_form = '<form action="/rsvps/'+event.id+'" method="post" id="unrsvp">'+
+          '<input type="hidden" name="_method" value="delete"><input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="Flake Out" class="btn red"></form>'
+        } else if (this.props.loggedIn) {
+          var rsvp_form = '<form action="/rsvps" method="post" id="rsvp">'+
+          '<input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="RSVP" class="btn green"></form>'
+        } else { var rsvp_form = "" }
+>>>>>>> 36a14180a14d174252631908a7c1fa29891a754d
 
       var infowindow = new google.maps.InfoWindow({
         content:
@@ -99,29 +109,8 @@ var GMap = React.createClass({
     } else {
       handleLocationError(false, infoWindow, map.getCenter());
     };
-        // var contentString = '<div id="infowindow"><h5>'+event.name+'</h5><p>'+event.description+'</p>'+event.address+'</div>'
-
-        //   console.log(contentString);
-
-        // var infoWindow = new google.maps.InfoWindow({
-        //   content: contentString
-        // });
-
-
-        // marker.addListener('click', function() {
-        //   infoWindow.open(this.map,marker);
-      //   });
-      // });
-    // });
-    // google.maps.event.addListenerOnce(this.map, 'idle', this.centerMap.bind(this));
-    // this.marker = this.createMarker();
-    // this.infoWindow = this.createInfoWindow();
-
-    // have to define google maps event listeners here too
-    // because we can't add listeners on the map until its created
-    // google.maps.event.addListener this.map, 'zoom_changed', => this.handleZoomChange()
-    // google.maps.event.addListener this.map, 'dragend', => this.handleDragEnd()
   },
+
   createMap: function() {
     var mapOptions = {
       zoom: 16,
@@ -130,28 +119,7 @@ var GMap = React.createClass({
     return new google.maps.Map(this.refs.map_canvas, mapOptions);
   },
 
-  // createMarker: ->
-  //   marker = new google.maps.Marker
-  //     position: new google.maps.LatLng(this.props.coords.lat, @props.coords.lon)
-  //     map: @map
-
-  // createInfoWindow: ->
-  //   contentString = "<div class='InfoWindow'>I'm a Window that contains Info Yay</div>"
-  //   infoWindow = new google.maps.InfoWindow
-  //     map: @map
-  //     anchor: @marker
-  //     content: contentString
-
-  // handleZoomChange: ->
-  //   # something happens when the zoom changes
-  //   # this is where it's handled
-
-  // handleDragEnd: ->
-  //   # something else happens when the map is dragged somewhere
-  //   # this is where that's handled
-
   render: function(){
-
     return(<div id="map-container" >
       <div id="map" ref="map_canvas">
         { this.state.pins.map(function(event){ return <Pin event={event} loggedIn={this.props.loggedIn} key={event.id} /> }.bind(this))}
