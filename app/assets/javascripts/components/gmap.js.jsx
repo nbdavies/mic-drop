@@ -8,19 +8,41 @@ var GMap = React.createClass({
     this.setState(this.getEventData());
   },
 
+  componentDidUpdate(prevProps) {
+    console.log("prevprops fave is")
+    console.log(prevProps.favs)
+    console.log("current props fav is")
+    console.log(this.props.favs)
+    if (prevProps.favs !== this.props.favs) {
+    this.setState(this.getEventData());
+    }
+    this.componentDidMount()
+  },
+
   getEventData: function() {
+    if (this.props.favs) {
+      console.log('FAVES')
+        var route = "/events/1"
+      } else {
+        console.log("NOT FAVES")
+        var route = "/events"
+      }
+      console.log(route)
     var events;
     var request = $.ajax({
-      url: "/events",
+      url: route,
       async: false
     });
     request.done(function(responseData){
       events = responseData;
+      console.log("{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{")
+      console.log(events)
     });
     events = events.map(function(event){
       event.marker = new google.maps.Marker({
         position: {lat: parseFloat(event.location.lat), lng: parseFloat(event.location.lng)},
-        title: event.name
+        title: event.name,
+        map: this.map
       });
       return event;
     }.bind(this));
@@ -53,7 +75,7 @@ var GMap = React.createClass({
 
   createMap: function() {
     var mapOptions = {
-      zoom: 16,
+      zoom: 15,
       center: new google.maps.LatLng(-34.397, 150.644)
     };
     return new google.maps.Map(this.refs.map_canvas, mapOptions);
@@ -64,6 +86,7 @@ var GMap = React.createClass({
       var favButt = '<form action="/subscriptions/'+event.venue_name+'" method="post" id="unfav">'+
         '<input type="hidden" name="_method" value="delete">'+
         '<input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'">'+
+        '<input type="hidden" name="subscriptions[user_id]" value="'+event.user_id+'">'+
         '<input type="submit" value="Remove from My Places" class="btn yellow"></form>';
     } else {
       var favButt = '<form action="/subscriptions" method="post" id="fav">'+

@@ -51,7 +51,7 @@ var NavBar = React.createClass({
       </ul>
     };
     var myPlaces = <ul className="left">
-          <li><MyPlacesButton loggedIn = {this.props.loggedIn} onFilterAction = {this.props.handleFilterAction}/></li>
+          <li><MyPlacesButton loggedIn = {this.loggedIn} onFilterAction = {this.handleFilterAction}/></li>
         </ul>;
 
     return(
