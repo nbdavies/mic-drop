@@ -81,3 +81,12 @@ nav li {
 .friend {
   margin-bottom: 0px;
 }
+.siteGuide {
+  background-image: url(/microphone.jpg);
+  background-size: 100%;
+  width: 80%;
+  height: 60%;
+  color: white;
+  padding: 10px;
+  box-sizing: border-box;
+}
