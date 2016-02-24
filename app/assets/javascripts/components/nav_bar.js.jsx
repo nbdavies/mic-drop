@@ -8,6 +8,10 @@ var NavBar = React.createClass({
     this.props.onEventSubmit(eventData);
   },
 
+  handleFilterAction: function(eventData) {
+    this.props.onFilterAction(eventData);
+  },
+
   maybeRenderAddEvent: function() {
     if (this.props.loggedIn.venues && this.props.loggedIn.venues.length > 0) {
       return <li><CreateEventButton onEventSubmit = {this.handleEventSubmit}/></li>;
@@ -47,7 +51,7 @@ var NavBar = React.createClass({
       </ul>
     };
     var myPlaces = <ul className="left">
-          <li><MyPlacesButton loggedIn = {this.props.loggedIn} /></li>
+          <li><MyPlacesButton loggedIn = {this.props.loggedIn} onFilterAction = {this.props.handleFilterAction}/></li>
         </ul>;
 
     return(

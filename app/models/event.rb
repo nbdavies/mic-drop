@@ -13,6 +13,8 @@ class Event < ActiveRecord::Base
     pin["venue_name"] = venue.name
     if current_user
       pin["rsvp"] = true if Rsvp.find_by(user: current_user, event: self)
+      pin["fav"] = true if Subscription.find_by(user_id: current_user.id, venue_id: venue.id)
+      pin["user_id"] = current_user.id
     end
     pin["attendees"] = self.rsvps.count
     friends_going = []

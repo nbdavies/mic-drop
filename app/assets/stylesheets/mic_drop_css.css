@@ -48,6 +48,12 @@ html, body { height: 100%; margin: 0; padding: 0; }
   width: 10px;
 }
 
+.card-butt {
+  width: 100%;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
 nav li {
   margin-left: 5px;
 }

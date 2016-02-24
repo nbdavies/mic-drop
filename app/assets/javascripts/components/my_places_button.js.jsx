@@ -3,6 +3,11 @@ var MyPlacesButton = React.createClass({
     return {clicked: false, buttName: 'My Places'};
   },
 
+  handleFilterAction: function(eventData) {
+    this.props.onFilterAction(eventData);
+  },
+
+
   handleClick: function(e) {
     e.preventDefault();
     if (this.state.clicked === false) {
@@ -10,6 +15,12 @@ var MyPlacesButton = React.createClass({
     } else{
       this.setState({clicked: false, buttName: 'My Places'})
     }
+    request = $.ajax({
+      url: 'subscriptions'
+    });
+    request.done(function(responseData){
+      handleFilterAction(responseData)
+    });
   },
 
   handleCancelButtonClick: function(e) {
@@ -20,9 +31,8 @@ var MyPlacesButton = React.createClass({
   },
 
   render: function() {
-    var placesButton =  <Button className='btn right red accent-2' onClick={this.handleClick}>{this.state.buttName}</Button>
     return(
-      placesButton
+      <Button className='btn right red accent-2' onClick={this.handleClick}>{this.state.buttName}</Button>
     );
   }
 });

@@ -1,8 +1,6 @@
 class RsvpsController < ApplicationController
   protect_from_forgery except: :create
-  def new
 
-  end
 
   def create
     rsvp = Rsvp.create(user_id: current_user.id, event_id: rsvp_params[:event_id])
