@@ -147,6 +147,7 @@ var GMap = React.createClass({
     var mapOptions = {
       zoom: 15,
       center: new google.maps.LatLng(-34.397, 150.644),
+      disableDefaultUI: true,
       mapTypeControlOptions: {
         mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
       }
