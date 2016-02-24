@@ -5,7 +5,8 @@ class EventsController < ApplicationController
                           date: event_params[:date],
                     start_time: event_params[:start_time],
                       end_time: event_params[:end_time],
-                   description: event_params[:description])
+                   description: event_params[:description],
+                         photo: event_params[:photo])
     tags = event_params[:tags].split(", ")
     tags.each do |tag|
       @event.tags.find_or_create_by(name: tag)
@@ -20,9 +21,25 @@ class EventsController < ApplicationController
     render :json => pins
   end
 
+  def show
+    subs = Subscription.where(user_id: current_user.id)
+    events = []
+    subs.each do |sub|
+      if Event.find_by(venue_id: sub.venue_id)
+        event = Event.find_by(venue_id: sub.venue_id)
+        events << event
+      end
+    end
+
+    pins = events.to_a.map{ |event| event.pin(current_user)}
+    pins.select!{|pin| pin[:date] == Date.today}
+    render :json => pins
+  end
+
   private
+
   def event_params
-    params.require(:event).permit(:venue_id, :name, :date, :start_time, :end_time, :description, :tags)
+    params.require(:event).permit(:venue_id, :name, :date, :start_time, :end_time, :description, :photo, :tags)
   end
 
 end

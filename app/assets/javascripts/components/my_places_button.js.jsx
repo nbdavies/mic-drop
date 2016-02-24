@@ -3,8 +3,8 @@ var MyPlacesButton = React.createClass({
     return {clicked: false, buttName: 'My Places'};
   },
 
-  handleFilterAction: function(eventData) {
-    this.props.onFilterAction(eventData);
+  handleFilterAction: function() {
+    this.props.onFilterAction();
   },
 
 
@@ -15,20 +15,9 @@ var MyPlacesButton = React.createClass({
     } else{
       this.setState({clicked: false, buttName: 'My Places'})
     }
-    request = $.ajax({
-      url: 'subscriptions'
-    });
-    request.done(function(responseData){
-      handleFilterAction(responseData)
-    });
+    this.handleFilterAction()
   },
 
-  handleCancelButtonClick: function(e) {
-    e.preventDefault();
-    $("#modal4").closeModal();
-    $(".lean-overlay").hide();
-    this.setState({clicked: false})
-  },
 
   render: function() {
     return(
