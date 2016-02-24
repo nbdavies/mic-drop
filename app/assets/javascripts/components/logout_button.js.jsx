@@ -17,7 +17,7 @@ var LogoutButton = React.createClass({
 
   render: function() {
     return (
-      <button className="btn right" onClick={this.handleClick}>log out</button>
+      <button className="btn-flat waves-effect waves-yellow lighten-3 right" onClick={this.handleClick}>log out</button>
     );
   }
 });
