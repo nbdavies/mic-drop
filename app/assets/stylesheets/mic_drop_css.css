@@ -57,3 +57,7 @@ html, body { height: 100%; margin: 0; padding: 0; }
 nav li {
   margin-left: 5px;
 }
+.circle {
+  max-height: 40px;
+  max-width: 40px;
+}

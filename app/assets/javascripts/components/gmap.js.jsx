@@ -88,9 +88,19 @@ var GMap = React.createClass({
   },
 
   eventTags: function(event){
-    var tags = event.tags.map(function(tag){
+    var tags = "";
+    if (event.tags) {tags = event.tags.map(function(tag){
       return '<div class="chip">'+tag.name+'</div>';
-    });
+    });}
+    return tags;
+  },
+
+  friendsAttending: function(event){
+    var friends = "";
+    if (event.friends_going) {friends = event.friends_going.map(function(friend){
+      return '<img src="'+friend.picture_url+'" title="'+friend.name+'" class="circle">';
+    });}
+    return friends;
   },
 
   infoWindow: function(event){
@@ -99,8 +109,9 @@ var GMap = React.createClass({
              '<span class="card-title"><h5>'+event.name+'</h5></span>' +
            '</div>' +
            '<div class="card-content">' +
-             '<b>Attendees: </b><span id="attendees">'+event.attendees+'</span>'+
-             '<p>'+event.description+'</p><b>'+event.venue_name+'</b><p>'+
+             '<b>Attendees: </b><span id="attendees">'+event.attendees+'</span><br>'+
+             '<b>Your friends going:</b><br>'+this.friendsAttending(event)+
+             '<p><b>Event Details: <br></b>'+event.description+'</p><b>'+event.venue_name+'</b><p>'+
              event.address+'</p><p>'+event.date+'</p><p>start time: '+event.start_time+
              '</p><p>end time: '+event.end_time+'</p>' +
            '</div>'+
