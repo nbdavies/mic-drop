@@ -33,17 +33,17 @@ var GMap = React.createClass({
       });
 
       if (event.fav) {
-        var favButt = '<form action="/subscriptions/'+event.venue_name+'" method="post" id="unfav"><input type="hidden" name="_method" value="delete"><input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'"><input type="submit" value="Remove from My Places" class="btn yellow"></form>'
+        var favButt = '<form action="/subscriptions/'+event.venue_name+'" method="post" id="unfav"><input type="hidden" name="_method" value="delete"><input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'"><input type="submit" value="Remove from My Places" class="card-butt btn yellow"></form>'
       } else {
         var favButt = '<form action="/subscriptions" method="post" id="fav">'+
-        '<input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'"><input type="submit" value="Add to My Places" class="btn grey"></form>'
+        '<input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'"><input type="submit" value="Add to My Places" class="card-butt btn grey"></form>'
       }
         if (event.rsvp) {
           var rsvp_form = '<form action="/rsvps/'+event.id+'" method="post" id="unrsvp">'+
-          '<input type="hidden" name="_method" value="delete"><input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="Flake Out" class="btn red"></form>'
+          '<input type="hidden" name="_method" value="delete"><input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="Flake Out" class="card-butt btn red"></form>'
         } else if (this.props.loggedIn) {
           var rsvp_form = '<form action="/rsvps" method="post" id="rsvp">'+
-          '<input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="RSVP" class="btn green"></form>'
+          '<input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="RSVP" class="card-butt btn green"></form>'
         } else { var rsvp_form = "" }
 
       var infowindow = new google.maps.InfoWindow({
