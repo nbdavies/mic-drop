@@ -21,10 +21,8 @@ var GMap = React.createClass({
 
   getEventData: function() {
     if (this.props.favs) {
-      console.log('FAVES')
         var route = "/events/1"
       } else {
-        console.log("NOT FAVES")
         var route = "/events"
       }
       console.log(route)
@@ -35,14 +33,13 @@ var GMap = React.createClass({
     });
     request.done(function(responseData){
       events = responseData;
-      console.log("{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{")
-      console.log(events)
     });
     events = events.map(function(event){
       event.marker = new google.maps.Marker({
         position: {lat: parseFloat(event.location.lat), lng: parseFloat(event.location.lng)},
         title: event.name,
-        map: this.map
+        map: this.map,
+        icon: "/mic-2.png"
       });
       return event;
     }.bind(this));
@@ -92,14 +89,72 @@ var GMap = React.createClass({
         "stylers": [
           { "visibility": "off" }
         ]
-      }
-
+      },
+      {
+        "featureType": "landscape",
+        "stylers": [
+          { "visibility": "off" }
+        ]
+      },
+      {
+        "featureType": "poi.park",
+        "stylers": [
+          { "visibility": "on" }
+        ]
+      },
+      //Desaturate option
+      // {
+      //   "stylers": [
+      //     { "saturation": -42 },
+      //     { "lightness": 16 },
+      //     { "gamma": 0.79 }
+      //   ]
+      // }
+      //Grayscale option
+      // {
+      //   "stylers": [
+      //     { "saturation": -100 },
+      //     { "lightness": -9 },
+      //     { "gamma": 0.71 }
+      //   ]
+      // }
+      //Monochrome option
+      // {
+      //   "stylers": [
+      //     { "hue": "#ff8800" }
+      //   ]
+      // }
+      //Reverse monochrome
+  //       {
+  //   "stylers": [
+  //       { "invert_lightness": true },
+  //       { "saturation": 28 },
+  //       { "gamma": 1.57 },
+  //       { "lightness": -13 }
+  //     ]
+  // }
+    // invert lightness
+      // {
+      //   "stylers": [
+      //     { "invert_lightness": true },
+      //     { "gamma": 1.57 },
+      //     { "lightness": -13 },
+      //     { "saturation": -35 }
+      //   ]
+      // }
     ];
+    var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
     var mapOptions = {
       zoom: 15,
-      center: new google.maps.LatLng(-34.397, 150.644)
+      center: new google.maps.LatLng(-34.397, 150.644),
+      mapTypeControlOptions: {
+        mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+      }
     };
-    return new google.maps.Map(this.refs.map_canvas, mapOptions);
+    var map = new google.maps.Map(this.refs.map_canvas, mapOptions);
+    map.mapTypes.set('map_style', styledMap);
+    map.setMapTypeId('map_style');
+    return map;
   },
 
   venueFavForm: function(event){

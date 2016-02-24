@@ -55,7 +55,7 @@ var NavBar = React.createClass({
         </ul>;
 
     return(
-      <nav className="navigation orange darken-3">
+      <nav className="navigation light-blue lighten-1">
         <div className="brand-logo center">mic_drop </div>
         {this.props.loggedIn ?  loggedIn : loggedOut}
         {this.props.loggedIn ?  myPlaces : "" }
