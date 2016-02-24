@@ -10,6 +10,7 @@ var NavBar = React.createClass({
 
   handleFilterAction: function(eventData) {
     this.props.onFilterAction(eventData);
+  },
 
   maybeRenderAddEvent: function() {
     if (this.props.loggedIn.venues && this.props.loggedIn.venues.length > 0) {
