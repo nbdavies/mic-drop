@@ -71,6 +71,16 @@ nav li {
   color: white;
 }
 
-.indigo {
-  height: 65px;
+button.indigo {
+  margin-top: 15px;
+}
+
+.site-guide {
+  text-align: center;
+}
+.btn {
+  vertical-align: inherit;
+}
+.btn-flat {
+  vertical-align: inherit;
 }
