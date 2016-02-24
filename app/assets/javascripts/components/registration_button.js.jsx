@@ -21,7 +21,7 @@ var RegisterButton = React.createClass({
   },
 
   render: function() {
-    var regButton = <button className="btn right red accent-2" onClick={this.handleClick} >register</button>;
+    var regButton = <button className="btn-flat indigo accent-3 right" onClick={this.handleClick} >register</button>;
     var regFormDiv = <div id='modal1' className='modal registrationForm'><div className="modal-content">
       <RegistrationForm onUserLogin = {this.handleUserLogin}
         handleCancelButtonClick = {this.handleCancelButtonClick}

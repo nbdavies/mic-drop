@@ -21,7 +21,7 @@ var CreateEventButton = React.createClass({
   },
 
   render: function() {
-    var createEventButton = <button className="btn right red accent-2" onClick={this.handleClick}>create event</button>;
+    var createEventButton = <button className="btn-flat indigo accent-3 right" onClick={this.handleClick}>create event</button>;
     var createEventFormDiv = <div id='modal3' className='modal eventForm'><div className="modal-content">
       <EventForm
       handleCancelButtonClick = {this.handleCancelButtonClick}

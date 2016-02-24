@@ -116,8 +116,8 @@ var EventForm = React.createClass({
           placeholder="tag1,tag2"
           value={this.state.tags}
           onChange={this.handleTagsChange} />
-        <input type="submit" value="Drop the mic!" className="btn" onClick={this.handleSubmit} />
-        <Button onClick={this.props.handleCancelButtonClick}>Cancel</Button>
+        <input type="submit" value="Drop the mic!" className="btn-flat indigo accent-3" onClick={this.handleSubmit} />
+        <Button className="btn-flat indigo accent-3 right" onClick={this.props.handleCancelButtonClick}>Cancel</Button>
       </form></div>
     );
   }

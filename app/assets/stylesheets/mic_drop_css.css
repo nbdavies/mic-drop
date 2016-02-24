@@ -1,4 +1,8 @@
-html, body { height: 100%; margin: 0; padding: 0; }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Raleway', sans-serif; }
 #map { height: 100%; }
 .registrationForm {
   z-index: 1003;
@@ -58,6 +62,15 @@ nav li {
   margin-left: 5px;
 }
 .circle {
-  max-height: 40px;
-  max-width: 40px;
+  max-height: 60px;
+  max-width: 60px;
+  margin-bottom: -22px;
+}
+
+.btn-flat {
+  color: white;
+}
+
+.indigo {
+  height: 65px;
 }
