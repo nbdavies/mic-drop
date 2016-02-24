@@ -11,8 +11,8 @@ $(document).ready(function(){
       $unrsvp.closest(".info-window").find("#attendees").text(responseData.attendees);
       var rsvp_form = '<form action="/rsvps" method="post" id="rsvp">'+
         '<input type="hidden" name="rsvp[event_id]" value='+responseData.id+'><input type="submit" value="RSVP" class="btn green"></form>'
-      $unrsvp.closest(".card-action").append(rsvp_form);
-      $unrsvp.hide();
+      $unrsvp.replaceWith(rsvp_form);
+      // $unrsvp.hide();
     });
   });
 
@@ -28,8 +28,8 @@ $(document).ready(function(){
       $rsvp.closest(".info-window").find("#attendees").text(responseData.attendees);
       var unrsvp_form = '<form action="/rsvps/'+responseData.id+'" method="post" id="unrsvp">'+
         '<input type="hidden" name="_method" value="delete"><input type="hidden" name="rsvp[event_id]" value='+responseData.id+'><input type="submit" value="Flake Out" class="btn red"></form>'
-      $rsvp.closest(".card-action").append(unrsvp_form);
-      $rsvp.hide();
+      $rsvp.replaceWith(unrsvp_form);
+      // $rsvp.hide();
     });
   });
 })

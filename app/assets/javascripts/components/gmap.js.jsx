@@ -5,7 +5,6 @@ var GMap = React.createClass({
   },
 
   addEvent: function() {
-    console.log(this.getEventData());
     this.setState(this.getEventData());
   },
 
@@ -60,6 +59,20 @@ var GMap = React.createClass({
     return new google.maps.Map(this.refs.map_canvas, mapOptions);
   },
 
+  venueFavForm: function(event){
+    if (event.fav) {
+      var favButt = '<form action="/subscriptions/'+event.venue_name+'" method="post" id="unfav">'+
+        '<input type="hidden" name="_method" value="delete">'+
+        '<input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'">'+
+        '<input type="submit" value="Remove from My Places" class="btn yellow"></form>';
+    } else {
+      var favButt = '<form action="/subscriptions" method="post" id="fav">'+
+        '<input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'">'+
+        '<input type="submit" value="Add to My Places" class="btn grey"></form>';
+    };
+    return favButt;
+  },
+
   eventRsvpForm: function(event){
     if (event.rsvp) {
       var rsvp_form = '<form action="/rsvps/'+event.id+'" method="post" id="unrsvp">'+
@@ -92,7 +105,7 @@ var GMap = React.createClass({
              '</p><p>end time: '+event.end_time+'</p>' +
            '</div>'+
            '<div class="card-action">'+
-             this.eventTags(event)+this.eventRsvpForm(event)+
+             this.eventTags(event)+this.eventRsvpForm(event)+this.venueFavForm(event)+
            '</div></div>';
   },
 
