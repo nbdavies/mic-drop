@@ -28,8 +28,8 @@ Tag.find(4).venues.create(address: "610 N Rush St, Chicago, IL 60611", lat:"41.8
 Tag.find(9).venues.create(address: "540 N Dearborn St
 Chicago, IL 60610", lat:"41.8920388", lng:"-87.6326061", name: "Storage Locker #312", type_id: 2+ rand(10), manager_id: 1)
 
-Tag.find(4).events.create(name: "Slumber Party", description: 'Bring a toothbrush', venue_id: 3, date: Faker::Time.between(Date.today - 1, Date.today).to_date, start_time: Faker::Time.between(Date.today - 1, Date.today).to_time, end_time: Faker::Time.between(Date.today - 1, Date.today).to_time)
+Tag.find(4).events.create(name: "Slumber Party", description: 'Bring a toothbrush', venue_id: 3, date: Faker::Time.between(Date.today + 1, Date.today).to_date, start_time: Faker::Time.between(Date.today - 1, Date.today).to_time, end_time: Faker::Time.between(Date.today - 1, Date.today).to_time)
 
-Tag.find(7).events.create(name: "Pea Knuckle Tunament", description: "$100 to enter", venue_id: 4, date: Faker::Time.between(Date.today - 1, Date.today).to_date, start_time: Faker::Time.between(Date.today - 1, Date.today).to_time, end_time: Faker::Time.between(Date.today - 1, Date.today).to_time)
+Tag.find(7).events.create(name: "Pea Knuckle Tunament", description: "$100 to enter", venue_id: 4, date: Faker::Time.between(Date.today + 1, Date.today).to_date, start_time: Faker::Time.between(Date.today - 1, Date.today).to_time, end_time: Faker::Time.between(Date.today - 1, Date.today).to_time)
 
 # 20.times {Rsvp.create(event.id)}

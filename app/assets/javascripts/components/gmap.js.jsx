@@ -8,8 +8,15 @@ var GMap = React.createClass({
     this.setState(this.getEventData());
   },
 
-  componentDidUpdate: function() {
-    return this.getEventData();
+  componentDidUpdate(prevProps) {
+    console.log("prevprops fave is")
+    console.log(prevProps.favs)
+    console.log("current props fav is")
+    console.log(this.props.favs)
+    if (prevProps.favs !== this.props.favs) {
+    this.setState(this.getEventData());
+    }
+    this.componentDidMount()
   },
 
   getEventData: function() {
@@ -28,11 +35,14 @@ var GMap = React.createClass({
     });
     request.done(function(responseData){
       events = responseData;
+      console.log("{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{")
+      console.log(events)
     });
     events = events.map(function(event){
       event.marker = new google.maps.Marker({
         position: {lat: parseFloat(event.location.lat), lng: parseFloat(event.location.lng)},
-        title: event.name
+        title: event.name,
+        map: this.map
       });
       return event;
     }.bind(this));
@@ -65,7 +75,7 @@ var GMap = React.createClass({
 
   createMap: function() {
     var mapOptions = {
-      zoom: 16,
+      zoom: 15,
       center: new google.maps.LatLng(-34.397, 150.644)
     };
     return new google.maps.Map(this.refs.map_canvas, mapOptions);
