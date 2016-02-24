@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   resources :events
   resources :venues
   resources :rsvps
-
-
+  resources :subscriptions
   get '/users/subscriptions'
 
   resources :friendships

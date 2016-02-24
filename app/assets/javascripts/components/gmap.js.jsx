@@ -40,12 +40,11 @@ var GMap = React.createClass({
         '<input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="RSVP" class="btn green"></form>'
       }
 
-      if (this.state.loggedIn) {
-        var favButt = '<form action="/rsvps/'+event.id+'" method="post" id="unrsvp">'+
-        '<input type="hidden" name="_method" value="delete"><input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="Flake Out" class="btn red"></form>'
+      if (event.fav) {
+        var favButt = '<form action="/subscriptions/'+event.venue_name+'" method="post" id="unfav"><input type="hidden" name="_method" value="delete"><input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'"><input type="submit" value="Remove from My Places" class="btn yellow"></form>'
       } else {
-        var favButt = '<form action="/rsvps" method="post" id="rsvp">'+
-        '<input type="hidden" name="rsvp[event_id]" value='+event.id+'><input type="submit" value="RSVP" class="btn green"></form>'
+        var favButt = '<form action="/subscriptions" method="post" id="fav">'+
+        '<input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'"><input type="submit" value="Add to My Places" class="btn grey"></form>'
       }
 
       var infowindow = new google.maps.InfoWindow({
@@ -60,7 +59,7 @@ var GMap = React.createClass({
               '</p><p>end time: '+event.end_time+'</p>' +
               '</div>'+
               '<div class="card-action">'+
-              tags+rsvp_form+
+              tags+rsvp_form+favButt+
               '</div></div>'
       });
       marker.addListener('click', function() {

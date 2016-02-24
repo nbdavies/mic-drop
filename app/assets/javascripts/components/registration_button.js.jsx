@@ -17,15 +17,15 @@ var RegisterButton = React.createClass({
   },
 
   handleUserLogin: function(user) {
-      this.props.onUserLogin(user)
+      this.props.onUserLogin(user);
   },
 
   render: function() {
-    var regButton = <button className="btn right red accent-2"  onClick={this.handleClick}>register</button>
+    var regButton = <button className="btn right red accent-2" onClick={this.handleClick} >register</button>;
     var regFormDiv = <div id='modal1' className='modal registrationForm'><div className="modal-content">
       <RegistrationForm onUserLogin = {this.handleUserLogin}
         handleCancelButtonClick = {this.handleCancelButtonClick}
-        /></div></div>
+        /></div></div>;
     var button = (this.state.clicked ? regFormDiv : regButton);
     return(
       button
