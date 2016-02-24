@@ -5,8 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create(username: "jimmy", password: "thruster", email: "jimmy@storageco.com")
-
+jimmy = User.create(username: "jimmy", password: "thruster", email: "jimmy@storageco.com", facebook_id: 1, picture_url: "https://pbs.twimg.com/profile_images/679812564570771456/7NRudISs.jpg")
+gary = User.create(username: "gary", password: "thruster", email: "gary@storageco.com", facebook_id: 2, picture_url: "http://www.kotb.com/Gallery/GaryGlover1.JPG")
+Friendship.create(user: jimmy, friend: gary)
+Friendship.create(user: gary, friend: jimmy)
 50.times {User.create(username: Faker::Internet.user_name, password: Faker::Internet.password, email: Faker::Internet.email)}
 
 10.times {Type.create(name: Faker::Book.genre)}
@@ -15,10 +17,10 @@ User.create(username: "jimmy", password: "thruster", email: "jimmy@storageco.com
 
 # 20.times {
 
-Tag.first.events.create(name: "Jazz Stuff", description: 'So much goddamn jazz!', venue_id: 1, date: Faker::Time.between(Date.today - 1, Date.today).to_date, start_time: Faker::Time.between(Date.today - 1, Date.today).to_time, end_time: Faker::Time.between(Date.today - 1, Date.today).to_time)
+Tag.first.events.create(name: "Jazz Stuff", description: 'So much goddamn jazz!', venue_id: 1, date: Date.today, start_time: Faker::Time.between(Date.today - 1, Date.today).to_time, end_time: Faker::Time.between(Date.today - 1, Date.today).to_time)
 Event.first.tags.create(name: "Nick")
 Tag.find(2).events.create(name: "GLWSTX", description: "The heaviest drops!", venue_id: 2, date: Faker::Time.between(Date.today - 1, Date.today).to_date, start_time: Faker::Time.between(Date.today - 1, Date.today).to_time, end_time: Faker::Time.between(Date.today - 1, Date.today).to_time)
-
+jimmy.rsvps.create(event_id: 1)
 Tag.find(3).venues.create(address: "225 W Hubbard St #2 Chicago, IL 60654", lat:"41.889816", lng:"-87.635504", name: "Rock n' Roll Town", type_id: 1 + rand(9), manager_id:1+ rand(49))
 
 Tag.find(8).venues.create(address: "353 W Grand Ave Chicago, IL 60654", lat:"41.891398", lng:"-87.637435", name: "E-D-AMN", type_id: 2+ rand(10), manager_id: 1+ rand(50))
