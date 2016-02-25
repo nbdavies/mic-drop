@@ -53,7 +53,7 @@ html, body {
 }
 
 .card-butt {
-  width: 100%;
+  margin: 10px;
   margin-left: 20px;
   margin-right: 10px;
 }
@@ -99,6 +99,15 @@ button.indigo {
   color: white;
   padding: 10px;
   box-sizing: border-box;
+}
+
+.site-footer{
+  position: fixed;
+  height: 20px;
+  background-color: #3d5afe;
+  bottom: 0px;
+  width: 100%;
+  color: white;
 }
 
 .event {

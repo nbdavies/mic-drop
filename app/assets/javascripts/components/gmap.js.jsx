@@ -1,31 +1,24 @@
 var GMap = React.createClass({
 
   getInitialState: function() {
-    return this.getEventData();
+    return this.getEventData(this.props);
   },
 
   addEvent: function() {
-    this.setState(this.getEventData());
+    this.setState(this.getEventData(this.props));
   },
 
-  componentDidUpdate(prevProps) {
-    console.log("prevprops fave is")
-    console.log(prevProps.favs)
-    console.log("current props fav is")
-    console.log(this.props.favs)
-    if (prevProps.favs !== this.props.favs) {
-    this.setState(this.getEventData());
-    }
-    this.componentDidMount()
+  componentWillReceiveProps: function(nextProps) {
+    console.log("will recieve!");
+    console.log(nextProps);
+    this.state.events.forEach(function(event){
+      event.marker.setMap(null);
+    });
+    this.setState(this.getEventData(nextProps));
   },
 
-  getEventData: function() {
-    if (this.props.favs) {
-        var route = "/events/1"
-      } else {
-        var route = "/events"
-      }
-      console.log(route)
+  getEventData: function(props) {
+    var route = (props.favs ? "/events/1" : "/events")
     var events;
     var request = $.ajax({
       url: route,
@@ -102,47 +95,12 @@ var GMap = React.createClass({
           { "visibility": "on" }
         ]
       },
-      //Desaturate option
-      // {
-      //   "stylers": [
-      //     { "saturation": -42 },
-      //     { "lightness": 16 },
-      //     { "gamma": 0.79 }
-      //   ]
-      // }
-      //Grayscale option
-      // {
-      //   "stylers": [
-      //     { "saturation": -100 },
-      //     { "lightness": -9 },
-      //     { "gamma": 0.71 }
-      //   ]
-      // }
-      //Monochrome option
       {
         "stylers": [
           { "saturation": -60 },
           { "hue": "#3d5afe" }
         ]
       }
-      //Reverse monochrome
-  //       {
-  //   "stylers": [
-  //       { "invert_lightness": true },
-  //       { "saturation": 28 },
-  //       { "gamma": 1.57 },
-  //       { "lightness": -13 }
-  //     ]
-  // }
-    // invert lightness
-      // {
-      //   "stylers": [
-      //     { "invert_lightness": true },
-      //     { "gamma": 1.57 },
-      //     { "lightness": -13 },
-      //     { "saturation": -35 }
-      //   ]
-      // }
     ];
     var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
     var mapOptions = {
@@ -161,13 +119,13 @@ var GMap = React.createClass({
 
   venueFavForm: function(event){
     if (event.fav) {
-      var favButt = '<form action="/subscriptions/'+event.venue_name+'" method="post" id="unfav">'+
+      var favButt = '<form action="/subscriptions/'+event.venue_name+'" method="post" id="unfav" class="card-butt">'+
         '<input type="hidden" name="_method" value="delete">'+
         '<input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'">'+
         '<input type="hidden" name="subscriptions[user_id]" value="'+event.user_id+'">'+
         '<input type="submit" value="Remove from My Places" class="btn yellow"></form>';
     } else if (this.props.loggedIn) {
-      var favButt = '<form action="/subscriptions" method="post" id="fav">'+
+      var favButt = '<form action="/subscriptions" method="post" id="fav" class="card-butt">'+
         '<input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'">'+
         '<input type="submit" value="Add to My Places" class="btn grey"></form>';
     } else { var favButt = "" };
@@ -176,12 +134,12 @@ var GMap = React.createClass({
 
   eventRsvpForm: function(event){
     if (event.rsvp) {
-      var rsvp_form = '<form action="/rsvps/'+event.id+'" method="post" id="unrsvp">'+
+      var rsvp_form = '<form action="/rsvps/'+event.id+'" method="post" id="unrsvp" class="card-butt">'+
       '<input type="hidden" name="_method" value="delete">'+
       '<input type="hidden" name="rsvp[event_id]" value='+event.id+'>'+
       '<input type="submit" value="Flake Out" class="btn red"></form>'
     } else if (this.props.loggedIn) {
-      var rsvp_form = '<form action="/rsvps" method="post" id="rsvp">'+
+      var rsvp_form = '<form action="/rsvps" method="post" id="rsvp" class="card-butt">'+
       '<input type="hidden" name="rsvp[event_id]" value='+event.id+'>'+
       '<input type="submit" value="RSVP" class="btn green"></form>'
     } else { var rsvp_form = "" };
@@ -222,6 +180,7 @@ var GMap = React.createClass({
   },
 
   render: function(){
+    console.log("in render")
     this.state.events.forEach(function(event){
       var infowindow = new google.maps.InfoWindow({
         content: this.infoWindow(event)

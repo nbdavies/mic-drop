@@ -11,9 +11,9 @@ var MyPlacesButton = React.createClass({
   handleClick: function(e) {
     e.preventDefault();
     if (this.state.clicked === false) {
-      this.setState({clicked: true, buttName: 'All Events'});
+      this.setState({clicked: true, buttName: 'Show All Venues'});
     } else{
-      this.setState({clicked: false, buttName: 'My Places'})
+      this.setState({clicked: false, buttName: 'Show My Places'})
     }
     this.handleFilterAction()
   },
