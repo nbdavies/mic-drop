@@ -14,5 +14,7 @@
 coverage
 # Ignore application configuration
 /config/application.yml
+/public/.DS_Store
+/app/assets/.DS_Store
 .env
 # Ignore Gemfile.lock

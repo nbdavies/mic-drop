@@ -161,13 +161,13 @@ var GMap = React.createClass({
 
   venueFavForm: function(event){
     if (event.fav) {
-      var favButt = '<form action="/subscriptions/'+event.venue_name+'" method="post" id="unfav">'+
+      var favButt = '<form action="/subscriptions/'+event.venue_name+'" method="post" id="unfav" class="card-butt">'+
         '<input type="hidden" name="_method" value="delete">'+
         '<input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'">'+
         '<input type="hidden" name="subscriptions[user_id]" value="'+event.user_id+'">'+
         '<input type="submit" value="Remove from My Places" class="btn yellow"></form>';
     } else if (this.props.loggedIn) {
-      var favButt = '<form action="/subscriptions" method="post" id="fav">'+
+      var favButt = '<form action="/subscriptions" method="post" id="fav" class="card-butt">'+
         '<input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'">'+
         '<input type="submit" value="Add to My Places" class="btn grey"></form>';
     } else { var favButt = "" };
@@ -176,12 +176,12 @@ var GMap = React.createClass({
 
   eventRsvpForm: function(event){
     if (event.rsvp) {
-      var rsvp_form = '<form action="/rsvps/'+event.id+'" method="post" id="unrsvp">'+
+      var rsvp_form = '<form action="/rsvps/'+event.id+'" method="post" id="unrsvp" class="card-butt">'+
       '<input type="hidden" name="_method" value="delete">'+
       '<input type="hidden" name="rsvp[event_id]" value='+event.id+'>'+
       '<input type="submit" value="Flake Out" class="btn red"></form>'
     } else if (this.props.loggedIn) {
-      var rsvp_form = '<form action="/rsvps" method="post" id="rsvp">'+
+      var rsvp_form = '<form action="/rsvps" method="post" id="rsvp" class="card-butt">'+
       '<input type="hidden" name="rsvp[event_id]" value='+event.id+'>'+
       '<input type="submit" value="RSVP" class="btn green"></form>'
     } else { var rsvp_form = "" };
