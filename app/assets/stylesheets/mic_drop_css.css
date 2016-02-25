@@ -118,3 +118,7 @@ button.indigo {
 .event {
   max-height: 200px;
 }
+
+.header {
+  font-weight: bold;
+}
