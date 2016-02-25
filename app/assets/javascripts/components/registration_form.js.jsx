@@ -35,7 +35,9 @@ var RegistrationForm = React.createClass({
       if (responseData.username === username){
         this.handleLogin(responseData)
         $("#modal1").closeModal();
-        $(".lean-overlay").hide()
+        $(".lean-overlay").hide();
+      } else {
+        this.setState({errors: responseData});
       }
     }.bind(this));
   },

@@ -15,7 +15,7 @@ describe 'logging in', :type => :feature, :js => true do
     click_button 'login'
     fill_in 'username', with: user.username
     fill_in 'password', with: user.password
-    click_button 'Login'
+    click_on 'Login'
     expect(page).to have_content 'LOG OUT'
   end
 
