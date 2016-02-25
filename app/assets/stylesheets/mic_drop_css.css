@@ -90,3 +90,6 @@ nav li {
   padding: 10px;
   box-sizing: border-box;
 }
+.event {
+  max-height: 200px;
+}

@@ -50,6 +50,7 @@ gem 'browserify-rails'
 # Paperclip and S3 for photos
 gem "paperclip", "~> 4.2"
 gem 'aws-sdk-v1'
+gem 'gravatar_image_tag'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -119,11 +119,12 @@ var GMap = React.createClass({
       //   ]
       // }
       //Monochrome option
-      // {
-      //   "stylers": [
-      //     { "hue": "#ff8800" }
-      //   ]
-      // }
+      {
+        "stylers": [
+          { "saturation": -60 },
+          { "hue": "#3d5afe" }
+        ]
+      }
       //Reverse monochrome
   //       {
   //   "stylers": [
@@ -206,7 +207,7 @@ var GMap = React.createClass({
 
   infoWindow: function(event){
     return '<div class="info-window"><div class="card-image">' +
-             '<img src="'+event.photo+'"/>' +
+             '<img src="'+event.photo+'" class="event" />' +
              '<span class="card-title"><h5>'+event.name+'</h5></span>' +
            '</div>' +
            '<div class="card-content">' +

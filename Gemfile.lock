@@ -97,6 +97,7 @@ GEM
       activesupport (>= 4.1.0)
     google_places (0.32.0)
       httparty (~> 0.13.1)
+    gravatar_image_tag (1.2.0)
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -250,6 +251,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.0)
   faker
   google_places
+  gravatar_image_tag
   jbuilder (~> 2.0)
   jquery-rails
   paperclip (~> 4.2)
