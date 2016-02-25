@@ -64,7 +64,7 @@ $(document).ready(function(){
         '<input type="hidden" name="_method" value="delete">'+
         '<input type="hidden" name="subscriptions[venue_name]" value="'+responseData[0]+'">'+
         '<input type="hidden" name="subscriptions[user_id]" value="'+responseData[1]+'">'+
-        '<input type="submit" value="Remove from My Places" class="btn yellow"></form>';
+        '<input type="submit" value="Remove from My Places" class="btn pink"></form>';
       $fav.replaceWith(unfav_form);
     });
   });

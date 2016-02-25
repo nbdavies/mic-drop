@@ -54,8 +54,8 @@ var LoginForm = React.createClass({
           placeholder="password"
           value={this.state.password}
           onChange={this.handlePasswordChange} />
-        <input type="submit" value="Login" className="waves-effect waves-light btn-flat indigo accent-3 right" onClick={this.handleSubmit} />
-        <Button className="btn indigo accent-3" onClick={this.props.handleCancelButtonClick}>Close Window</Button>
+        <input type="submit" value="Login" className="waves-effect waves-light btn-flat indigo accent-3 left" onClick={this.handleSubmit} />
+        <Button className="btn indigo accent-3 right" id="cancel" onClick={this.props.handleCancelButtonClick}>cancel</Button>
       </form></div>
 
     );

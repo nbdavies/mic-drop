@@ -59,8 +59,8 @@ html, body {
 
 .card-butt {
   margin: 10px;
-  margin-left: 20px;
-  margin-right: 10px;
+/*  margin-left: 20px;
+  margin-right: 10px;*/
 }
 
 nav li {
@@ -117,4 +117,19 @@ button.indigo {
 
 .event {
   max-height: 200px;
+}
+
+.header {
+  font-weight: bold;
+
+}
+
+.site-guide {
+  margin-top: 10%;
+  padding: 4%;
+}
+
+#cancel {
+  margin-bottom: 2%;
+  margin-top: -2px;
 }
