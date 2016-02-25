@@ -28,7 +28,7 @@ var NavBar = React.createClass({
         <RegisterButton loggedIn = {this.props.loggedIn}
                      onUserLogin = {this.handleUserLogin}
         />
-      </ul>
+    </ul>;
 
     var addEventButton = <li><CreateEventButton onEventSubmit = {this.handleEventSubmit}/></li>;
     var venues = this.props.loggedIn.venues;
