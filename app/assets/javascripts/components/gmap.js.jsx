@@ -1,21 +1,24 @@
 var GMap = React.createClass({
 
   getInitialState: function() {
-    return this.getEventData();
+    return this.getEventData(this.props);
   },
 
   addEvent: function() {
-    this.setState(this.getEventData());
+    this.setState(this.getEventData(this.props));
   },
 
-  // componentDidUpdate: function(prevProps) {
-  //   // if (prevProps.favs !== this.props.favs) {
-  //     events = this.getEventData()
-  //     // this.setState(events, this.componentDidMount.bind(this));
-  // },
+  componentWillReceiveProps: function(nextProps) {
+    console.log("will recieve!");
+    console.log(nextProps);
+    this.state.events.forEach(function(event){
+      event.marker.setMap(null);
+    });
+    this.setState(this.getEventData(nextProps));
+  },
 
-  getEventData: function() {
-    var route = (this.props.favs ? "/events/1" : "/events")
+  getEventData: function(props) {
+    var route = (props.favs ? "/events/1" : "/events")
     var events;
     var request = $.ajax({
       url: route,
@@ -92,47 +95,12 @@ var GMap = React.createClass({
           { "visibility": "on" }
         ]
       },
-      //Desaturate option
-      // {
-      //   "stylers": [
-      //     { "saturation": -42 },
-      //     { "lightness": 16 },
-      //     { "gamma": 0.79 }
-      //   ]
-      // }
-      //Grayscale option
-      // {
-      //   "stylers": [
-      //     { "saturation": -100 },
-      //     { "lightness": -9 },
-      //     { "gamma": 0.71 }
-      //   ]
-      // }
-      //Monochrome option
       {
         "stylers": [
           { "saturation": -60 },
           { "hue": "#3d5afe" }
         ]
       }
-      //Reverse monochrome
-  //       {
-  //   "stylers": [
-  //       { "invert_lightness": true },
-  //       { "saturation": 28 },
-  //       { "gamma": 1.57 },
-  //       { "lightness": -13 }
-  //     ]
-  // }
-    // invert lightness
-      // {
-      //   "stylers": [
-      //     { "invert_lightness": true },
-      //     { "gamma": 1.57 },
-      //     { "lightness": -13 },
-      //     { "saturation": -35 }
-      //   ]
-      // }
     ];
     var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
     var mapOptions = {
