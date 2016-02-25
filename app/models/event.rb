@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
   has_attached_file :photo,
                     styles: { :medium => "200x200>", :thumb => "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :photo, :content_type => /^image\/(png|gif|jpeg|jpg)/
-  
+
   def pin(current_user)
     venue = self.venue
     pin = self.attributes.to_options
@@ -17,7 +17,7 @@ class Event < ActiveRecord::Base
     pin["address"] = venue.address
     pin["venue_name"] = venue.name
     if current_user
-      pin["rsvp"] = true if Rsvp.find_by(user: current_user, event: self)
+      pin["rsvp"] = true if Rsvp.find_by(user_id: current_user, event_id: self)
       pin["fav"] = true if Subscription.find_by(user_id: current_user.id, venue_id: venue.id)
       pin["user_id"] = current_user.id
     end
@@ -30,6 +30,8 @@ class Event < ActiveRecord::Base
       end
     end
     pin["friends_going"] = friends_going
+    p "_________________________________"
+     p pin
     pin
   end
 
