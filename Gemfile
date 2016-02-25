@@ -14,7 +14,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-gem 'dotenv-rails', :groups => [:development, :test]
+
 # heroku-friendly Rails app configuration
 
 gem 'faker'
@@ -60,7 +60,8 @@ group :development, :test do
   gem 'rspec-mocks'
   gem 'shoulda-matchers'
   gem "factory_girl_rails", "~> 4.0"
-
+  gem 'database_cleaner'
+  gem 'dotenv-rails'
   if ENV['SAUCY']
   # gems for sauce
   gem 'sauce', '~> 3.1.1'
