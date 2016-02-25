@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       render :json => @user, except: :password_digest, include: :venues
     else
-      @errors = ['Login credentials not valid.']
+      @errors = {'errors': 'Login failed'}
       render :json => @errors
     end
   end
