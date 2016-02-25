@@ -101,3 +101,6 @@ button.indigo {
   box-sizing: border-box;
 }
 
+.event {
+  max-height: 200px;
+}
