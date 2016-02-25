@@ -82,7 +82,7 @@ var RegistrationForm = React.createClass({
           onChange={this.handlePasswordChange} />
         <div className="row"><button className="btn blue as-fuck" onClick={this.handleFacebook}>sync with Facebook</button></div>
         <input type="submit" value="Register" className="btn-flat indigo accent-3" onClick={this.handleSubmit} />
-        <Button className="btn-flat indigo accent-3" onClick={this.props.handleCancelButtonClick}>Close</Button>
+        <Button className="btn-flat indigo accent-3 right" onClick={this.props.handleCancelButtonClick}>Close</Button>
       </form></div>
 
     );

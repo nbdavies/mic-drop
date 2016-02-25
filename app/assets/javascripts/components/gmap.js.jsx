@@ -123,7 +123,7 @@ var GMap = React.createClass({
         '<input type="hidden" name="_method" value="delete">'+
         '<input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'">'+
         '<input type="hidden" name="subscriptions[user_id]" value="'+event.user_id+'">'+
-        '<input type="submit" value="Remove from My Places" class="btn yellow"></form>';
+        '<input type="submit" value="Remove from My Places" class="btn pink"></form>';
     } else if (this.props.loggedIn) {
       var favButt = '<form action="/subscriptions" method="post" id="fav" class="card-butt">'+
         '<input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'">'+
