@@ -206,7 +206,7 @@ var GMap = React.createClass({
 
   infoWindow: function(event){
     return '<div class="info-window"><div class="card-image">' +
-             '<img src="'+event.photo+'">' +
+             '<img src="'+event.photo+'"/>' +
              '<span class="card-title"><h5>'+event.name+'</h5></span>' +
            '</div>' +
            '<div class="card-content">' +
