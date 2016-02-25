@@ -181,14 +181,15 @@ var GMap = React.createClass({
 
   render: function(){
     console.log("in render")
+    var infowindow = new google.maps.InfoWindow(
+    //{ content: this.infoWindow(event)}
+    );
     this.state.events.forEach(function(event){
-      var infowindow = new google.maps.InfoWindow({
-        content: this.infoWindow(event)
-      });
-      google.maps.event.clearInstanceListeners(event.marker);
+      // google.maps.event.clearInstanceListeners(event.marker);
       event.marker.addListener('click', function() {
+        infowindow.setContent(this.infoWindow(event));
         infowindow.open(this.map, event.marker);
-      });
+      }.bind(this));
     }.bind(this));
 
     return(<div id="map-container" >
