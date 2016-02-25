@@ -123,7 +123,7 @@ var GMap = React.createClass({
         '<input type="hidden" name="_method" value="delete">'+
         '<input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'">'+
         '<input type="hidden" name="subscriptions[user_id]" value="'+event.user_id+'">'+
-        '<input type="submit" value="Remove from My Places" class="btn pink"></form>';
+        '<input type="submit" value="Remove from My Places" class="btn yellow"></form>';
     } else if (this.props.loggedIn) {
       var favButt = '<form action="/subscriptions" method="post" id="fav" class="card-butt">'+
         '<input type="hidden" name="subscriptions[venue_name]" value="'+event.venue_name+'">'+
@@ -164,14 +164,14 @@ var GMap = React.createClass({
   },
 
   infoWindow: function(event){
-    return '<div class="info-window center"><div class="card-image">' +
+    return '<div class="info-window"><div class="card-image">' +
              '<img src="'+event.photo+'" class="event" />' +
-             '<span class="card-title"><h5 class="blue-text">'+event.name+'</h5></span>' +
+             '<span class="card-title"><h5>'+event.name+'</h5></span>' +
            '</div>' +
            '<div class="card-content">' +
              'Today from '+event.start_time+' to '+event.end_time+'<br><span id="attendees">'+event.attendees+'</span> people going<br>'+
              this.friendsAttending(event)+
-             '<p><h6 class="header">Description</h6>'+event.description+'</p><h6 class="header">'+event.venue_name+'</h6><p>'+
+             '<p><h6>Description</h6>'+event.description+'</p><h6>'+event.venue_name+'</h6><p>'+
              event.address+'</p>' +
            '</div>'+
            '<div class="card-action">'+
@@ -181,15 +181,14 @@ var GMap = React.createClass({
 
   render: function(){
     console.log("in render")
-    var infowindow = new google.maps.InfoWindow(
-    //{ content: this.infoWindow(event)}
-    );
     this.state.events.forEach(function(event){
-      // google.maps.event.clearInstanceListeners(event.marker);
+      var infowindow = new google.maps.InfoWindow({
+        content: this.infoWindow(event)
+      });
+      google.maps.event.clearInstanceListeners(event.marker);
       event.marker.addListener('click', function() {
-        infowindow.setContent(this.infoWindow(event));
         infowindow.open(this.map, event.marker);
-      }.bind(this));
+      });
     }.bind(this));
 
     return(<div id="map-container" >
