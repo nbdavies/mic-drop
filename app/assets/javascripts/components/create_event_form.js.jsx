@@ -4,12 +4,14 @@ var EventForm = React.createClass({
   },
   handleSubmit: function(e) {
     e.preventDefault();
+    this.setState({loading: true});
     var request = $.ajax({
       url: "events",
       method: "post",
       data: {event: this.state}
     });
     request.done(function(responseData){
+      this.setState({loading: false});
       $("#modal3").closeModal();
       $(".lean-overlay").remove();
       this.props.onEventSubmit(this.state);
@@ -106,18 +108,31 @@ var EventForm = React.createClass({
           placeholder="description"
           value={this.state.description}
           onChange={this.handleDescriptionChange} />
+        <div className="file-field input-field">
+          <div className="btn indigo accent-3">
+          <span>Upload</span>
         <input type="file"
                name="photo"
                accept="image/*"
-               value={this.state.photo}
                onChange={this.handlePhotoChange}/>
+        </div>
+        <div className="file-path-wrapper">
+          <input className="file-path validate" type="text" placeholder="Image (optional)"/>
+        </div>
+        </div>
         <input
           type="text"
           placeholder="tag1,tag2"
           value={this.state.tags}
           onChange={this.handleTagsChange} />
-        <input type="submit" value="Drop the mic!" className="btn-flat indigo accent-3" onClick={this.handleSubmit} />
+
+         { this.state.loading ? (
+         <Preloader className='loadingIndicator centerAlign' size='small'/>
+         ) : (
+        <input type="submit" value="Drop the mic!" className="btn-flat indigo accent-3" onClick={this.handleSubmit} /> )
+        }
         <Button className="btn-flat indigo accent-3 right" onClick={this.props.handleCancelButtonClick}>Cancel</Button>
+
       </form></div>
     );
   }

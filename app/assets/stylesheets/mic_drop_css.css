@@ -80,6 +80,11 @@ button.indigo {
   margin-top: 15px;
 }
 
+.loadingIndicator {
+  margin-left: 40px;
+  margin-top: 15px;
+}
+
 .site-guide {
   text-align: center;
 }
