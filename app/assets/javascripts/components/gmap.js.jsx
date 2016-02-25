@@ -8,25 +8,14 @@ var GMap = React.createClass({
     this.setState(this.getEventData());
   },
 
-  componentDidUpdate(prevProps) {
-    console.log("prevprops fave is: ", prevProps.favs)
-    console.log("current props fav is: ", this.props.favs)
-    if (prevProps.favs !== this.props.favs) {
-      events = this.getEventData()
-      console.log("]]]]]]]]]]]]")
-      console.log(events)
-      this.setState(events, this.componentDidMount.bind(this));
-      console.log(this.state.events)
-    }
-  },
+  // componentDidUpdate: function(prevProps) {
+  //   // if (prevProps.favs !== this.props.favs) {
+  //     events = this.getEventData()
+  //     // this.setState(events, this.componentDidMount.bind(this));
+  // },
 
   getEventData: function() {
-    if (this.props.favs) {
-        var route = "/events/1"
-      } else {
-        var route = "/events"
-      }
-      console.log(route)
+    var route = (this.props.favs ? "/events/1" : "/events")
     var events;
     var request = $.ajax({
       url: route,
