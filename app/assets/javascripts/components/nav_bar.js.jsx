@@ -56,7 +56,7 @@ var NavBar = React.createClass({
 
     return(
       <nav className="navigation indigo accent-3">
-        <div className="brand-logo center">mic_drop </div>
+        <div className="brand-logo center"><img src='MicDropLogo.png'/> </div>
         {this.props.loggedIn ?  loggedIn : loggedOut}
         {this.props.loggedIn ?  myPlaces : "" }
       </nav>

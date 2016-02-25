@@ -52,6 +52,11 @@ html, body {
   width: 10px;
 }
 
+.brand-logo img {
+  z-index: 1500;
+  max-height: 60px;
+}
+
 .card-butt {
   margin: 10px;
   margin-left: 20px;

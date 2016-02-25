@@ -16,14 +16,14 @@ Friendship.create(user: matt, friend: jimmy)
 Friendship.create(user: matt, friend: gary)
 Friendship.create(user: gary, friend: matt)
 
-50.times do |i| 
-	User.create(username: Faker::Internet.user_name, 
-							password: Faker::Internet.password, 
-							email: Faker::Internet.email, 
-							facebook_id: i+3, 
+50.times do |i|
+	User.create(username: Faker::Internet.user_name,
+							password: Faker::Internet.password,
+							email: Faker::Internet.email,
+							facebook_id: i+3,
 							picture_url: Faker::Avatar.image)
 end
-53.times do 
+53.times do
 	user_id = rand(1..53)
 	friend_id = rand(1..53)
 	Friendship.create(user_id: user_id, friend_id: friend_id)
@@ -35,7 +35,7 @@ types.each do |type|
 	Type.create(name: type)
 end
 
-tags = ["18+", "21+", "3 drink min", "rock", "punk", "folk", "hiphop", "vaporwave", "breakcore", "seapunk", "brony", "cabaret", "occult", "rave", "vocaloid"]
+tags = ["18+", "21+", "3 drink min", "no cover", "rock", "punk", "folk", "hiphop", "vaporwave", "breakcore", "seapunk", "brony", "cabaret", "occult", "rave", "vocaloid"]
 tags.each do |tag|
 	Tag.create(name: tag)
 end
@@ -64,7 +64,7 @@ venues.each do |venue|
 	Venue.create(venue)
 end
 
-20.times do 
+20.times do
 	Venue.all.sample.tags << Tag.all.sample
 end
 
@@ -75,26 +75,26 @@ Rsvp.create(event: jazz, user: matt)
 venues = Venue.all.to_a
 venues.unshift
 venues.shuffle!
-Event.create(name: "GLWSTX", description: "The heaviest drops!", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
-Event.create(name: "Slumber Party", description: 'Bring a toothbrush', venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
-Event.create(name: "Hatsune Miku Open Jam Session", description: 'Bring your instruments, the robot will bring her voice.', venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
-Event.create(name: "El Ten Eleven", description: 'Performing the entirety of their first album.', venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
-Event.create(name: "Jimmy Eat World", description: 'with special guest Jimmy.', venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
-Event.create(name: "Nickleback", description: 'A philibuster concert.', venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
-Event.create(name: "V A P O R W A V E", description: 'Go you party?', venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
-Event.create(name: "Travis the Musical", description: "Let me tell you why you're wrong", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
-Event.create(name: "Pea Knuckle Turnament", description: "$100 to enter", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
-Event.create(name: "DJ Airhorn", description: "Exclusive!", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
-Event.create(name: "Logan Square Karaoke", description: "How many miles would you walk?", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
-Event.create(name: "Yakuza", description: "Death metal with saxophone", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
-Event.create(name: "Math Rock", description: "Many time signatures", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
-Event.create(name: "Tryptich3", description: "Chicago Nu-metal band reunion", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
-Event.create(name: "Reservoir", description: "Maine slow-core", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
+Event.create(name: "GLWSTX", description: "The heaviest drops!", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/glwstx.jpg'))
+Event.create(name: "Slumber Party", description: 'Bring a toothbrush', venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/slumber_party.jpg'))
+Event.create(name: "Hatsune Miku Open Jam Session", description: 'Bring your instruments, the robot will bring her voice.', venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/hatsune_miku.jpeg'))
+Event.create(name: "El Ten Eleven", description: 'Performing the entirety of their first album.', venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/el_ten_eleven.jpeg'))
+Event.create(name: "Jimmy Eat World", description: 'with special guest Jimmy.', venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/jimmy_eat_world.jpg'))
+Event.create(name: "Nickleback", description: 'A philibuster concert.', venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/nickelback-website21.jpeg'))
+Event.create(name: "V A P O R W A V E", description: 'Go you party?', venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/vaporwave.jpg'))
+Event.create(name: "Travis the Musical", description: "Let me tell you why you're wrong", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/travis.png'))
+Event.create(name: "Pea Knuckle Turnament", description: "$100 to enter", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/pea_knuckle.jpg'))
+Event.create(name: "DJ Airhorn", description: "Exclusive!", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/DJAirhorn.jpg'))
+Event.create(name: "Logan Square Karaoke", description: "How many miles would you walk?", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/logan.jpg'))
+Event.create(name: "Yakuza", description: "Death metal with saxophone", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/yakuza.jpg'))
+Event.create(name: "Math Rock", description: "Many time signatures", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/mathrock.jpg'))
+Event.create(name: "Tryptich3", description: "Chicago Nu-metal band reunion", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/tryptich.jpg'))
+Event.create(name: "Reservoir", description: "Maine slow-core", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/slowcore.jpg'))
 
-20.times do 
+20.times do
 	Event.all.sample.tags << Tag.all.sample
 end
 
-100.times do 
+100.times do
 	Rsvp.find_or_create_by(event: Event.all.sample, user: User.all.sample)
 end
