@@ -20,3 +20,4 @@
 
 Button = require('react-materialize').Button;
 Card = require('react-materialize').Card;
+Preloader = require('react-materialize').Preloader;

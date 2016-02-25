@@ -4,12 +4,14 @@ var EventForm = React.createClass({
   },
   handleSubmit: function(e) {
     e.preventDefault();
+    this.setState({loading: true});
     var request = $.ajax({
       url: "events",
       method: "post",
       data: {event: this.state}
     });
     request.done(function(responseData){
+      this.setState({loading: false});
       $("#modal3").closeModal();
       $(".lean-overlay").remove();
       this.props.onEventSubmit(this.state);
@@ -109,15 +111,17 @@ var EventForm = React.createClass({
         <input type="file"
                name="photo"
                accept="image/*"
-               value={this.state.photo}
                onChange={this.handlePhotoChange}/>
         <input
           type="text"
           placeholder="tag1,tag2"
           value={this.state.tags}
           onChange={this.handleTagsChange} />
-        <input type="submit" value="Drop the mic!" className="btn-flat indigo accent-3" onClick={this.handleSubmit} />
+        <input type="submit" value="Drop the mic!" className="btn-flat indigo accent-3" onClick={this.handleSubmit} />{ this.state.loading ? (
+          <div><Preloader size='small'/></div>
+        ) : null }
         <Button className="btn-flat indigo accent-3 right" onClick={this.props.handleCancelButtonClick}>Cancel</Button>
+
       </form></div>
     );
   }
