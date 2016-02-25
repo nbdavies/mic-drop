@@ -18,6 +18,7 @@ var CreateEventButton = React.createClass({
 
   handleEventSubmit: function(eventData) {
     this.props.onEventSubmit(eventData);
+    this.setState({clicked: false});
   },
 
   render: function() {
