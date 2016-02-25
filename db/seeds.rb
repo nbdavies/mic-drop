@@ -3,7 +3,7 @@
 #
 # Examples:
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   cities = City.create([{ name: 'Chicago' ) { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 jimmy = User.create(username: "jimmy", password: "thruster", email: "jimmy@storageco.com", facebook_id: 1, picture_url: "https://pbs.twimg.com/profile_images/679812564570771456/7NRudISs.jpg")
 gary = User.create(username: "gary", password: "thruster", email: "gary@storageco.com", facebook_id: 2, picture_url: "http://www.kotb.com/Gallery/GaryGlover1.JPG")
@@ -21,7 +21,7 @@ Friendship.create(user: gary, friend: matt)
 							password: Faker::Internet.password, 
 							email: Faker::Internet.email, 
 							facebook_id: i+3, 
-							picture_url: Faker::Avatar.image)}
+							picture_url: Faker::Avatar.image)
 end
 53.times do 
 	user_id = rand(1..53)
@@ -40,7 +40,7 @@ tags.each do |tag|
 	Tag.create(name: tag)
 end
 
-Venues.create(address: "225 W Hubbard St #2 Chicago, IL 60654", lat:"41.889816", lng:"-87.635504", name: "Rock n' Roll Town", type: Type.all.sample, manager_id: 1)
+Venue.create(address: "225 W Hubbard St #2 Chicago, IL 60654", lat:"41.889816", lng:"-87.635504", name: "Rock n' Roll Town", type: Type.all.sample, manager_id: 1)
 venues = [
 {name: 'Bottom Lounge', address: '1375 W Lake St, Chicago, IL 60607', lat: "41.8856322", lng: "-87.6617276", type: Type.all.sample, manager_id: rand(1..3)},
 {name: 'Double Door', address: '1572 N Milwaukee Ave, Chicago, IL 60622', lat: "41.9098938", lng: "-87.6793358", type: Type.all.sample, manager_id: rand(1..3)},
@@ -64,23 +64,37 @@ venues.each do |venue|
 	Venue.create(venue)
 end
 
-Tag.find(3).
+20.times do 
+	Venue.all.sample.tags << Tag.all.sample
+end
 
+jazz = Event.create(name: "Jazz Stuff", description: 'So much goddamn jazz!', venue_id: 1, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
+Rsvp.create(event: jazz, user: jimmy)
+Rsvp.create(event: jazz, user: matt)
 
-Tag.first.events.create(name: "Jazz Stuff", description: 'So much goddamn jazz!', venue_id: 1, date: Date.today, start_time: Faker::Time.between(Date.today - 1, Date.today).to_time, end_time: Faker::Time.between(Date.today - 1, Date.today).to_time)
-Event.first.tags.create(name: "Nick")
-Tag.find(2).events.create(name: "GLWSTX", description: "The heaviest drops!", venue_id: 2, date: Faker::Time.between(Date.today - 1, Date.today).to_date, start_time: Faker::Time.between(Date.today - 1, Date.today).to_time, end_time: Faker::Time.between(Date.today - 1, Date.today).to_time)
-jimmy.rsvps.create(event_id: 1)
+venues = Venue.all.to_a
+venues.unshift
+venues.shuffle!
+Event.create(name: "GLWSTX", description: "The heaviest drops!", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
+Event.create(name: "Slumber Party", description: 'Bring a toothbrush', venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
+Event.create(name: "Hatsune Miku Open Jam Session", description: 'Bring your instruments, the robot will bring her voice.', venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
+Event.create(name: "El Ten Eleven", description: 'Performing the entirety of their first album.', venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
+Event.create(name: "Jimmy Eat World", description: 'with special guest Jimmy.', venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
+Event.create(name: "Nickleback", description: 'A philibuster concert.', venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
+Event.create(name: "V A P O R W A V E", description: 'Go you party?', venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
+Event.create(name: "Travis the Musical", description: "Let me tell you why you're wrong", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
+Event.create(name: "Pea Knuckle Turnament", description: "$100 to enter", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
+Event.create(name: "DJ Airhorn", description: "Exclusive!", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
+Event.create(name: "Logan Square Karaoke", description: "How many miles would you walk?", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
+Event.create(name: "Yakuza", description: "Death metal with saxophone", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
+Event.create(name: "Math Rock", description: "Many time signatures", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
+Event.create(name: "Tryptich3", description: "Chicago Nu-metal band reunion", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
+Event.create(name: "Reservoir", description: "Maine slow-core", venue: venues.pop, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
 
-Tag.find(8).venues.create(address: "353 W Grand Ave Chicago, IL 60654", lat:"41.891398", lng:"-87.637435", name: "E-D-AMN", type_id: 2+ rand(10), manager_id: 1+ rand(50))
+20.times do 
+	Event.all.sample.tags << Tag.all.sample
+end
 
-Tag.find(4).venues.create(address: "610 N Rush St, Chicago, IL 60611", lat:"41.8929485", lng:"-87.6279576", name: "Jimmy", type_id: 1 + rand(9), manager_id: 1)
-
-Tag.find(9).venues.create(address: "540 N Dearborn St
-Chicago, IL 60610", lat:"41.8920388", lng:"-87.6326061", name: "Storage Locker #312", type_id: 2+ rand(10), manager_id: 1)
-
-Tag.find(4).events.create(name: "Slumber Party", description: 'Bring a toothbrush', venue_id: 3, date: Faker::Time.between(Date.today + 1, Date.today).to_date, start_time: Faker::Time.between(Date.today - 1, Date.today).to_time, end_time: Faker::Time.between(Date.today - 1, Date.today).to_time)
-
-Tag.find(7).events.create(name: "Pea Knuckle Tunament", description: "$100 to enter", venue_id: 4, date: Faker::Time.between(Date.today + 1, Date.today).to_date, start_time: Faker::Time.between(Date.today - 1, Date.today).to_time, end_time: Faker::Time.between(Date.today - 1, Date.today).to_time)
-
-# 20.times {Rsvp.create(event.id)}
+100.times do 
+	Rsvp.find_or_create_by(event: Event.all.sample, user: User.all.sample)
+end
