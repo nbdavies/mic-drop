@@ -110,3 +110,6 @@ button.indigo {
   color: white;
 }
 
+.event {
+  max-height: 200px;
+}

@@ -18,3 +18,4 @@ coverage
 /app/assets/.DS_Store
 .env
 # Ignore Gemfile.lock
+public/.DS_Store
