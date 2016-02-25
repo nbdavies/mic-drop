@@ -30,9 +30,11 @@ var LoginForm = React.createClass({
     });
     request.done(function(responseData){
       if (responseData.username === username){
-        this.handleLogin(responseData)
+        this.handleLogin(responseData);
         $("#modal2").closeModal();
         $(".lean-overlay").remove();
+      } else {
+        this.setState({errors: responseData.errors});
       }
     }.bind(this));
   },

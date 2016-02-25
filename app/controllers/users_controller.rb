@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       render :json => @user
     else
-      redirect_to '/401'
+      render :json => @user.errors.full_messages
     end
   end
 

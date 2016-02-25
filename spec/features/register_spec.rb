@@ -12,7 +12,7 @@ describe 'registration', :type => :feature, :js => true do
     click_button "Find out what you're doing tonight."
     click_button 'register'
     fill_in 'username', with: 'testuser'
-    fill_in 'email', with: 'testemail'
+    fill_in 'email', with: 'test@email.com'
     fill_in 'password', with: 'password'
     click_button 'Register'
     expect(page).to have_button 'log out'
