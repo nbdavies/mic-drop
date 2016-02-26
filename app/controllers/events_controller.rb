@@ -7,7 +7,7 @@ class EventsController < ApplicationController
                       end_time: event_params[:end_time],
                    description: event_params[:description],
                          photo: event_params[:photo])
-    tags = event_params[:tags].split(", ")
+    tags = event_params[:tags].split(", ") if event_params[:tags]
     tags.each do |tag|
       @event.tags.find_or_create_by(name: tag)
     end
