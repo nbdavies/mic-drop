@@ -68,7 +68,7 @@ end
 	Venue.all.sample.tags << Tag.all.sample
 end
 
-jazz = Event.create(name: "Jazz Stuff", description: 'So much goddamn jazz!', venue_id: 1, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward)
+jazz = Event.create(name: "Jazz Stuff", description: 'So much goddamn jazz!', venue_id: 1, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/kenny.jpg'))
 Rsvp.create(event: jazz, user: jimmy)
 Rsvp.create(event: jazz, user: matt)
 
