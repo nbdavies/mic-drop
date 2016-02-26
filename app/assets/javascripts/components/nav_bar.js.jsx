@@ -1,7 +1,17 @@
 var NavBar = React.createClass({
 
+  getInitialState: function() {
+    return {loggedIn: this.props.loggedIn};
+  },
+
+  componentWillReceiveProps: function(nextProps){
+    this.setState({loggedIn: nextProps.loggedIn});
+  },
+
   handleUserLogin: function(user) {
-      this.props.onUserLogin(user);
+    this.setState({loggedIn: user});
+    this.forceUpdate();
+    this.props.onUserLogin(user);
   },
 
   handleEventSubmit: function(eventData) {
@@ -31,13 +41,13 @@ var NavBar = React.createClass({
     </ul>;
 
     var addEventButton = <li><CreateEventButton onEventSubmit = {this.handleEventSubmit}/></li>;
-    var venues = this.props.loggedIn.venues;
+    var venues = this.state.loggedIn.venues;
 
-    if (this.props.loggedIn.picture_url){
+    if (this.state.loggedIn.picture_url){
       var loggedIn =
       <ul className="right">
         <li>
-          <img className="responsive-img circle" src={this.props.loggedIn.picture_url} />
+          <img className="responsive-img circle" src={this.state.loggedIn.picture_url} />
         </li>
         <li><LogoutButton onUserLogin = {this.handleUserLogin} /></li>
         { this.maybeRenderAddEvent() }
@@ -45,20 +55,20 @@ var NavBar = React.createClass({
     } else {
       var loggedIn =
       <ul className="right">
-        <li><span className>{this.props.loggedIn.username}</span></li>
+        <li><span className>{this.state.loggedIn.username}</span></li>
         <li><LogoutButton onUserLogin = {this.handleUserLogin} /></li>
         { this.maybeRenderAddEvent() }
       </ul>
     };
     var myPlaces = <ul className="left">
-          <li><MyPlacesButton loggedIn = {this.loggedIn} onFilterAction = {this.handleFilterAction}/></li>
+          <li><MyPlacesButton loggedIn = {this.state.loggedIn} onFilterAction = {this.handleFilterAction}/></li>
         </ul>;
 
     return(
       <nav className="navigation indigo accent-3">
         <div className="brand-logo center"><img src='MicDropLogo.png'/> </div>
-        {this.props.loggedIn ?  loggedIn : loggedOut}
-        {this.props.loggedIn ?  myPlaces : "" }
+        {this.state.loggedIn ?  loggedIn : loggedOut}
+        {this.state.loggedIn ?  myPlaces : "" }
       </nav>
       );
     }
