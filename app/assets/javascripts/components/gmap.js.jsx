@@ -178,13 +178,13 @@ var GMap = React.createClass({
   },
 
   render: function(){
-    var infowindow = new google.maps.InfoWindow();
     this.state.events.forEach(function(event){
+    var infowindow = new google.maps.InfoWindow({
+      content: this.infoWindow(event)
+    });
       event.marker.addListener('click', function() {
-
-        infowindow.setContent(this.infoWindow(event));
         infowindow.open(this.map, event.marker);
-      }.bind(this));
+      });
     }.bind(this));
 
     return(
