@@ -17,6 +17,7 @@ var Container = React.createClass({
     this.setState({
       loggedIn: user,
     });
+    if (!user) {this.setState({favs: false})};
     this.forceUpdate();
   },
 
@@ -29,8 +30,8 @@ var Container = React.createClass({
   },
 
   handleFilterAction: function() {
-    console.log("favs before: ", this.state.favs)
-    this.setState({favs: !this.state.favs}, function() { console.log("favs after: ", this.state.favs) })
+    var favs = this.state.favs;
+    this.setState({favs: !favs})
   },
 
   render: function (){
@@ -41,19 +42,15 @@ var Container = React.createClass({
                 <SiteGuide class='valign center-align' />
               </div>
     }
-
     return(
       <div className="matroshka">
         <NavBar loggedIn = {this.state.loggedIn}
                 onUserLogin = {this.handleUserLogin}
-                onEventSubmit =
-                {this.handleEventSubmit}
-                onFilterAction = {this.handleFilterAction}
-        />
+                onEventSubmit = {this.handleEventSubmit}
+                onFilterAction = {this.handleFilterAction} />
         <GMap loggedIn = {this.state.loggedIn}
               favs = {this.state.favs}
-              ref = "googlemap"
-        />
+              ref = "googlemap" />
         {guide}
       </div>
     );

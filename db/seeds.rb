@@ -76,6 +76,9 @@ end
 	Event.create(name: "Tryptich3", description: "Chicago Nu-metal band reunion", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/tryptich.jpg'))
 	Event.create(name: "Reservoir", description: "Maine slow-core", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/slowcore.jpg'))
 end
+jazz = Event.create(name: "Jazz Stuff", description: 'So much goddamn jazz!', venue_id: 1, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/kenny.jpg'))
+Rsvp.create(event: jazz, user: jimmy)
+Rsvp.create(event: jazz, user: matt)
 
 madison_venues = [
 Venue.create(name: "High Noon Saloon", address: '701 E Washington Ave, Madison, WI 53703', lat: '43.079593', lng: '-89.376483'),
