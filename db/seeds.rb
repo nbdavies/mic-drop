@@ -30,7 +30,7 @@ end
 # Phil manages Park West
 # Jimmy manages Rock n' Roll Town
 venues = [
-{name: "Rock n' Roll Town", address: "225 W Hubbard St #2 Chicago, IL 60654", lat:"41.889816", lng:"-87.635504", type: Type.all.sample, manager: jimmy}
+{name: "Rock n' Roll Town", address: "225 W Hubbard St #2 Chicago, IL 60654", lat:"41.889816", lng:"-87.635504", type: Type.all.sample, manager: jimmy},
 {name: 'Bottom Lounge', address: '1375 W Lake St, Chicago, IL 60607', lat: "41.8856322", lng: "-87.6617276", type: Type.all.sample, manager: User.all.sample},
 {name: 'Double Door', address: '1572 N Milwaukee Ave, Chicago, IL 60622', lat: "41.9098938", lng: "-87.6793358", type: Type.all.sample, manager: User.all.sample},
 {name: 'Empty Bottle', address: '1035 N Western Ave, Chicago, IL 60622', lat: "41.9004067", lng: "-87.6889066", type: Type.all.sample, manager: User.all.sample},
