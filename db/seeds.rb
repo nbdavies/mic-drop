@@ -81,23 +81,23 @@ Rsvp.create(event: jazz, user: jimmy)
 Rsvp.create(event: jazz, user: matt)
 
 madison_venues = [
-Venue.create(name: "High Noon Saloon", address: '701 E Washington Ave, Madison, WI 53703', lat: '43.079593', lng: '-89.376483'),
-Venue.create(name: "The Frequency", address: '121 W Main St, Madison, WI 53703', lat: '43.0723792', lng: '-89.3869828'),
-Venue.create(name: "Dragonfly Lounge", address: '401 E Washington Ave, Madison, WI 53703', lat: '43.0772736', lng: '-89.3820378'),
-Venue.create(name: "The Wisco", address: '852 Williamson St, Madison, WI 53703', lat: '43.0794813', lng: '-89.3722515'),
-Venue.create(name: "Mr. Roberts", address: '2116 Atwood Ave, Madison, WI 53704', lat: '43.0929631', lng: '-89.3536505'),
-Venue.create(name: "The Majestic", address: '115 King St, Madison, WI 53703', lat: '43.0744173', lng: '-89.383129'),
-Venue.create(name: "Tip Top Tavern", address: '601 North St, Madison, WI 53704', lat: '43.1069511', lng: '-89.3532424'),
-Venue.create(name: "Red Zone", address: '1212 Regent St, Madison, WI 53715', lat: '43.0680606', lng: '-89.408404'),
-Venue.create(name: "Johnson Public House", address: '908 E Johnson St, Madison, WI 53703', lat: '43.0847298', lng: '-89.3783618'),
-Venue.create(name: "Chocolaterian Cafe", address: '2004 Atwood Ave, Madison, WI 53704', lat: '43.0922594', lng: '-89.3569205'),
-Venue.create(name: "Alchemy", address: '1980 Atwood Ave, Madison, WI 53704', lat: '43.092431', lng: '-89.3575805'),
-Venue.create(name: "Nutty Bar", address: 'Gateway Mall, 600 Williamson St, Madison, WI 53703', lat: '43.0770308', lng: '-89.3766051'),
-Venue.create(name: "Der Rathskeller", address: '800 Langdon St, Madison, WI 53706', lat: '43.0742171', lng: '-89.4105087'),
-Venue.create(name: "The Sett", address: '1308 W Dayton St, Madison, WI 53715', lat: '43.071739', lng: '-89.4101487'),
-Venue.create(name: "Mickey's", address: '1524 Williamson St, Madison, WI 53703', lat: '43.0879059', lng: '-89.3609353'),
-Venue.create(name: "Crystal Corner", address: '1302 Williamson St, Madison, WI 53703', lat: '43.0847613', lng: '-89.3647873'),
-Venue.create(name: "Mother Fool's", address: '1101 Williamson St, Madison, WI 53703', lat: '43.0819339', lng: '-89.3679771')
+Venue.create(name: "High Noon Saloon", address: '701 E Washington Ave, Madison, WI 53703', lat: '43.079593', lng: '-89.376483', type: Type.all.sample, manager: nick),
+Venue.create(name: "The Frequency", address: '121 W Main St, Madison, WI 53703', lat: '43.0723792', lng: '-89.3869828', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: "Dragonfly Lounge", address: '401 E Washington Ave, Madison, WI 53703', lat: '43.0772736', lng: '-89.3820378', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: "The Wisco", address: '852 Williamson St, Madison, WI 53703', lat: '43.0794813', lng: '-89.3722515', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: "Mr. Roberts", address: '2116 Atwood Ave, Madison, WI 53704', lat: '43.0929631', lng: '-89.3536505', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: "The Majestic", address: '115 King St, Madison, WI 53703', lat: '43.0744173', lng: '-89.383129', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: "Tip Top Tavern", address: '601 North St, Madison, WI 53704', lat: '43.1069511', lng: '-89.3532424', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: "Red Zone", address: '1212 Regent St, Madison, WI 53715', lat: '43.0680606', lng: '-89.408404', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: "Johnson Public House", address: '908 E Johnson St, Madison, WI 53703', lat: '43.0847298', lng: '-89.3783618', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: "Chocolaterian Cafe", address: '2004 Atwood Ave, Madison, WI 53704', lat: '43.0922594', lng: '-89.3569205', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: "Alchemy", address: '1980 Atwood Ave, Madison, WI 53704', lat: '43.092431', lng: '-89.3575805', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: "Nutty Bar", address: 'Gateway Mall, 600 Williamson St, Madison, WI 53703', lat: '43.0770308', lng: '-89.3766051', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: "Der Rathskeller", address: '800 Langdon St, Madison, WI 53706', lat: '43.0742171', lng: '-89.4105087', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: "The Sett", address: '1308 W Dayton St, Madison, WI 53715', lat: '43.071739', lng: '-89.4101487', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: "Mickey's", address: '1524 Williamson St, Madison, WI 53703', lat: '43.0879059', lng: '-89.3609353', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: "Crystal Corner", address: '1302 Williamson St, Madison, WI 53703', lat: '43.0847613', lng: '-89.3647873', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: "Mother Fool's", address: '1101 Williamson St, Madison, WI 53703', lat: '43.0819339', lng: '-89.3679771', type: Type.all.sample, manager: User.all.sample)
 ]
 (0..30).each do |i|
 	venues = madison_venues.shuffle
