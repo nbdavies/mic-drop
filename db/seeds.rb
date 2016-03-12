@@ -29,37 +29,43 @@ end
 # Bob manages House of Blues
 # Phil manages Park West
 # Jimmy manages Rock n' Roll Town
-venues = [
-{name: "Rock n' Roll Town", address: "225 W Hubbard St #2 Chicago, IL 60654", lat:"41.889816", lng:"-87.635504", type: Type.all.sample, manager: jimmy},
-{name: 'Bottom Lounge', address: '1375 W Lake St, Chicago, IL 60607', lat: "41.8856322", lng: "-87.6617276", type: Type.all.sample, manager: User.all.sample},
-{name: 'Double Door', address: '1572 N Milwaukee Ave, Chicago, IL 60622', lat: "41.9098938", lng: "-87.6793358", type: Type.all.sample, manager: User.all.sample},
-{name: 'Empty Bottle', address: '1035 N Western Ave, Chicago, IL 60622', lat: "41.9004067", lng: "-87.6889066", type: Type.all.sample, manager: User.all.sample},
-{name: 'Lincoln Hall', address: '2424 N Lincoln Ave, Chicago, IL 60614', lat: "41.9259783", lng: "-87.6519459", type: Type.all.sample, manager: User.all.sample},
-{name: 'Schubas', address: '3159 N Southport Ave, Chicago, IL 60657', lat: "41.9396435", lng: "-87.6657194", type: Type.all.sample, manager: User.all.sample},
-{name: 'Metro', address: '3730 N Clark St, Chicago, IL 60613', lat: "41.9497998", lng: "-87.6609837", type: Type.all.sample, manager: User.all.sample},
-{name: 'Green Mill', address: '4802 N Broadway St, Chicago, IL 60640', lat: '41.9691891', lng: '-87.6620719', type: Type.all.sample, manager: User.all.sample},
-{name: 'Aragon Ballroom', address: '1106 W Lawrence Ave, Chicago, IL 60640', lat: '41.9651629', lng: '-87.6630034', type: Type.all.sample, manager: User.all.sample},
-{name: 'House of Blues', address: '329 N Dearborn St, Chicago, IL 60654', lat: '41.888233', lng: '-87.6313187', type: Type.all.sample, manager: bob},
-{name: 'The Mid', address: '306 N Halsted St, Chicago, IL 60661', lat: '41.8870952', lng: '-87.6500334', type: Type.all.sample, manager: User.all.sample},
-{name: 'Park West', address: '322 W Armitage Ave, Chicago, IL 60614', lat: '41.9185905', lng: '-87.6395697', type: Type.all.sample, manager: phil},
-{name: 'Concord Music Hall', address: '2047 N Milwaukee Ave, Chicago, IL 60647', lat: '41.9186603', lng: '-87.6923112', type: Type.all.sample, manager: User.all.sample},
-{name: 'Subterranean', address: '2011 W North Ave, Chicago, IL 60647', lat: '41.9103603', lng: '-87.6801589', type: Type.all.sample, manager: User.all.sample},
-{name: 'Riviera Theatre', address: '4746 N Racine Ave, Chicago, IL 60640', lat: '41.9687272', lng: '-87.6620577', type: Type.all.sample, manager: User.all.sample},
-{name: 'Elbo Room', address: '2871 N Lincoln Ave, Chicago, IL 60657', lat: '41.9342152', lng: '-87.6629058', type: Type.all.sample, manager: User.all.sample},
-{name: 'Refuge Live', address: '416 S Clark St, Chicago, IL 60605', lat: '41.876416', lng: '-87.6332607', type: Type.all.sample, manager: User.all.sample},
-{name: 'Harris Theater', address: '205 E Randolph St, Chicago, IL 60601', lat: '41.8839445', lng: '-87.6240677', type: Type.all.sample, manager: User.all.sample}
+chicago_venues = [
+Venue.create(name: "Rock n' Roll Town", address: "225 W Hubbard St #2 Chicago, IL 60654", lat:"41.889816", lng:"-87.635504", type: Type.all.sample, manager: jimmy),
+Venue.create(name: 'Bottom Lounge', address: '1375 W Lake St, Chicago, IL 60607', lat: "41.8856322", lng: "-87.6617276", type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: 'Double Door', address: '1572 N Milwaukee Ave, Chicago, IL 60622', lat: "41.9098938", lng: "-87.6793358", type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: 'Empty Bottle', address: '1035 N Western Ave, Chicago, IL 60622', lat: "41.9004067", lng: "-87.6889066", type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: 'Lincoln Hall', address: '2424 N Lincoln Ave, Chicago, IL 60614', lat: "41.9259783", lng: "-87.6519459", type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: 'Schubas', address: '3159 N Southport Ave, Chicago, IL 60657', lat: "41.9396435", lng: "-87.6657194", type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: 'Metro', address: '3730 N Clark St, Chicago, IL 60613', lat: "41.9497998", lng: "-87.6609837", type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: 'Green Mill', address: '4802 N Broadway St, Chicago, IL 60640', lat: '41.9691891', lng: '-87.6620719', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: 'Aragon Ballroom', address: '1106 W Lawrence Ave, Chicago, IL 60640', lat: '41.9651629', lng: '-87.6630034', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: 'House of Blues', address: '329 N Dearborn St, Chicago, IL 60654', lat: '41.888233', lng: '-87.6313187', type: Type.all.sample, manager: bob),
+Venue.create(name: 'The Mid', address: '306 N Halsted St, Chicago, IL 60661', lat: '41.8870952', lng: '-87.6500334', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: 'Park West', address: '322 W Armitage Ave, Chicago, IL 60614', lat: '41.9185905', lng: '-87.6395697', type: Type.all.sample, manager: phil),
+Venue.create(name: 'Concord Music Hall', address: '2047 N Milwaukee Ave, Chicago, IL 60647', lat: '41.9186603', lng: '-87.6923112', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: 'Subterranean', address: '2011 W North Ave, Chicago, IL 60647', lat: '41.9103603', lng: '-87.6801589', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: 'Riviera Theatre', address: '4746 N Racine Ave, Chicago, IL 60640', lat: '41.9687272', lng: '-87.6620577', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: 'Elbo Room', address: '2871 N Lincoln Ave, Chicago, IL 60657', lat: '41.9342152', lng: '-87.6629058', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: 'Refuge Live', address: '416 S Clark St, Chicago, IL 60605', lat: '41.876416', lng: '-87.6332607', type: Type.all.sample, manager: User.all.sample),
+Venue.create(name: 'Harris Theater', address: '205 E Randolph St, Chicago, IL 60601', lat: '41.8839445', lng: '-87.6240677', type: Type.all.sample, manager: User.all.sample)
 ]
-venues.each do |venue|
-	Venue.create(venue)
-end
-
-20.times do
-	Venue.all.sample.tags << Tag.all.sample
-end
-
+denver_venues = [
+	Venue.create(name: "Boulder Theater", address: "2032 14th St, Boulder, CO 80302", lat: "40.0192", lng: "-105.2772", type: Type.all.sample, manager_id: 1),
+	Venue.create(name: "Fox Theater", address: '1135 13th St Boulder, CO 80302', lat: "40.0080", lng: "-105.2765", type: Type.all.sample, manager_id: rand(1..3)),
+	Venue.create(name: "Paramount Theater", address: '1621 Glenarm Pl, Denver, CO 80202', lat: "39.7444", lng: "-104.9902", type: Type.all.sample, manager_id: rand(1..3)),
+	Venue.create(name: "Gothic Theater", address: '3263 S Broadway, Englewood, CO 80113', lat: " 39.657647", lng: " -104.987756", type: Type.all.sample, manager_id: rand(1..3)),
+	Venue.create(name: "Swallow Hill Music", address: '71 E Yale Ave, Denver, CO 80210', lat: "39.6680", lng: "-104.9867", type: Type.all.sample, manager_id: rand(1..3)),
+	Venue.create(name: "Bluebird", address: '3317 E Colfax Ave, Denver, CO 80206', lat: "39.7406", lng: "-104.9478", type: Type.all.sample, manager_id: rand(1..3)),
+	Venue.create(name: "The Grizzly Rose", address: '5450 N Valley Hwy, Denver, CO 80216', lat: "39.795137", lng: "-104.986882", type: Type.all.sample, manager_id: rand(1..3)),
+	Venue.create(name: "Laramier Lounge", address: '2721 Larimer St, Denver, CO 80205', lat: '39.760994', lng: '-104.983931', type: Type.all.sample, manager_id: rand(1..3)),
+	Venue.create(name: "Hi Dive", address: '7 S Broadway, Denver, CO 80223', lat: '39.716394', lng: '-104.987862', type: Type.all.sample, manager_id: rand(1..3)),
+	Venue.create(name: "Herman’s Hideaway", address: '1578 S Broadway, Denver, CO 80210', lat: '39.689707', lng: '-104.987533', type: Type.all.sample, manager_id: rand(1..3)),
+	Venue.create(name: "The Soiled Dove Underground", address: '7401 E 1st Ave, Denver, CO 80230', lat: '39.720001', lng: '-104.901149', type: Type.all.sample, manager_id: rand(1..3)),
+	Venue.create(name: "Cervantes Masterpiece", address: '2635 Welton St, Denver, CO 80205', lat: '39.755178', lng: '-104.978390', type: Type.all.sample, manager: sabrina)
+]
 # Chicago events
 (0..30).each do |i|
-	venues = Venue.all.to_a.shuffle
+	venues = chicago_venues.shuffle
 	Event.create(name: "GLWSTX", description: "The heaviest drops!", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/glwstx.jpg'))
 	Event.create(name: "Slumber Party", description: 'Bring a toothbrush', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/slumber_party.jpg'))
 	Event.create(name: "Hatsune Miku Open Jam Session", description: 'Bring your instruments, the robot will bring her voice.', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/hatsune_miku.jpeg'))
@@ -75,6 +81,22 @@ end
 	Event.create(name: "Math Rock", description: "Many time signatures", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/mathrock.jpg'))
 	Event.create(name: "Tryptich3", description: "Chicago Nu-metal band reunion", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/tryptich.jpg'))
 	Event.create(name: "Reservoir", description: "Maine slow-core", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/slowcore.jpg'))
+end
+# Denver events
+(0..30).each do |i|
+	venues = denver_venues.shuffle
+	Event.create(name: "GLWSTX", description: "The heaviest drops!", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/glwstx.jpg'))
+	Event.create(name: "Slumber Party", description: 'Bring a toothbrush', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/slumber_party.jpg'))
+	Event.create(name: "Hatsune Miku Open Jam Session", description: 'Bring your instruments, the robot will bring her voice.', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/hatsune_miku.jpeg'))
+	Event.create(name: "Jimmy Eat World", description: 'with special guest Jimmy.', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/jimmy_eat_world.jpg'))
+	Event.create(name: "Nickleback", description: 'A philibuster concert.', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/nickelback-website21.jpeg'))
+	Event.create(name: "V A P O R W A V E", description: 'Go you party?', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/vaporwave.jpg'))
+	Event.create(name: "Travis the Musical", description: "Let me tell you why you're wrong", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/travis.png'))
+	Event.create(name: "DJ Airhorn", description: "Exclusive!", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/DJAirhorn.jpg'))
+	Event.create(name: "Logan Square Karaoke", description: "How many miles would you walk?", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/logan.jpg'))
+	Event.create(name: "Darmok and Jalad", description: "Death metal with saxophone", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/yakuza.jpg'))
+	Event.create(name: "Four Star Mary as Dingoes Ate My Baby", description: "Many time signatures", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/mathrock.jpg'))
+	Event.create(name: "Nerf Herder", description: "Chicago Nu-metal band reunion", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/tryptich.jpg'))
 end
 jazz = Event.create(name: "Jazz Stuff", description: 'So much goddamn jazz!', venue_id: 1, date: Date.today, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/kenny.jpg'))
 Rsvp.create(event: jazz, user: jimmy)
@@ -101,23 +123,27 @@ Venue.create(name: "Mother Fool's", address: '1101 Williamson St, Madison, WI 53
 ]
 (0..30).each do |i|
 	venues = madison_venues.shuffle
-	Event.create(name: "Gentle Brontosaurus", description: "Indie pop that politely suggests you might dance", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('https://scontent-ord1-1.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/12742272_1263356573679094_3976657332199890115_n.jpg?oh=a60f53e59ed2cfc6b3f5b938abd02c75&oe=5762A916'))
-	Event.create(name: "Square Bombs", description: 'Retro prog songs about cats', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('https://scontent-ord1-1.xx.fbcdn.net/hphotos-xla1/v/t1.0-9/12274453_1514602302170800_6182234149956421731_n.jpg?oh=eb827a88d44932d01af59558bf9197c6&oe=5758A76F'))
-	Event.create(name: "The Earthlings", description: 'Hi-tech psychadelic space-pop. Band members vary.', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('https://scontent-ord1-1.xx.fbcdn.net/hphotos-xta1/t31.0-8/12185462_1012861118775622_4058638216889817257_o.jpg'))
-	Event.create(name: "Owls, Foxes, and Sebastian", description: 'Listen if you like the idea of Morrisey replacing Julian Casablancas, with saxophone solos', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('https://scontent-ord1-1.xx.fbcdn.net/hphotos-ash2/t31.0-8/10548205_549534791817567_5595275718551706956_o.jpg'))
-	Event.create(name: "Little Red Wolf", description: 'LRW need no introduction or amplification. This all-star team of instrumentalists trade off leading and harmony vocals on their rustic folk-pop songs', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('https://scontent-ord1-1.xx.fbcdn.net/hphotos-xpf1/t31.0-8/11001607_10152519704366841_4219366653452069664_o.jpg'))
-	Event.create(name: "The Wells Division", description: 'Folk rock richly layered with accordion, organ, and ', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('https://scontent-ord1-1.xx.fbcdn.net/hphotos-xfa1/t31.0-8/11154823_948960675166970_4254027367253650707_o.jpg'))
-	Event.create(name: "Wood Chickens", description: 'Raucous Bluegrass Punk. Punkgrass? Sure!', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('https://scontent-ord1-1.xx.fbcdn.net/hphotos-xlf1/v/t1.0-9/12661907_1286021244758124_4882574636361096691_n.jpg?oh=572bd2117282625f8fe127129d2c994d&oe=575515ED'))
-	Event.create(name: "Skyline Sounds", description: "Indie rock that is definitely not emo", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('https://scontent-ord1-1.xx.fbcdn.net/hphotos-xlf1/t31.0-8/10473339_343270732548480_8195706922969621057_o.jpg'))
-	Event.create(name: "The Ferns", description: "Combines surf and prog influences with post-punk", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('https://scontent-ord1-1.xx.fbcdn.net/hphotos-xta1/v/t1.0-9/12112303_896846573730527_5226291672877323791_n.jpg?oh=3980df71b559a4224c9d966dd8c0d8e7&oe=578F17CA'))
-	Event.create(name: "Heavy Looks", description: "Some might say power-pop, some might say pop-punk, the latter are wrong", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('https://scontent-ord1-1.xx.fbcdn.net/hphotos-xlf1/v/t1.0-9/7391_314386558689557_2102032215_n.png?oh=8fc450945bc84588bdb4c464e2da4f17&oe=57572AB8'))
-	Event.create(name: "The Civil Engineers", description: "The question is not whether they will funk, but rather, how much funk they will funk the funk", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('https://scontent-ord1-1.xx.fbcdn.net/hphotos-xlp1/t31.0-8/12771977_1152292944789274_2733328629601893800_o.jpg'))
-	Event.create(name: "The Werewolverine", description: "Indie folk that wouldn't disturb a woodland creature's hibernation", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('https://scontent-ord1-1.xx.fbcdn.net/hphotos-xpt1/v/t1.0-9/12745774_610616735758840_2033131121576127179_n.jpg?oh=6ae2e301afd50e9a5d1d9a3300ccadfb&oe=5794D052'))
-	Event.create(name: "Cats on Leashes", description: "They'll show up and play some punk songs", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('https://scontent-ord1-1.xx.fbcdn.net/hphotos-xla1/v/t1.0-9/12299266_834453906668563_1709396690049002358_n.jpg?oh=032302a9e5690f8a9eaf1b9b7c0d5969&oe=575A9D33'))
-	Event.create(name: "Pollinators", description: "Covering the ground between post-rock and power-pop", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('https://scontent-ord1-1.xx.fbcdn.net/hphotos-xat1/v/t1.0-9/12438950_570673909752714_1798349019206091871_n.jpg?oh=6093c3e5c2e98421f1b5a21fa787fe5e&oe=574BA427'))
-	Event.create(name: "Sexy Ester", description: "Because you really do want some sassy new wave in your life", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('https://scontent-ord1-1.xx.fbcdn.net/hphotos-xft1/t31.0-8/10452956_909297485774852_894095720820105580_o.jpg'))
-	Event.create(name: "Oh My Love", description: "This group has gone from ukulele-driven indie-pop to triphop and dubstep", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('https://scontent-ord1-1.xx.fbcdn.net/hphotos-xpt1/v/t1.0-9/12122424_1617268638526523_2813590903684172167_n.jpg?oh=977403ba5ef0306675bbd6e5cf7ba802&oe=5757D46A'))
-	Event.create(name: "Lords of the Trident", description: "What other power metal band sends you valentines and arms you with battle axes", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('https://scontent-ord1-1.xx.fbcdn.net/hphotos-xaf1/t31.0-8/11406545_10153476763604427_2097324136002184425_o.jpg'))
+	Event.create(name: "Gentle Brontosaurus", description: "Indie pop that politely suggests you might dance", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/gentlebronto.jpg'))
+	Event.create(name: "Square Bombs", description: 'Retro prog songs about cats', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/squarebombs.jpg'))
+	Event.create(name: "The Earthlings", description: 'Hi-tech psychadelic space-pop. Band members vary.', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/earthlings.jpg'))
+	Event.create(name: "Owls, Foxes, and Sebastian", description: 'Listen if you like the idea of Morrisey replacing Julian Casablancas, with saxophone solos', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/owlsfoxessebastian.jpg'))
+	Event.create(name: "Little Red Wolf", description: 'LRW need no introduction or amplification. This all-star team of instrumentalists trade off leading and harmony vocals on their rustic folk-pop songs', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/littleredwolf.jpg'))
+	Event.create(name: "The Wells Division", description: 'Folk rock richly layered with accordion, organ, and ', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/wellsdivision.jpg'))
+	Event.create(name: "Wood Chickens", description: 'Raucous Bluegrass Punk. Punkgrass? Sure!', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/woodchickens.jpg'))
+	Event.create(name: "Skyline Sounds", description: "Indie rock that is definitely not emo", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/skylinesounds.jpg'))
+	Event.create(name: "The Ferns", description: "Combines surf and prog influences with post-punk", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/ferns.jpg'))
+	Event.create(name: "Heavy Looks", description: "Some might say power-pop, some might say pop-punk, the latter are wrong", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/heavylooks.png'))
+	Event.create(name: "The Civil Engineers", description: "The question is not whether they will funk, but rather, how much funk they will funk the funk", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/civilengineers.jpg'))
+	Event.create(name: "The Werewolverine", description: "Indie folk that wouldn't disturb a woodland creature's hibernation", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/werewolverine.jpg'))
+	Event.create(name: "Cats on Leashes", description: "They'll show up and play some punk songs", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/catsonleashes.jpg'))
+	Event.create(name: "Pollinators", description: "Covering the ground between post-rock and power-pop", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/pollinators.jpg'))
+	Event.create(name: "Sexy Ester", description: "Because you really do want some sassy new wave in your life", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/sexyester.jpg'))
+	Event.create(name: "Oh My Love", description: "This group has gone from ukulele-driven indie-pop to triphop and dubstep", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/ohmylove.jpg'))
+	Event.create(name: "Lords of the Trident", description: "What other power metal band sends you valentines and arms you with battle axes", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/lordsofthetrident.jpg'))
+end
+
+40.times do
+	Venue.all.sample.tags << Tag.all.sample
 end
 
 600.times do
@@ -136,17 +162,12 @@ end
 53.times do
 	user = User.all.sample
 	friend = User.all.sample
-	Friendship.create(user_id: user_id, friend_id: friend_id)
-	Friendship.create(user_id: friend_id, friend_id: user_id)
+	Friendship.create(user: user, friend: friend)
+	Friendship.create(user: friend, friend: user)
 end
 # Randos go to events
 4500.times do
 	Rsvp.find_or_create_by(event: Event.all.sample, user: User.all.sample)
 end
 
-# Madison venues
-
-600.times do
-	Event.all.sample.tags << Tag.all.sample
-end
 
