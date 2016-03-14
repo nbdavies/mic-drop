@@ -39,7 +39,6 @@ Venue.create(name: 'Schubas', address: '3159 N Southport Ave, Chicago, IL 60657'
 Venue.create(name: 'Metro', address: '3730 N Clark St, Chicago, IL 60613', lat: "41.9497998", lng: "-87.6609837", type: Type.all.sample, manager: User.all.sample),
 Venue.create(name: 'Green Mill', address: '4802 N Broadway St, Chicago, IL 60640', lat: '41.9691891', lng: '-87.6620719', type: Type.all.sample, manager: User.all.sample),
 Venue.create(name: 'Aragon Ballroom', address: '1106 W Lawrence Ave, Chicago, IL 60640', lat: '41.9651629', lng: '-87.6630034', type: Type.all.sample, manager: User.all.sample),
-Venue.create(name: 'House of Blues', address: '329 N Dearborn St, Chicago, IL 60654', lat: '41.888233', lng: '-87.6313187', type: Type.all.sample, manager: bob),
 Venue.create(name: 'The Mid', address: '306 N Halsted St, Chicago, IL 60661', lat: '41.8870952', lng: '-87.6500334', type: Type.all.sample, manager: User.all.sample),
 Venue.create(name: 'Park West', address: '322 W Armitage Ave, Chicago, IL 60614', lat: '41.9185905', lng: '-87.6395697', type: Type.all.sample, manager: phil),
 Venue.create(name: 'Concord Music Hall', address: '2047 N Milwaukee Ave, Chicago, IL 60647', lat: '41.9186603', lng: '-87.6923112', type: Type.all.sample, manager: User.all.sample),
@@ -49,6 +48,8 @@ Venue.create(name: 'Elbo Room', address: '2871 N Lincoln Ave, Chicago, IL 60657'
 Venue.create(name: 'Refuge Live', address: '416 S Clark St, Chicago, IL 60605', lat: '41.876416', lng: '-87.6332607', type: Type.all.sample, manager: User.all.sample),
 Venue.create(name: 'Harris Theater', address: '205 E Randolph St, Chicago, IL 60601', lat: '41.8839445', lng: '-87.6240677', type: Type.all.sample, manager: User.all.sample)
 ]
+hob = Venue.create(name: 'House of Blues', address: '329 N Dearborn St, Chicago, IL 60654', lat: '41.888233', lng: '-87.6313187', type: Type.all.sample, manager: bob)
+Subscription.create(venue: hob, user: bob)
 denver_venues = [
 	Venue.create(name: "Boulder Theater", address: "2032 14th St, Boulder, CO 80302", lat: "40.0192", lng: "-105.2772", type: Type.all.sample, manager_id: 1),
 	Venue.create(name: "Fox Theater", address: '1135 13th St Boulder, CO 80302', lat: "40.0080", lng: "-105.2765", type: Type.all.sample, manager_id: rand(1..3)),
@@ -79,7 +80,6 @@ denver_venues = [
 	Event.create(name: "Logan Square Karaoke", description: "How many miles would you walk?", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/logan.jpg'))
 	Event.create(name: "Yakuza", description: "Death metal with saxophone", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/yakuza.jpg'))
 	Event.create(name: "Math Rock", description: "Many time signatures", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/mathrock.jpg'))
-	Event.create(name: "Tryptich3", description: "Chicago Nu-metal band reunion", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/tryptich.jpg'))
 	Event.create(name: "Reservoir", description: "Maine slow-core", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/slowcore.jpg'))
 end
 # Denver events
