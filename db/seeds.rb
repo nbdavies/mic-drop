@@ -64,7 +64,7 @@ denver_venues = [
 	Venue.create(name: "Cervantes Masterpiece", address: '2635 Welton St, Denver, CO 80205', lat: '39.755178', lng: '-104.978390', type: Type.all.sample, manager: sabrina)
 ]
 # Chicago events
-(0..30).each do |i|
+(0..6).each do |i|
 	venues = chicago_venues.shuffle
 	Event.create(name: "GLWSTX", description: "The heaviest drops!", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/glwstx.jpg'))
 	Event.create(name: "Slumber Party", description: 'Bring a toothbrush', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/slumber_party.jpg'))
@@ -83,7 +83,7 @@ denver_venues = [
 	Event.create(name: "Reservoir", description: "Maine slow-core", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/slowcore.jpg'))
 end
 # Denver events
-(0..30).each do |i|
+(0..6).each do |i|
 	venues = denver_venues.shuffle
 	Event.create(name: "GLWSTX", description: "The heaviest drops!", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/glwstx.jpg'))
 	Event.create(name: "Slumber Party", description: 'Bring a toothbrush', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/slumber_party.jpg'))
@@ -121,7 +121,7 @@ Venue.create(name: "Mickey's", address: '1524 Williamson St, Madison, WI 53703',
 Venue.create(name: "Crystal Corner", address: '1302 Williamson St, Madison, WI 53703', lat: '43.0847613', lng: '-89.3647873', type: Type.all.sample, manager: User.all.sample),
 Venue.create(name: "Mother Fool's", address: '1101 Williamson St, Madison, WI 53703', lat: '43.0819339', lng: '-89.3679771', type: Type.all.sample, manager: User.all.sample)
 ]
-(0..30).each do |i|
+(0..6).each do |i|
 	venues = madison_venues.shuffle
 	Event.create(name: "Gentle Brontosaurus", description: "Indie pop that politely suggests you might dance", venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/gentlebronto.jpg'))
 	Event.create(name: "Square Bombs", description: 'Retro prog songs about cats', venue: venues.pop, date: Date.today+i, start_time: Faker::Time.forward, end_time: Faker::Time.forward, photo: File.open('public/squarebombs.jpg'))
@@ -146,7 +146,7 @@ end
 	Venue.all.sample.tags << Tag.all.sample
 end
 
-600.times do
+200.times do
 	Event.all.sample.tags << Tag.all.sample
 end
 
@@ -166,7 +166,7 @@ end
 	Friendship.create(user: friend, friend: user)
 end
 # Randos go to events
-4500.times do
+1500.times do
 	Rsvp.find_or_create_by(event: Event.all.sample, user: User.all.sample)
 end
 
