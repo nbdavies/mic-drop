@@ -17,7 +17,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    events = Event.where(date: Date.today)
+    events = Event.all
     pins = events.to_a.map{ |event| event.pin(current_user)}
     pins.select!{|pin| pin[:date] == Date.today}
     render :json => pins
@@ -28,14 +28,14 @@ class EventsController < ApplicationController
     events = []
     subs.each do |sub|
       if Event.find_by(venue_id: sub.venue_id)
-        subscribed_events = Event.where(venue_id: sub.venue_id)
-        subscribed_events.each do |event|
-          events << event if event.date == Date.today
-        end
+        event = Event.find_by(venue_id: sub.venue_id)
+        events << event
       end
     end
-    pins = events.map{ |event| event.pin(current_user) }
-    render json: pins
+
+    pins = events.to_a.map{ |event| event.pin(current_user)}
+    pins.select!{|pin| pin[:date] == Date.today}
+    render :json => pins
   end
 
   private
