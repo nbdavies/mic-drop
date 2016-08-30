@@ -103,7 +103,7 @@ var GMap = React.createClass({
     var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
     var mapOptions = {
       zoom: 15,
-      center: new google.maps.LatLng(-34.397, 150.644),
+      center: new google.maps.LatLng(41.884525, -87.632352),
       disableDefaultUI: true,
       mapTypeControlOptions: {
         mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
